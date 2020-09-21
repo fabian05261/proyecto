@@ -15,5 +15,19 @@ public class GestionClientes {
             System.out.println(aux.toString());
         }
     }
+     
+    public void InsetarCliente(Cliente newcliente){
     
+        int i=0; 
+        
+        for(Cliente aux : this.clientes){
+            i++;
+            if(newcliente.getCodigoCliente() == aux.getCodigoCliente()){
+                System.out.println("El codigo del cliente nuevo: %l de nombre %s ya esta en el sistema y esta en la posicion: %i de la lista"+newcliente.getCodigoCliente() +newcliente.getNombre() +i);
+                return;
+            }
+        }
+        System.out.println("El codigo del cliente nuevo: %l de nombre %s ya fue agregado y esta en la posicion: %i de la lista"+newcliente.getCodigoCliente() +newcliente.getNombre() +i);
+        clientes.add(newcliente);
+    }
 }
