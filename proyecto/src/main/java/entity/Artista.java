@@ -10,7 +10,17 @@ public class Artista {
 	private String apellido;
 	private Calendar fechaNacimiento;
 	private long telefono;
-	public long getCodigoArtista() {
+        
+	public Artista(long codigoArtista, long cedula, String nombre, String apellido, Calendar fechaNacimiento, long telefono) {
+            this.codigoArtista = codigoArtista;
+            this.cedula = cedula;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.fechaNacimiento = fechaNacimiento;
+            this.telefono = telefono;
+	}
+        
+        public long getCodigoArtista() {
 		return codigoArtista;
 	}
 	public void setCodigoArtista(long codigoArtista) {
@@ -46,19 +56,5 @@ public class Artista {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	
-	public Artista() {
-	
-	}
-	public Artista(long codigoArtista, long cedula, String nombre, String apellido, Calendar fechaNacimiento,
-			long telefono) {
-		this.codigoArtista = codigoArtista;
-		this.cedula = cedula;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.fechaNacimiento = fechaNacimiento;
-		this.telefono = telefono;
-	}
-	
 	
 }
