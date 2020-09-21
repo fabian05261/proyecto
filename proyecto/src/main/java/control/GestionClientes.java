@@ -2,7 +2,6 @@ package control;
 
 import java.util.ArrayList;
 
-
 import entity.*;
 
 public class GestionClientes {
