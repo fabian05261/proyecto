@@ -22,4 +22,29 @@ public class Compra {
         this.fecha=fecha;
         this.pagado=pagado;
     }
+    
+    public void setCodigoCompra(long codigoCompra){
+        this.codigoCompra=codigoCompra;
+    }
+    
+    public void setFecha(Calendar fecha){
+        this.fecha=fecha;
+    }
+    
+    public void setPagado(boolean pagado){
+        this.pagado=pagado;
+    }
+    
+    public long getCodigoCompra(){
+        return this.codigoCompra;
+    }
+    
+    public Calendar getFecha(){
+        return this.fecha;
+    }
+    
+    public boolean getPagado(){
+        return this.pagado;
+    }
+    
 }
