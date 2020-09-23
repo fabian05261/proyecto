@@ -1,11 +1,11 @@
 package control;
 
 import java.util.ArrayList;
-import Entity.Cliente;
+import entity.Cliente;
 import java.util.Scanner;
 
 public class GestionClientes {
-    private ArrayList<Cliente> clientes;
+    private ArrayList<Cliente> clientes=new ArrayList<Cliente>();
     Scanner sc = new Scanner(System.in);
     
     public GestionClientes(ArrayList<Cliente> clientes) {
