@@ -39,4 +39,16 @@ public class GestionClientes {
 			cliente.add(cliente1);
 		}
 	}
+	public void ModificarClientes(Cliente cliente1)
+	{
+		for(Cliente clientes:cliente)
+		{
+			if(cliente1.getCedula()==clientes.getCedula())
+			{
+				System.out.println("Se encontro el cliente");
+				cliente.remove(cliente1);
+			}
+		}
+		System.out.println("Se elimino el cliente");
+	}
 }
