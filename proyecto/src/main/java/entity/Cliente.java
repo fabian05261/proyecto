@@ -7,6 +7,9 @@ public class Cliente {
   private String Apellidos;
   private String direccionEntrega;
   private long telefono;
+  
+    public Cliente() {
+    }
 
     public Cliente(long codigoCliente, long cedula, String nombre, String Apellidos, String direccionEntrega, long telefono) {
         this.codigoCliente = codigoCliente;
@@ -69,5 +72,5 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "codigoCliente=" + codigoCliente + ", cedula=" + cedula + ", nombre=" + nombre + ", Apellidos=" + Apellidos + ", direccionEntrega=" + direccionEntrega + ", telefono=" + telefono + '}';
     }
-       
+    
 }
