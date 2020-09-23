@@ -73,7 +73,8 @@ public class ControlGaleria {
 	{
 		Scanner sc = new Scanner(System.in);
 		int opciones;
-		String nuevoNombre;
+		String nuevoNombre,nuevoApellido,nuevaDireccion;
+		long nuevaCedula,nuevoTelefono;
 		for(Cliente clientes:listaClientes)
 		{
 			if(cliente.getCodigoCliente()!=clientes.getCodigoCliente())
@@ -89,23 +90,79 @@ public class ControlGaleria {
 			System.out.println("Presione 1 para cambiar el nombre");
 			System.out.println("Presione 2 para cambiar el apellido");
 			System.out.println("Presione 3 para cambiar la cedula");
+			System.out.println("Presione 4 para cambiar el telefono");
+			System.out.println("Presione 5 para cambiar la direccion");
 			System.out.println("Presione 9 para salir");
-			opciones=sc.nextInt();
-		}while(opciones!=9);
-		
+			opciones=sc.nextInt();		
 		switch(opciones)
 		{
 		case 1://cambiar nombre 
 			System.out.println("Ingrese el nuevo nombre que desea cambiar");
 			nuevoNombre=sc.next();
+			int cont=0;
 			for(Cliente clientes:listaClientes)
-			{
+			{	
+				cont++;
 				if(cliente.getNombre()==clientes.getNombre())
 				{
-					listaClientes.set(clientes, nuevoNombre);
+					listaClientes.get(cont).setNombre(nuevoNombre);
 				}
 			}
+			break;
+			cont=0;
+		case 2: //cambiar apellido
+			System.out.println("Ingrese el nuevo apellido que desea cambiar");
+			nuevoApellido=sc.next();
+			for(Cliente clientes:listaClientes)
+			{
+				cont++;
+				if(cliente.getApellidos()==clientes.getApellidos())
+				{
+					listaClientes.get(cont).setApellidos(nuevoApellido);
+				}
+			}
+			break;
+			cont=0;
+		case 3://cambiar cedula
+			System.out.println("Ingrese la nueva cedula que desea cambiar");
+			nuevaCedula=sc.nextLong();
+			for(Cliente clientes:listaClientes)
+			{
+				cont++;
+				if(cliente.getCedula()==clientes.getCedula())
+				{
+					listaClientes.get(cont).setCedula(nuevaCedula);
+				}
+			}
+			break;
+			cont=0;
+		case 4://cambiar telefono
+			System.out.println("Ingrese el telefono nuevo que desea cambiar");
+			nuevoTelefono=sc.nextLong();
+			for(Cliente clientes:listaClientes)
+			{
+				cont++;
+				if(cliente.getTelefono()==clientes.getTelefono())
+				{
+					listaClientes.get(cont).setTelefono(nuevoTelefono);
+				}
+			}
+			break;
+			cont=0;
+		case 5://cambiar direccion entrega
+			System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
+			nuevaDireccion=sc.next();
+			for(Cliente clientes:listaClientes)
+			{
+				cont++;
+				if(cliente.getDireccionEntrega()==clientes.getDireccionEntrega()) 
+				{
+					listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
+				}
+			}
+			break;
 		}
+		}while(opciones!=9);
 		sc.close();
 	}
 	
