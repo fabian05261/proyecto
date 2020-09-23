@@ -70,23 +70,26 @@ public class GestionClientes {
                         break;
                     case 2:
                         aux.setCedula(sc.nextLong());
-                        System.out.println("");
+                        System.out.println("Se cambio la cedula del cliente %i de la lista"+i);
                         break;
                     case 3:
-                        aux.
-                        System.out.println("");
+                        aux.setNombre(sc.nextString());
+                        System.out.println("Se cambio el nombre del cliente %i de la lista"+i);
                         break;
                     case 4:
-                        System.out.println("");
+			aux.setApellidos(sc.nextString());
+                        System.out.println("Se cambio el apellido del cliente %i de la lista"+i);
                         break;
                     case 5:
-                        System.out.println("");
+			aux.setDireccionEntrega(sc.nextString());
+                        System.out.println("Se cambio la direccion de entrega del cliente %i de la lista"+i);
                         break;
                     case 6:
-                        System.out.println("");
+			aux.setTelefono(sc.nextLong());
+                        System.out.println("Se cambio el telefono del cliente %i de la lista"+i);
                         break;
                     default:
-                        System.out.println("");
+                        System.out.println("\n No se selecciono una opcion correcta se volvera al menu inicial.");
                         break;
                 }
                 return;
@@ -94,4 +97,18 @@ public class GestionClientes {
         }
         System.out.println("El codigo del cliente: %l no esta en la lista del sistema y no esta guardado en los  %i de la lista"+newcliente.getCodigoCliente() +i);
     }
+
+	public void EliminarCliente(Cliente newcliente){
+		int i=0;
+		for(Cliente aux : this.clientes){
+			i++;
+			if(newcliente.getCedula() == aux.getCedula()){
+				System.out.println("Se encontro el cliente en la hubicacion %i"+i);
+				cliente.remove(newcliente);
+				System.out.println("\n Ya se elimino.");
+				return;
+			}
+		}
+		System.out.println("\n El cliente con nombre: %s no se puede eliminar, ya que no se encontro en la lista de clientes"+newcliente.getNombre());
+	}
 }
