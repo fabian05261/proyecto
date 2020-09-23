@@ -165,5 +165,19 @@ public class ControlGaleria {
 		}while(opciones!=9);
 		sc.close();
 	}
+	public void EliminarCliente(Cliente cliente)
+	{
+		for(Cliente clientes:listaClientes)
+		{
+			if(cliente.getCodigoCliente()==clientes.getCodigoCliente())
+			{
+				System.out.println("El cliente existe y se elimino satisfactoriamente");
+				listaClientes.remove(cliente);
+			}
+			else
+				System.out.println("El cliente no existe");
+			return;
+		}
+	}
 	
 }
