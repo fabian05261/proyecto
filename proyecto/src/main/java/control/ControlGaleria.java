@@ -8,6 +8,7 @@ public class ControlGaleria {
 	private ArrayList<Cliente>listaClientes=new ArrayList <Cliente>();
 	private ArrayList<Artista>listaArtistas=new ArrayList <Artista>();
 	private ArrayList<Obra>listaObras=new ArrayList <Obra>();
+	private ArrayList<Compra>compras=new ArrayList<Compra>();
 
 	public ControlGaleria()
 	{
@@ -45,7 +46,80 @@ public class ControlGaleria {
 	public void setListaObras(ArrayList<Obra> listaObras) {
 		this.listaObras = listaObras;
 	}
+	public void VerObras(Obra obra)
+	{
+		for(Obra obras:listaObras)
+		{
+			System.out.println("El titulo de la obra es:"+obras.getTitulo());
+			System.out.println("La fecha de creacion de la obra es:"+obras.getFecha());
+			System.out.println("El precio referencia de la obra es:"+obras.getPrecioRef());
+			//System.out.println("La foto de la obra es:");
+			System.out.println("Las dimensiones de la obra son:"+obras.getDimensiones());
+		}
+	}
+	public void criterio(Obra obra)
+	{
+		Scanner sc = new Scanner(System.in);
+		int criterios;
+		String titulo,artista;
+		Calendar ano;
+		System.out.println("Ingrese el criterio que desea aplicar para su busqueda");
+		criterios=sc.nextInt();
+		switch(criterios)
+		{
+		case 1:
+			System.out.println("Escriba el titulo de la obra que desea buscar");
+			titulo=sc.next();
+			for(Obra obras:listaObras)
+			{
+				if(titulo==obras.getTitulo())
+				{
+					VerObras(obra);
+				}
+			}
+			break;
+		case 2:
+			System.out.println("Escriba el artista el cual desea buscar su obra");
+			artista=sc.next();
+			for(Artista artistas:listaArtistas)
+			{
+				if(artista==artistas.getNombre())
+				{
+					System.out.println(artistas.getNombre()); //aun le falta 
+				}
+			}
+			break;
+		case 3:
+			System.out.println("Esriba el anho en que fue pintada la obra");
+			//ingresar el valor de la fecha
+			for(Obra obras:listaObras)
+			{
+				//if(ano==obras.getFecha())
+				{
+					VerObras(obra);
+				}
+			}
+		}
+		sc.close();
+	}
 	
+	public void BuscarObra(Obra obra)
+	{
+		criterio(obra);
+	}
+	public void InsertarObra(Obra obra)
+	{
+		for(Obra obras:listaObras)
+		{
+			if(obra.getCodigoObra()==obras.getCodigoObra())
+			{
+				System.out.println("La obra esta repetida");
+				return;
+			}
+			System.out.println("Se inserto la obra");
+			listaObras.add(obra);
+		}
+	}
 	public void VerClientes(Cliente cliente)
 	{
 		for(Cliente clientes:listaClientes)
