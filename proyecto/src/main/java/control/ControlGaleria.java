@@ -7,7 +7,7 @@ public class ControlGaleria {
 	private GestionClientes gestionCliente;
 	private ArrayList<Cliente>listaClientes=new ArrayList <Cliente>();
 	private ArrayList<Artista>listaArtistas=new ArrayList <Artista>();
-	private ArrayList<Obras>listaObras=new ArrayList <Obras>();
+	private ArrayList<Obra>listaObras=new ArrayList <Obra>();
 
 	public ControlGaleria()
 	{
@@ -38,11 +38,11 @@ public class ControlGaleria {
 		this.listaArtistas = listaArtistas;
 	}
 
-	public ArrayList<Obras> getListaObras() {
+	public ArrayList<Obra> getListaObras() {
 		return listaObras;
 	}
 
-	public void setListaObras(ArrayList<Obras> listaObras) {
+	public void setListaObras(ArrayList<Obra> listaObras) {
 		this.listaObras = listaObras;
 	}
 	
@@ -73,7 +73,9 @@ public class ControlGaleria {
 	{
 		Scanner sc = new Scanner(System.in);
 		int opciones;
+		int cont=0;
 		String nuevoNombre,nuevoApellido,nuevaDireccion;
+		long nuevoCodigo;
 		long nuevaCedula,nuevoTelefono;
 		for(Cliente clientes:listaClientes)
 		{
@@ -99,7 +101,6 @@ public class ControlGaleria {
 		case 1://cambiar nombre 
 			System.out.println("Ingrese el nuevo nombre que desea cambiar");
 			nuevoNombre=sc.next();
-			int cont=0;
 			for(Cliente clientes:listaClientes)
 			{	
 				cont++;
@@ -108,8 +109,8 @@ public class ControlGaleria {
 					listaClientes.get(cont).setNombre(nuevoNombre);
 				}
 			}
-			break;
 			cont=0;
+			break;
 		case 2: //cambiar apellido
 			System.out.println("Ingrese el nuevo apellido que desea cambiar");
 			nuevoApellido=sc.next();
@@ -121,8 +122,8 @@ public class ControlGaleria {
 					listaClientes.get(cont).setApellidos(nuevoApellido);
 				}
 			}
-			break;
 			cont=0;
+			break;
 		case 3://cambiar cedula
 			System.out.println("Ingrese la nueva cedula que desea cambiar");
 			nuevaCedula=sc.nextLong();
@@ -134,8 +135,8 @@ public class ControlGaleria {
 					listaClientes.get(cont).setCedula(nuevaCedula);
 				}
 			}
-			break;
 			cont=0;
+			break;
 		case 4://cambiar telefono
 			System.out.println("Ingrese el telefono nuevo que desea cambiar");
 			nuevoTelefono=sc.nextLong();
@@ -147,8 +148,9 @@ public class ControlGaleria {
 					listaClientes.get(cont).setTelefono(nuevoTelefono);
 				}
 			}
-			break;
 			cont=0;
+			break;
+
 		case 5://cambiar direccion entrega
 			System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
 			nuevaDireccion=sc.next();
@@ -160,6 +162,26 @@ public class ControlGaleria {
 					listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
 				}
 			}
+			cont=0;
+			break;
+		case 6: //cambiar codigo fuente
+			System.out.println("Ingrese el nuevo codigo que desea cambiar");
+			nuevoCodigo=sc.nextLong();
+			for(Cliente clientes:listaClientes)
+			{
+				cont++;
+				if(clientes.getCodigoCliente()==nuevoCodigo)
+				{
+					System.out.println("El codigo ya existe, elija uno nuevo");
+					return;
+				}
+				if(clientes.getCodigoCliente()!=nuevoCodigo)
+				{
+					listaClientes.get(cont).setCodigoCliente(nuevoCodigo);
+					System.out.println("Se ha cambiado el codigo del cliente");
+				}
+			}
+			cont=0;
 			break;
 		}
 		}while(opciones!=9);
