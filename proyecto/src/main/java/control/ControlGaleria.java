@@ -10,9 +10,6 @@ public class ControlGaleria {
     private ArrayList<Obra>listaObras = new ArrayList <Obra>();
     private ArrayList<Compra>compras = new ArrayList<Compra>();
 
-    public ControlGaleria(){	
-    }
-
     public GestionClientes getCliente(){
             return gestionCliente;
     }
