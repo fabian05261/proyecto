@@ -67,7 +67,7 @@ public class Compra {
         Compra Aux;
         for(int i =0; i < Lista.size(); i++){
             Aux=Lista.get(i);
-            if(mes == Aux.fecha.get(Aux.fecha.MONTH))
+            if(mes-1 == Aux.fecha.get(Aux.fecha.MONTH))
                 if(anio == Aux.fecha.get(Aux.fecha.YEAR)){
                     if(Aux.pagado)
                         pago="Pago";
