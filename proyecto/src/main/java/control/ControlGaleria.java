@@ -7,7 +7,8 @@ public class ControlGaleria {
 	private GestionClientes gestionCliente;
 	private ArrayList<Cliente>listaClientes=new ArrayList <Cliente>();
 	private ArrayList<Artista>listaArtistas=new ArrayList <Artista>();
-	private ArrayList<Obras>listaObras=new ArrayList <Obras>();
+	private ArrayList<Obra>listaObras=new ArrayList <Obra>();
+	private ArrayList<Compra>compras=new ArrayList<Compra>();
 
 	public ControlGaleria()
 	{
@@ -38,14 +39,87 @@ public class ControlGaleria {
 		this.listaArtistas = listaArtistas;
 	}
 
-	public ArrayList<Obras> getListaObras() {
+	public ArrayList<Obra> getListaObras() {
 		return listaObras;
 	}
 
-	public void setListaObras(ArrayList<Obras> listaObras) {
+	public void setListaObras(ArrayList<Obra> listaObras) {
 		this.listaObras = listaObras;
 	}
+	public void VerObras(Obra obra)
+	{
+		for(Obra obras:listaObras)
+		{
+			System.out.println("El titulo de la obra es:"+obras.getTitulo());
+			System.out.println("La fecha de creacion de la obra es:"+obras.getFecha());
+			System.out.println("El precio referencia de la obra es:"+obras.getPrecioRef());
+			//System.out.println("La foto de la obra es:");
+			System.out.println("Las dimensiones de la obra son:"+obras.getDimensiones());
+		}
+	}
+	public void criterio(Obra obra)
+	{
+		Scanner sc = new Scanner(System.in);
+		int criterios;
+		String titulo,artista;
+		Calendar ano;
+		System.out.println("Ingrese el criterio que desea aplicar para su busqueda");
+		criterios=sc.nextInt();
+		switch(criterios)
+		{
+		case 1:
+			System.out.println("Escriba el titulo de la obra que desea buscar");
+			titulo=sc.next();
+			for(Obra obras:listaObras)
+			{
+				if(titulo==obras.getTitulo())
+				{
+					VerObras(obra);
+				}
+			}
+			break;
+		case 2:
+			System.out.println("Escriba el artista el cual desea buscar su obra");
+			artista=sc.next();
+			for(Artista artistas:listaArtistas)
+			{
+				if(artista==artistas.getNombre())
+				{
+					System.out.println(artistas.getNombre()); //aun le falta 
+				}
+			}
+			break;
+		case 3:
+			System.out.println("Esriba el anho en que fue pintada la obra");
+			//ingresar el valor de la fecha
+			for(Obra obras:listaObras)
+			{
+				//if(ano==obras.getFecha())
+				{
+					VerObras(obra);
+				}
+			}
+		}
+		sc.close();
+	}
 	
+	public void BuscarObra(Obra obra)
+	{
+		criterio(obra);
+	}
+	public void InsertarObra(Obra obra)
+	{
+		for(Obra obras:listaObras)
+		{
+			if(obra.getCodigoObra()==obras.getCodigoObra())
+			{
+				System.out.println("La obra esta repetida");
+				return;
+			}
+			System.out.println("Se inserto la obra");
+			listaObras.add(obra);
+		}
+	}
 	public void VerClientes(Cliente cliente)
 	{
 		for(Cliente clientes:listaClientes)
@@ -73,7 +147,9 @@ public class ControlGaleria {
 	{
 		Scanner sc = new Scanner(System.in);
 		int opciones;
+		int cont=0;
 		String nuevoNombre,nuevoApellido,nuevaDireccion;
+		long nuevoCodigo;
 		long nuevaCedula,nuevoTelefono;
 		for(Cliente clientes:listaClientes)
 		{
@@ -99,7 +175,6 @@ public class ControlGaleria {
 		case 1://cambiar nombre 
 			System.out.println("Ingrese el nuevo nombre que desea cambiar");
 			nuevoNombre=sc.next();
-			int cont=0;
 			for(Cliente clientes:listaClientes)
 			{	
 				cont++;
@@ -108,8 +183,8 @@ public class ControlGaleria {
 					listaClientes.get(cont).setNombre(nuevoNombre);
 				}
 			}
-			break;
 			cont=0;
+			break;
 		case 2: //cambiar apellido
 			System.out.println("Ingrese el nuevo apellido que desea cambiar");
 			nuevoApellido=sc.next();
@@ -121,8 +196,8 @@ public class ControlGaleria {
 					listaClientes.get(cont).setApellidos(nuevoApellido);
 				}
 			}
-			break;
 			cont=0;
+			break;
 		case 3://cambiar cedula
 			System.out.println("Ingrese la nueva cedula que desea cambiar");
 			nuevaCedula=sc.nextLong();
@@ -134,8 +209,8 @@ public class ControlGaleria {
 					listaClientes.get(cont).setCedula(nuevaCedula);
 				}
 			}
-			break;
 			cont=0;
+			break;
 		case 4://cambiar telefono
 			System.out.println("Ingrese el telefono nuevo que desea cambiar");
 			nuevoTelefono=sc.nextLong();
@@ -147,8 +222,9 @@ public class ControlGaleria {
 					listaClientes.get(cont).setTelefono(nuevoTelefono);
 				}
 			}
-			break;
 			cont=0;
+			break;
+
 		case 5://cambiar direccion entrega
 			System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
 			nuevaDireccion=sc.next();
@@ -160,6 +236,26 @@ public class ControlGaleria {
 					listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
 				}
 			}
+			cont=0;
+			break;
+		case 6: //cambiar codigo fuente
+			System.out.println("Ingrese el nuevo codigo que desea cambiar");
+			nuevoCodigo=sc.nextLong();
+			for(Cliente clientes:listaClientes)
+			{
+				cont++;
+				if(clientes.getCodigoCliente()==nuevoCodigo)
+				{
+					System.out.println("El codigo ya existe, elija uno nuevo");
+					return;
+				}
+				if(clientes.getCodigoCliente()!=nuevoCodigo)
+				{
+					listaClientes.get(cont).setCodigoCliente(nuevoCodigo);
+					System.out.println("Se ha cambiado el codigo del cliente");
+				}
+			}
+			cont=0;
 			break;
 		}
 		}while(opciones!=9);
