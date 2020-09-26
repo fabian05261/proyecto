@@ -11,27 +11,27 @@ public class ControlGaleria {
     private ArrayList<Compra>compras = new ArrayList<Compra>();
 
     public GestionClientes getCliente(){
-            return gestionCliente;
+        return gestionCliente;
     }
 
     public void setCliente(GestionClientes gestionCliente) {
-            this.gestionCliente = gestionCliente;
+        this.gestionCliente = gestionCliente;
     }
 
     public ArrayList<Cliente> getListaClientes() {
-            return listaClientes;
+        return listaClientes;
     }
 
     public void setListaClientes(ArrayList<Cliente> listaClientes) {
-            this.listaClientes = listaClientes;
+        this.listaClientes = listaClientes;
     }
 
     public ArrayList<Artista> getListaArtistas() {
-            return listaArtistas;
+        return listaArtistas;
     }
 
     public void setListaArtistas(ArrayList<Artista> listaArtistas) {
-            this.listaArtistas = listaArtistas;
+        this.listaArtistas = listaArtistas;
     }
 
     public ArrayList<Obra> getListaObras() {
@@ -39,7 +39,7 @@ public class ControlGaleria {
     }
 
     public void setListaObras(ArrayList<Obra> listaObras) {
-            this.listaObras = listaObras;
+        this.listaObras = listaObras;
     }
 
     public void VerObras(Obra obra){
