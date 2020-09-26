@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import entity.Cliente;
 import java.util.Scanner;
 
-public class GestionClientes(ArrayList<Cliente> clientes){
+//crea e instancias los Clientes y llenando la lista de clientes de la clase ControlGaleria
+
+public class GestionClientes(ArrayList<Cliente>listaClientes){
+    
+    int i = 0;
 
     Cliente 1 = new Cliente(12345,4052,"Julian","Rojas","Crr 6 N4",3124351236);
     Cliente 2 = new Cliente(12346,4053,"Juan","González Flores","Crr 1 N3",3205264789);
@@ -20,13 +24,11 @@ public class GestionClientes(ArrayList<Cliente> clientes){
     Cliente 12 = new Cliente(12356,4063,"Liliana","Álvarez","Diag 6 N5",3005299037);
 
     for(int j=1 ; j<13 ; j++){
-        clientes.add(j);
+        listaClientes.add(j);
     }
-
     System.out.println("\n Se ingresaron los siguientes clientes:");
-    int i = 0;
-
-    for(Cliente aux : clientes){
+    //Reviso si la lista realmente se lleno;
+    for(Cliente aux : listaClientes){
         i++;
         System.out.println(aux.toString());
     }
