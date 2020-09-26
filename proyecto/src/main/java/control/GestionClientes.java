@@ -4,15 +4,36 @@ import java.util.ArrayList;
 import entity.Cliente;
 import java.util.Scanner;
 
-public class GestionClientes {
-    
-    private ArrayList<Cliente> clientes;
-    
-    public GestionClientes(ArrayList<Cliente> clientes) {
-        this.clientes = new ArrayList<Cliente>();
+public class GestionClientes(ArrayList<Cliente> clientes){
+
+    Cliente 1 = new Cliente(12345,4052,"Julian","Rojas","Crr 6 N4",3124351236);
+    Cliente 2 = new Cliente(12346,4053,"Juan","González Flores","Crr 1 N3",3205264789);
+    Cliente 3 = new Cliente(12347,4054,"Pedro","González Ramírez","Cll 2 N11",3104556789);
+    Cliente 4 = new Cliente(12348,4055,"Mario","Gómez Ruiz","Crr 2 N6",3135294436);
+    Cliente 5 = new Cliente(12349,4056,"Maria","Fernández","Crr 4 N9",3322561245);
+    Cliente 6 = new Cliente(12350,4057,"Andres","López","Cll 8 N2",3103104547);
+    Cliente 7 = new Cliente(12351,4058,"Pablo","Díaz Martínez","Diag 3 N13",300212363);
+    Cliente 8 = new Cliente(12352,4059,"Diego","Pérez","Crr 9 N4",3057465248);
+    Cliente 9 = new Cliente(12353,4060,"Felipe","García Sánchez","Diag 6 N7",3113107821);
+    Cliente 10 = new Cliente(12354,4061,"Andrea","Romero","Crr 8 N1",3234241562);
+    Cliente 11 = new Cliente(12355,4062,"Laura","Sosa Torres","Cll 9 N8",3123254661);
+    Cliente 12 = new Cliente(12356,4063,"Liliana","Álvarez","Diag 6 N5",3005299037);
+
+    for(int j=1 ; j<13 ; j++){
+        clientes.add(j);
     }
-    
-    public void listadodeClientes(){
+
+    System.out.println("\n Se ingresaron los siguientes clientes:");
+    int i = 0;
+
+    for(Cliente aux : clientes){
+        i++;
+        System.out.println(aux.toString());
+    }
+    system.out.println("\n Se inicializaron %i clientes"+i);
+}
+
+/* public void listadodeClientes(){
         int i=0;
         
         System.out.println("El listado de los Clientes son los siguientes:");
@@ -151,11 +172,4 @@ public class GestionClientes {
             System.out.println("\n Si desea parar de ingresar mas clientes a la lista presione 0, por el momento va %i clientes"+j);
             i = sa.nextInt();
         }while(i!=0);
-
-        System.out.println("\n Se ingresaron %i clientes los cuales son: \n"+j);
-
-        for(Cliente aux : clientes){
-            System.out.println(aux.toString());
-        }
-    }
-}
+*/
