@@ -59,7 +59,7 @@ public class Compra {
                 pago="Pago";
             else
                 pago="No pago";
-            System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Aux.codigoCompra,Aux.fecha.DATE,Aux.fecha.MONTH,Aux.fecha.YEAR,pago);
+            System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Aux.codigoCompra,Aux.fecha.get(Aux.fecha.DATE),Aux.fecha.get(Aux.fecha.MONTH)+1,Aux.fecha.get(Aux.fecha.YEAR),pago);
         }
     }
 }
