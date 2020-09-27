@@ -69,7 +69,9 @@ public class ControlGaleria {
         Scanner sc = new Scanner(System.in);
         int criterios;
         String titulo,artista;
-        Calendar ano;
+        int ano;
+        Calendar auxfecha;
+        auxfecha=obra.getFecha();
         System.out.println("Ingrese el criterio que desea aplicar para su busqueda");
         criterios=sc.nextInt();
 
@@ -100,11 +102,11 @@ public class ControlGaleria {
             break;
 
             case 3:
+                System.out.println("Escriba el anho en que fue pintada la obra ");
+                ano=sc.nextInt();
 
-                System.out.println("Esriba el anho en que fue pintada la obra");
-                //ingresar el valor de la fecha
                 for(Obra obras:listaObras){
-                    //if(ano==obras.getFecha())
+                    if(ano==auxfecha.get(auxfecha.YEAR))
                     {
                             VerObras(obra);
                     }
