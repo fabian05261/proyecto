@@ -314,7 +314,7 @@ public class ControlGaleria {
         Calendar Auxfecha;
         for(int i =0; i < Lista.size(); i++){
             Auxcompra=Lista.get(i);
-            Auxfecha=Auxcompra.getFecha();
+            Auxfecha=Auxcompra.getFecha();//Comodidad para imprimir
             if(Auxcompra.getPagado())
                 pago="Pago";
             else
