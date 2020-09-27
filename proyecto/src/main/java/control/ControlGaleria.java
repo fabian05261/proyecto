@@ -608,10 +608,43 @@ public class ControlGaleria {
             for(int i =0; i<Auxobra.getArtista().size(); i++)
                 Auxobra.getArtista().get(i).getVentas().add(Auxcompra);
             comprador.getCompras().add(Auxcompra);
+            compras.add(Auxcompra);
+            System.out.println("Se ha anadido su compra con exito");
         }
         else
             System.out.println("Esta compra ya se realizo, por favor verifique");
     }
+    
+    public void EliminarComprar(Compra aborrar){
+        boolean encontro= false;
+        int j = 0;
+        for(Compra auxcompras: compras){
+            if(aborrar.getCodigoCompra()== auxcompras.getCodigoCompra()){
+                encontro=true;
+                break;
+            }
+        }
+        if(!encontro){
+            System.out.println("La compra que desea eliminar no existe");
+            return;
+        }
+        else{
+            for(int i=0; i< aborrar.getCompraObra().getArtista().size(); i++){
+                for(j = 0;j < aborrar.getCompraObra().getArtista().get(i).getVentas().size();j++){
+                    if(aborrar.getCodigoCompra() == aborrar.getCompraObra().getArtista().get(i).getVentas().get(j).getCodigoCompra()){
+                        aborrar.getCompraObra().getArtista().get(i).getVentas().remove(j);
+                        break;
+                    }
+                }
+            }
+            for(int i=0; i <aborrar.getCompraCliente().getCompras().size(); i++){
+                if(aborrar.getCodigoCompra()==aborrar.getCompraCliente().getCompras().get(i).getCodigoCompra()){
+                    
+                }
+            }
+        }
+    }
+    
     public void ArtistaMasVendido(Artista artista)
     {
     	for(Artista artistas:listaArtistas)
