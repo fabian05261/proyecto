@@ -302,17 +302,19 @@ public class ControlGaleria {
         Scanner sc = new Scanner(System.in);
         int opciones;
         int cont=0;
+        boolean encontro = false;
         String nuevoNombre,nuevoApellido,nuevaDireccion;
         long nuevoCodigo;
         long nuevaCedula,nuevoTelefono;
 
         for(Cliente clientes:listaClientes){
-            if(cliente.getCodigoCliente()!=clientes.getCodigoCliente()){
-                System.out.println("El cliente no existe");
-                return;
+            if(cliente.getCodigoCliente()==clientes.getCodigoCliente()){
+                encontro = true;
             }
         }
-
+        if (!encontro)
+            System.out.println("El cliente no existe");
+        else{
         VerClientes(cliente);
         System.out.println("Seleccione el dato que desea modificar");
 
@@ -420,6 +422,7 @@ public class ControlGaleria {
 
         }while(opciones!=9);
         sc.close();
+        }
     }
 
     public void EliminarCliente(Cliente cliente){

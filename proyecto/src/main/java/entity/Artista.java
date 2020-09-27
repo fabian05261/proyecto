@@ -11,6 +11,7 @@ public class Artista {
 	private Calendar fechaNacimiento;
 	private long telefono;
 	private ArrayList <Obra>obras=new ArrayList<Obra>();
+        private ArrayList <Compra>ventas=new ArrayList<Compra>();
 	
 	
 	public ArrayList<Obra> getObras() {
@@ -18,6 +19,12 @@ public class Artista {
 	}
 	public void setObras(ArrayList<Obra> obras) {
 		this.obras = obras;
+	}
+        public ArrayList<Compra> getVentas() {
+		return ventas;
+	}
+	public void setCompra(ArrayList<Compra> ventas) {
+		this.ventas = ventas;
 	}
 	public long getCodigoArtista() {
 		return codigoArtista;

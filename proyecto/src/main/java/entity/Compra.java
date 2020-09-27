@@ -15,7 +15,7 @@ public class Compra {
     private long codigoCompra;
     private Calendar fecha;
     private boolean pagado;
-    private ArrayList<Compra>compraCliente=new ArrayList<Compra>();
+    private ArrayList<Cliente>compraCliente=new ArrayList<Cliente>();
     private ArrayList<Obra>compraObra=new ArrayList<Obra>();
     
     public ArrayList<Obra> getCompraObra() {
@@ -26,11 +26,11 @@ public class Compra {
 		this.compraObra = compraObra;
 	}
 
-	public ArrayList<Compra> getCompraCliente() {
+	public ArrayList<Cliente> getCompraCliente() {
 		return compraCliente;
 	}
 
-	public void setCompraCliente(ArrayList<Compra> compraCliente) {
+	public void setCompraCliente(ArrayList<Cliente> compraCliente) {
 		this.compraCliente = compraCliente;
 	}
     Compra(){};
