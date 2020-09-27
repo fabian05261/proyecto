@@ -54,13 +54,13 @@ public class ControlGaleria {
     }
 
     public void VerObras(Obra obra){
-
+    	
         for(Obra obras:listaObras){
-            System.out.println("El titulo de la obra es:"+obras.getTitulo());
-            System.out.println("La fecha de creacion de la obra es:"+obras.getFecha());
-            System.out.println("El precio referencia de la obra es:"+obras.getPrecioRef());
-            //System.out.println("La foto de la obra es:");
-            System.out.println("Las dimensiones de la obra son:"+obras.getDimensiones());
+            System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
+            System.out.println("2.La fecha de creacion de la obra es:"+obras.getFecha());
+            System.out.println("3.El precio referencia de la obra es:"+obras.getPrecioRef());
+            //System.out.println("4.La foto de la obra es:");
+            System.out.println("5.Las dimensiones de la obra son:"+obras.getDimensiones());
         }
     }
 
@@ -152,8 +152,8 @@ public class ControlGaleria {
                     return;
                 }
                 System.out.println("Se inserto la obra");
-                listaObras.add(obra);
             }
+            listaObras.add(obra);
         	
             	for(Artista artistas:obra.getArtista())
             	{
@@ -171,6 +171,110 @@ public class ControlGaleria {
         	return;
         }
 
+    }
+    public void ModificarObra(Obra obra)
+    {
+        Scanner sc = new Scanner(System.in);
+        int opciones,cont=0;
+        String nuevoTitulo;
+        Calendar nuevaFecha=Calendar.getInstance();
+        int ano,mes,dia;
+        float nuevoPrecio;
+        long nuevoCodigo;
+    	for(Obra obras:listaObras)
+    	{
+    		if(obras.getCodigoObra()!=obra.getCodigoObra())
+    		{
+    			System.out.println("La obra no existe");
+    			return;
+    		}
+    		else
+    			VerObras(obra);
+    	}
+    	System.out.println("Que valor quiere cambiar de las obras");
+
+    	do
+    	{
+            System.out.println("Presione 1 para cambiar el codigo de la obra");
+            System.out.println("Presione 2 para cambiar el titulo de la obra");
+            System.out.println("Presione 3 para cambiar la fecha de la obra");
+            System.out.println("Presione 4 para cambiar el precio referencia de la obra");
+            System.out.println("Presione 5 para cambiar las dimensiones de la obra");
+            System.out.println("Presione 9 para salir del menu");
+        	opciones=sc.nextInt();
+        	switch(opciones)
+        	{
+        	case 1:
+        		System.out.println("Ingrese el nuevo codigo");
+        		nuevoCodigo=sc.nextLong();
+        		for(Obra obras:listaObras)
+        		{
+    				cont++;
+    				if(nuevoCodigo==obra.getCodigoObra())
+    				{
+        			System.out.println("El codigo ya existe, escoja otro");
+        			return;
+    				}
+    				else
+
+        				listaObras.get(cont).setCodigoObra(nuevoCodigo);
+        				System.out.println("Se cambio el codigo");
+        				}
+        		cont=0;
+        		break;
+        	case 2:
+        		System.out.println("Ingrese el nuevo titulo de la obra");
+        		nuevoTitulo=sc.next();
+    			for(Obra obras:listaObras)
+    			{
+    				cont++;
+    				if(nuevoTitulo==obra.getTitulo())
+        			{
+        			System.out.println("El titulo ya existe, escoja otro");
+        			return;
+        			}
+        			else
+        				listaObras.get(cont).setTitulo(nuevoTitulo);
+        				System.out.println("Se cambio el titulo");
+ 
+        			}
+        		cont=0;
+        		break;
+        	case 3:
+        		System.out.println("Ingrese la nueva fecha, dia, mes y ano, en ese orden");
+        		dia=sc.nextInt();
+        		mes=sc.nextInt();
+        		ano=sc.nextInt();
+        		nuevaFecha.set(ano, mes, dia);
+        		for(Obra obras:listaObras)
+        		{
+    				cont++;
+        			if(nuevaFecha==obra.getFecha())
+        			{
+        				System.out.println("La fecha de la obra ya existe");
+        				return;
+        			}
+        			else
+        				listaObras.get(cont).setFecha(nuevaFecha);
+        				System.out.println("Se inserto la nueva fecha");
+
+        		}
+        		cont=0;
+        		break;
+        	case 4:
+        		System.out.println("Ingrese el nuevo precio referencia de la obra");
+        		nuevoPrecio=sc.nextFloat();
+        		for(Obra obras:listaObras)
+        		{
+        			if(nuevoPrecio==obra.getPrecioRef())
+        			{
+        				System.out.println("El precio ya existe");
+        				return;
+        			}
+        		}
+        	}
+    	}while(opciones!=0);
+    	sc.close();
     }
     //metodos clientes
     public void VerClientes(Cliente cliente){
