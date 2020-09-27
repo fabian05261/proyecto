@@ -307,4 +307,34 @@ public class ControlGaleria {
             return;
         }
     }	
+    //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
+    public void ListadoComprasExistentes(ArrayList <Compra> Lista){
+        String pago;
+        Compra Aux;
+        for(int i =0; i < Lista.size(); i++){
+            Aux=Lista.get(i);
+            if(Aux.pagado)
+                pago="Pago";
+            else
+                pago="No pago";
+            System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Aux.codigoCompra,Aux.fecha.get(Aux.fecha.DATE),Aux.fecha.get(Aux.fecha.MONTH)+1,Aux.fecha.get(Aux.fecha.YEAR),pago);
+        }
+    }
+    public void ListadoComprasPorFecha(ArrayList <Compra> Lista, int mes, int anio){
+        String pago;
+        Compra Auxcompra;
+        Calendar auxfecha;
+        for(int i =0; i < Lista.size(); i++){
+            Auxcompra=Lista.get(i);
+            auxfecha = Auxcompra.getFecha();
+            if(mes-1 == auxfecha.get(auxfecha.MONTH))
+                if(anio == auxfecha.get(auxfecha.YEAR)){
+                    if(Auxcompra.getPagado())
+                        pago="Pago";
+                    else
+                        pago="No pago";
+                    System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Auxcompra.getCodigoCompra(),auxfecha.get(auxfecha.DATE),auxfecha.get(auxfecha.MONTH)+1,auxfecha.get(auxfecha.YEAR),pago);
+                }
+        }
+    }
 }
