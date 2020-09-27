@@ -567,7 +567,8 @@ public class ControlGaleria {
         }
     }
     public void CompraObra(Obra obracomprar, long codigocompra, Cliente comprador){
-        Obra Auxobra;
+        Obra Auxobra = new Obra();
+        boolean encontro = false;
         for(Obra obras:listaObras){
             if(obracomprar.getCodigoObra()==obras.getCodigoObra()){
                 Auxobra = obras;
@@ -588,6 +589,27 @@ public class ControlGaleria {
         else
             pago=false;
         Compra Auxcompra = new Compra(codigocompra, hoy, pago);
-        
+        Auxcompra.setCompraCliente(comprador);
+        Auxcompra.setCompraObra(Auxobra);
+        for(Compra comprar: compras){
+            if(comprar.getCompraObra().getTitulo() == obracomprar.getTitulo()){
+                if(comprar.getCompraCliente().getCodigoCliente() == comprador.getCodigoCliente()){
+                    encontro=true;
+                    break;
+                }
+                else
+                    encontro=false;
+                }
+            else
+                encontro = false;
+        }
+        if(!encontro){
+            Auxobra.setCompra(Auxcompra);
+            for(int i =0; i<Auxobra.getArtista().size(); i++)
+                Auxobra.getArtista().get(i).getVentas().add(Auxcompra);
+            comprador.getCompras().add(Auxcompra);
+        }
+        else
+            System.out.println("Esta compra ya se realizo, por favor verifique");
     }
 }

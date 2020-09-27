@@ -1,4 +1,5 @@
 package entity;
+import java.util.*;
 
 public class Cliente {
   private long codigoCliente;
@@ -7,6 +8,7 @@ public class Cliente {
   private String Apellidos;
   private String direccionEntrega;
   private long telefono;
+  private ArrayList<Compra> compras;
   
 
     public Cliente() {
@@ -19,6 +21,14 @@ public class Cliente {
         this.Apellidos = Apellidos;
         this.direccionEntrega = direccionEntrega;
         this.telefono = telefono;
+    }
+        
+    public ArrayList<Compra> getCompras(){
+        return compras;
+    }
+    
+    public void setCompras(ArrayList<Compra> compras){
+        this.compras=compras;
     }
     
     public long getCodigoCliente() {

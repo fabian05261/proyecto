@@ -20,6 +20,12 @@ public class Obra {
 	public void setArtista(ArrayList<Artista> artista) {
 		this.artista = artista;
 	}
+        public Compra getCompra(){
+            return this.compra;
+        }
+        public void setCompra(Compra compra){
+            this.compra = compra;
+        }
 
 	public Obra(long codigoObra, String titulo, Calendar fecha, float precioRef, String dimensiones) {
 		this.codigoObra = codigoObra;
