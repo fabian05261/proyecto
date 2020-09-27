@@ -5,6 +5,7 @@
  */
 package entity;
 import java.util.Calendar;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +15,7 @@ public class Compra {
     private long codigoCompra;
     private Calendar fecha;
     private boolean pagado;
-  	private ArrayList<Compra>compraCliente=new ArrayList<Compra>();
+    private ArrayList<Compra>compraCliente=new ArrayList<Compra>();
     private ArrayList<Obra>compraObra=new ArrayList<Obra>();
     
     public ArrayList<Obra> getCompraObra() {
