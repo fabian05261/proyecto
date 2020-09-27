@@ -15,7 +15,24 @@ public class Compra {
     private long codigoCompra;
     private Calendar fecha;
     private boolean pagado;
+  	private ArrayList<Compra>compraCliente=new ArrayList<Compra>();
+    private ArrayList<Obra>compraObra=new ArrayList<Obra>();
     
+    public ArrayList<Obra> getCompraObra() {
+		return compraObra;
+	}
+
+	public void setCompraObra(ArrayList<Obra> compraObra) {
+		this.compraObra = compraObra;
+	}
+
+	public ArrayList<Compra> getCompraCliente() {
+		return compraCliente;
+	}
+
+	public void setCompraCliente(ArrayList<Compra> compraCliente) {
+		this.compraCliente = compraCliente;
+	}
     Compra(){};
     
     //antes de enviar fecha utilizar getInstance

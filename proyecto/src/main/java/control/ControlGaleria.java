@@ -10,7 +10,18 @@ public class ControlGaleria {
     private ArrayList<Obra>listaObras = new ArrayList <Obra>();
     private ArrayList<Compra>compras = new ArrayList<Compra>();
 
-    public GestionClientes getCliente(){
+    
+    public ControlGaleria(GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
+			ArrayList<Artista> listaArtistas, ArrayList<Obra> listaObras, ArrayList<Compra> compras) {
+		super();
+		this.gestionCliente = gestionCliente;
+		this.listaClientes = listaClientes;
+		this.listaArtistas = listaArtistas;
+		this.listaObras = listaObras;
+		this.compras = compras;
+	}
+
+	public GestionClientes getCliente(){
         return gestionCliente;
     }
 
@@ -109,22 +120,38 @@ public class ControlGaleria {
     }
 
     public void InsertarObra(Obra obra){
-
-        for(Obra obras:listaObras){
-            if(obra.getCodigoObra()==obras.getCodigoObra()){
-                System.out.println("La obra esta repetida");
-                return;
-            }
-
-            System.out.println("Se inserto la obra");
-            listaObras.add(obra);
+    	
+    	long aux;
+    	int cont=0;
+    	aux=obra.getCodigoObra();
+    	while(aux>0)
+    	{
+    		aux=obra.getCodigoObra()/10;
+    		cont++;
+    	}
+        if(obra.getCodigoObra()>=cont) {
+        	System.out.println("El codigo es muy largo");
+        	return;
         }
+        else
+        {
+        	for(Obra obras:listaObras){
+                if(obra.getCodigoObra()==obras.getCodigoObra()){
+                    System.out.println("La obra esta repetida");
+                    return;
+                }
+
+                System.out.println("Se inserto la obra");
+                listaObras.add(obra);
+            }
+        }
+
     }
+    //metodos clientes
     public void VerClientes(Cliente cliente){
 
         for(Cliente clientes:listaClientes){
-            System.out.println("El nombre del cliente es: "+clientes.getNombre());
-            System.out.println("El apellido del cliente es: "+clientes.getApellidos());
+            System.out.println("El nombre  y apellido del cliente es: "+clientes.getNombre()+clientes.getApellidos());
             System.out.println("La cedula del cliente es: "+clientes.getCedula());
             System.out.println("El telefono del cliente es: "+clientes.getTelefono());
         }
@@ -167,6 +194,7 @@ public class ControlGaleria {
             System.out.println("Presione 3 para cambiar la cedula");
             System.out.println("Presione 4 para cambiar el telefono");
             System.out.println("Presione 5 para cambiar la direccion");
+            System.out.println("Presion 6 para cambiar el numero de identificacion");
             System.out.println("Presione 9 para salir");
             opciones=sc.nextInt();
 
@@ -252,14 +280,13 @@ public class ControlGaleria {
                             System.out.println("El codigo ya existe, elija uno nuevo");
                             return;
                         }
-                        if(clientes.getCodigoCliente()!=nuevoCodigo){
+                        if((clientes.getCodigoCliente()!=nuevoCodigo&&cliente.getCodigoCliente()!=nuevoCodigo)){
                             listaClientes.get(cont).setCodigoCliente(nuevoCodigo);
                             System.out.println("Se ha cambiado el codigo del cliente");
                         }
                     }
                     cont=0;
                 break;
-
             }
 
         }while(opciones!=9);
