@@ -566,4 +566,28 @@ public class ControlGaleria {
                 }
         }
     }
+    public void CompraObra(Obra obracomprar, long codigocompra, Cliente comprador){
+        Obra Auxobra;
+        for(Obra obras:listaObras){
+            if(obracomprar.getCodigoObra()==obras.getCodigoObra()){
+                Auxobra = obras;
+                break;
+            }
+            else{
+                System.out.println("La obra "+obracomprar.getTitulo()+" no existe");
+                return;
+            }
+        }
+        Calendar hoy = Calendar.getInstance();
+        boolean pago;
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("Por favor seleccione una opcion.\n\t1.Se realizo el pago\n\t0.Pago pendiente\n");
+        int revisar = sc.nextInt();
+        if(revisar != 0)
+            pago = true;
+        else
+            pago=false;
+        Compra Auxcompra = new Compra(codigocompra, hoy, pago);
+        
+    }
 }

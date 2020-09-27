@@ -15,28 +15,28 @@ public class Compra {
     private long codigoCompra;
     private Calendar fecha;
     private boolean pagado;
-    private ArrayList<Cliente>compraCliente=new ArrayList<Cliente>();
-    private ArrayList<Obra>compraObra=new ArrayList<Obra>();
+    private Cliente compraCliente;
+    private Obra compraObra;
     
-    public ArrayList<Obra> getCompraObra() {
+    public Obra getCompraObra() {
 		return compraObra;
 	}
 
-	public void setCompraObra(ArrayList<Obra> compraObra) {
+	public void setCompraObra(Obra compraObra) {
 		this.compraObra = compraObra;
 	}
 
-	public ArrayList<Cliente> getCompraCliente() {
+	public Cliente getCompraCliente() {
 		return compraCliente;
 	}
 
-	public void setCompraCliente(ArrayList<Cliente> compraCliente) {
+	public void setCompraCliente(Cliente compraCliente) {
 		this.compraCliente = compraCliente;
 	}
-    Compra(){};
+    public Compra(){};
     
     //antes de enviar fecha utilizar getInstance
-    Compra(long codigoCompra, Calendar fecha, boolean pagado){
+    public Compra(long codigoCompra, Calendar fecha, boolean pagado){
         this.codigoCompra=codigoCompra;
         this.fecha=fecha;
         this.pagado=pagado;
