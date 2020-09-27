@@ -53,7 +53,15 @@ public class ControlGaleria {
         this.listaObras = listaObras;
     }
 
-    public void VerObras(Obra obra){
+    public ArrayList<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(ArrayList<Compra> compras) {
+		this.compras = compras;
+	}
+
+	public void VerObras(Obra obra){
     	
         for(Obra obras:listaObras){
             System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
@@ -176,7 +184,7 @@ public class ControlGaleria {
     {
         Scanner sc = new Scanner(System.in);
         int opciones,cont=0;
-        String nuevoTitulo;
+        String nuevoTitulo,nuevasDimensiones;
         Calendar nuevaFecha=Calendar.getInstance();
         int ano,mes,dia;
         float nuevoPrecio;
@@ -209,17 +217,22 @@ public class ControlGaleria {
         		nuevoCodigo=sc.nextLong();
         		for(Obra obras:listaObras)
         		{
-    				cont++;
-    				if(nuevoCodigo==obra.getCodigoObra())
+    				if(nuevoCodigo==obras.getCodigoObra())
     				{
         			System.out.println("El codigo ya existe, escoja otro");
         			return;
     				}
-    				else
+        		}
+    				for(Obra obras:listaObras)
+    				{
+    					cont++;
+    					if(obra.getCodigoObra()==obras.getCodigoObra())
+    					{
+            				listaObras.get(cont).setCodigoObra(nuevoCodigo);
+            				System.out.println("Se cambio el codigo");
+    					}
+    				}
 
-        				listaObras.get(cont).setCodigoObra(nuevoCodigo);
-        				System.out.println("Se cambio el codigo");
-        				}
         		cont=0;
         		break;
         	case 2:
@@ -227,17 +240,21 @@ public class ControlGaleria {
         		nuevoTitulo=sc.next();
     			for(Obra obras:listaObras)
     			{
-    				cont++;
-    				if(nuevoTitulo==obra.getTitulo())
+    				if(nuevoTitulo==obras.getTitulo())
         			{
         			System.out.println("El titulo ya existe, escoja otro");
         			return;
         			}
-        			else
+    			}
+    				for(Obra obras:listaObras)
+    				{
+        				cont++;
+        				if(obra.getTitulo()==obras.getTitulo())
+        				{
         				listaObras.get(cont).setTitulo(nuevoTitulo);
         				System.out.println("Se cambio el titulo");
- 
-        			}
+        				}
+    				}
         		cont=0;
         		break;
         	case 3:
@@ -249,7 +266,7 @@ public class ControlGaleria {
         		for(Obra obras:listaObras)
         		{
     				cont++;
-        			if(nuevaFecha==obra.getFecha())
+        			if((nuevaFecha==obra.getFecha()&&obra.getFecha()!=obras.getFecha()))// no estoy seguro
         			{
         				System.out.println("La fecha de la obra ya existe");
         				return;
@@ -257,7 +274,6 @@ public class ControlGaleria {
         			else
         				listaObras.get(cont).setFecha(nuevaFecha);
         				System.out.println("Se inserto la nueva fecha");
-
         		}
         		cont=0;
         		break;
@@ -266,15 +282,73 @@ public class ControlGaleria {
         		nuevoPrecio=sc.nextFloat();
         		for(Obra obras:listaObras)
         		{
-        			if(nuevoPrecio==obra.getPrecioRef())
+        			cont++;
+        			if((nuevoPrecio==obra.getPrecioRef()&&obra.getPrecioRef()!=obras.getPrecioRef()))//no estoy seguro
         			{
-        				System.out.println("El precio ya existe");
+        				System.out.println("El precio para esa obra ya existe");
         				return;
         			}
+        			else
+        				listaObras.get(cont).setPrecioRef(nuevoPrecio);
+        			System.out.println("Se cambio el precio de la obra");
         		}
+        		cont=0;
+        		break;
+        	case 5:
+        		System.out.println("Ingrese las nuevas dimensiones de la obra");
+        		nuevasDimensiones=sc.next();
+        		for(Obra obras:listaObras)
+        		{
+        			cont++;
+        			if((nuevasDimensiones==obra.getDimensiones()&&obra.getDimensiones()!=obras.getDimensiones()))//no estoy seguro
+        			{
+        				System.out.println("Las dimensiones ya existen para la obra");
+        				return;
+        			}
+        			else
+        				listaObras.get(cont).setDimensiones(nuevasDimensiones);
+        			System.out.println("Se cambiaron las dimensiones de la obra");
+        		}
+        		cont=0;
+        		break;
         	}
     	}while(opciones!=0);
     	sc.close();
+    }
+    public void EliminarObra(Obra obra)
+    {
+    	 Scanner sc = new Scanner(System.in);
+    	 long codigo;
+    	 int x;
+    	 boolean confirmar=false;
+    	 System.out.println("Ingrese el codigo de la obra que desea eliminar");
+    	 codigo=sc.nextLong();
+    	 for(Obra obras:listaObras)
+    	 {
+    		 if(obras.getCodigoObra()!=codigo)
+    		 {
+    			 System.out.println("La obra no existe");
+    			 return;
+    		 }
+    		 else 
+    			 System.out.println("Realmente desea eliminar la obra? presione 1 para confirmar 0 para cancelar");
+    		 x=sc.nextInt();
+    		 if(x==1)
+    		 {
+    			 confirmar=true;
+    		 }
+    		 	else
+    		 		confirmar=false;
+    		 if(confirmar==true)
+    		 {
+    			 System.out.println("La obra existe y se elimino satisfactoriamente");
+    			 listaObras.remove(obra);
+    		 } 
+    		 else
+    			 System.out.println("Se ha cancelado");
+    		 break;
+    	 }
+    	 sc.close();    	 
     }
     //metodos clientes
     public void VerClientes(Cliente cliente){
@@ -340,6 +414,7 @@ public class ControlGaleria {
                             cont++;
                             if(cliente.getNombre()==clientes.getNombre()){
                                 listaClientes.get(cont).setNombre(nuevoNombre);
+                                System.out.println("Se cambio el nombre");
                             }
                     }
                     cont=0;
@@ -354,6 +429,7 @@ public class ControlGaleria {
                         cont++;
                         if(cliente.getApellidos()==clientes.getApellidos()){
                             listaClientes.get(cont).setApellidos(nuevoApellido);
+                            System.out.println("Se ha cambiado el apellido");
                         }
                     }
                     cont=0;
@@ -368,6 +444,7 @@ public class ControlGaleria {
                         cont++;
                         if(cliente.getCedula()==clientes.getCedula()){
                                 listaClientes.get(cont).setCedula(nuevaCedula);
+                                System.out.println("La cedula se ha cambiado");
                         }
                     }
                     cont=0;
@@ -382,6 +459,7 @@ public class ControlGaleria {
                         cont++;
                         if(cliente.getTelefono()==clientes.getTelefono()){
                             listaClientes.get(cont).setTelefono(nuevoTelefono);
+                            System.out.println("Se cambio el telefono");
                         }
                     }
                     cont=0;
@@ -395,6 +473,7 @@ public class ControlGaleria {
                         cont++;
                         if(cliente.getDireccionEntrega()==clientes.getDireccionEntrega()){
                             listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
+                            System.out.println("Se cambio la direccion de entrega");
                         }
                     }
                     cont=0;
@@ -424,17 +503,35 @@ public class ControlGaleria {
         sc.close();
         }
     }
-
+    
     public void EliminarCliente(Cliente cliente){
-
+   	 Scanner sc = new Scanner(System.in);
+   	 long codigo;
+   	 int x;
+   	 boolean confirmar;
+   	 System.out.println("Ingrese el codigo del cliente que desea eliminar");
+   	 codigo=sc.nextLong();
         for(Cliente clientes:listaClientes){
-            if(cliente.getCodigoCliente()==clientes.getCodigoCliente()){
-                System.out.println("El cliente existe y se elimino satisfactoriamente");
-                listaClientes.remove(cliente);
+            if(codigo!=clientes.getCodigoCliente()){
+                System.out.println("El codigo del cliente no existe");
             }
             else
-                System.out.println("El cliente no existe");
-            return;
+                System.out.println("Realmnete desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
+            x=sc.nextInt();
+            if(x==1)
+            {
+            	confirmar=true;
+            }
+            else 
+            	confirmar=false;
+            if(confirmar==true)
+            {
+                listaClientes.remove(cliente);
+                System.out.println("Se elimino el cliente satisfactoriamente");
+            }
+            else
+            	System.out.println("Se ha cancelado");
+            break;
         }
     }	
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
