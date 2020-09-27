@@ -612,4 +612,11 @@ public class ControlGaleria {
         else
             System.out.println("Esta compra ya se realizo, por favor verifique");
     }
+    public void ArtistaMasVendido(Artista artista)
+    {
+    	for(Artista artistas:listaArtistas)
+    	{
+    		
+    	}
+    }
 }

@@ -9,7 +9,7 @@ public class Obra {
 	private float precioRef;
 	private String dimensiones; 
 	private ArrayList <Artista>artista=new ArrayList<Artista>();
-        private Compra compra;
+    private Compra compra;
 	public Obra() {
 		
 	}
