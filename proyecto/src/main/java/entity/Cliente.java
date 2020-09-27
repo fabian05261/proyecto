@@ -8,10 +8,11 @@ public class Cliente {
   private String direccionEntrega;
   private long telefono;
   
+
     public Cliente() {
     }
 
-    public Cliente(long codigoCliente, long cedula, String nombre, String Apellidos, String direccionEntrega, long telefono) {
+	public Cliente(long codigoCliente, long cedula, String nombre, String Apellidos, String direccionEntrega, long telefono) {
         this.codigoCliente = codigoCliente;
         this.cedula = cedula;
         this.nombre = nombre;
