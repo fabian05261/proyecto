@@ -592,7 +592,7 @@ public class ControlGaleria {
         Auxcompra.setCompraCliente(comprador);
         Auxcompra.setCompraObra(Auxobra);
         for(Compra comprar: compras){
-            if(comprar.getCompraObra().getTitulo() == obracomprar.getTitulo()){
+            if(comprar.getCompraObra().getTitulo().equals(obracomprar.getTitulo())){
                 if(comprar.getCompraCliente().getCodigoCliente() == comprador.getCodigoCliente()){
                     encontro=true;
                     break;
