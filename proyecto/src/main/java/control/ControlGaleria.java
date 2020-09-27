@@ -72,7 +72,7 @@ public class ControlGaleria {
         int ano;
         Calendar auxfecha;
         auxfecha=obra.getFecha();
-        System.out.println("Ingrese el criterio que desea aplicar para su busqueda");
+        System.out.println("Ingrese el criterio que desea aplicar para su busqueda, 1 para el titulo, 2 para el artista, 3 para el anho");
         criterios=sc.nextInt();
 
         switch(criterios){
@@ -83,6 +83,10 @@ public class ControlGaleria {
                 titulo=sc.next();
 
                 for(Obra obras:listaObras){
+                	for(Artista artista1:obras.getArtista())
+                	{
+                		
+                	}
                     if(titulo==obras.getTitulo()){
                             VerObras(obra);
                     }

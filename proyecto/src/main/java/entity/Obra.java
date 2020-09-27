@@ -1,6 +1,6 @@
 package entity;
 import java.util.Calendar;
-
+import java.util.*;
 
 public class Obra {
 	private long codigoObra;
@@ -8,9 +8,18 @@ public class Obra {
 	private Calendar fecha;
 	private float precioRef;
 	private String dimensiones; 
+	private ArrayList <Artista>artista=new ArrayList<Artista>();
+	public Obra() {
+		
+	}
 	
-	public Obra() { }
-	
+	public ArrayList<Artista> getArtista() {
+		return artista;
+	}
+	public void setArtista(ArrayList<Artista> artista) {
+		this.artista = artista;
+	}
+
 	public Obra(long codigoObra, String titulo, Calendar fecha, float precioRef, String dimensiones) {
 		this.codigoObra = codigoObra;
 		this.titulo = titulo;

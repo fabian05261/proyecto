@@ -10,6 +10,15 @@ public class Artista {
 	private String apellido;
 	private Calendar fechaNacimiento;
 	private long telefono;
+	private ArrayList <Obra>obras=new ArrayList<Obra>();
+	
+	
+	public ArrayList<Obra> getObras() {
+		return obras;
+	}
+	public void setObras(ArrayList<Obra> obras) {
+		this.obras = obras;
+	}
 	public long getCodigoArtista() {
 		return codigoArtista;
 	}
