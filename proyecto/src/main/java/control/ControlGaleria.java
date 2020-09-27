@@ -308,14 +308,16 @@ public class ControlGaleria {
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
     public void ListadoComprasExistentes(ArrayList <Compra> Lista){
         String pago;
-        Compra Aux;
+        Compra Auxcompra;
+        Calendar Auxfecha;
         for(int i =0; i < Lista.size(); i++){
-            Aux=Lista.get(i);
-            if(Aux.pagado)
+            Auxcompra=Lista.get(i);
+            Auxfecha=Auxcompra.getFecha();
+            if(Auxcompra.getPagado())
                 pago="Pago";
             else
                 pago="No pago";
-            System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Aux.codigoCompra,Aux.fecha.get(Aux.fecha.DATE),Aux.fecha.get(Aux.fecha.MONTH)+1,Aux.fecha.get(Aux.fecha.YEAR),pago);
+            System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Auxcompra.getCodigoCompra(),Auxfecha.get(Auxfecha.DATE),Auxfecha.get(Auxfecha.MONTH)+1,Auxfecha.get(Auxfecha.YEAR),pago);
         }
     }
     public void ListadoComprasPorFecha(ArrayList <Compra> Lista, int mes, int anio){
