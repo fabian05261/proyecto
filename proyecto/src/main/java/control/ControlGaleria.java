@@ -83,10 +83,6 @@ public class ControlGaleria {
                 titulo=sc.next();
 
                 for(Obra obras:listaObras){
-                	for(Artista artista1:obras.getArtista())
-                	{
-                		
-                	}
                     if(titulo==obras.getTitulo()){
                             VerObras(obra);
                     }
@@ -97,10 +93,14 @@ public class ControlGaleria {
 
                 System.out.println("Escriba el artista el cual desea buscar su obra");
                 artista=sc.next();
-
+               
                 for(Artista artistas:listaArtistas){
                     if(artista==artistas.getNombre()){
-                            System.out.println(artistas.getNombre()); //aun le falta 
+                    	for(Obra obras:listaObras)
+                    	{
+                    		VerObras(obra);
+                    	}
+
                     }
                 }
             break;
@@ -124,7 +124,17 @@ public class ControlGaleria {
 
             criterio(obra);
     }
-
+    public boolean BuscarArtista(Artista artista)
+    {
+    	for(Artista artistas:listaArtistas)
+    	{
+    		if(artista.getCodigoArtista()==artistas.getCodigoArtista())
+    		{
+    			return true;
+    		}
+    	}
+    	return false;
+    }
     public void InsertarObra(Obra obra){
     	
     	long aux;
@@ -135,21 +145,30 @@ public class ControlGaleria {
     		aux=obra.getCodigoObra()/10;
     		cont++;
     	}
-        if(obra.getCodigoObra()>=cont) {
-        	System.out.println("El codigo es muy largo");
-        	return;
-        }
-        else
-        {
+        if(7==cont) {
         	for(Obra obras:listaObras){
                 if(obra.getCodigoObra()==obras.getCodigoObra()){
                     System.out.println("La obra esta repetida");
                     return;
                 }
-
                 System.out.println("Se inserto la obra");
                 listaObras.add(obra);
             }
+        	
+            	for(Artista artistas:obra.getArtista())
+            	{
+            		if(!BuscarArtista(artistas))
+            		{
+            			listaArtistas.add(artistas);
+            		}
+            		artistas.getObras().add(obra);
+            	}
+        }
+        
+        else
+        {
+        	System.out.println("El codigo no es valido");
+        	return;
         }
 
     }
