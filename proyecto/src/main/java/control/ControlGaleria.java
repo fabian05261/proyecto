@@ -505,12 +505,14 @@ public class ControlGaleria {
     }
     
     public void EliminarCliente(Cliente cliente){
-   	 Scanner sc = new Scanner(System.in);
-   	 long codigo;
-   	 int x;
-   	 boolean confirmar;
-   	 System.out.println("Ingrese el codigo del cliente que desea eliminar");
-   	 codigo=sc.nextLong();
+
+        Scanner sc = new Scanner(System.in);
+        long codigo;
+        int x;
+        boolean confirmar;
+        System.out.println("Ingrese el codigo del cliente que desea eliminar");
+        codigo=sc.nextLong();
+
         for(Cliente clientes:listaClientes){
             if(codigo!=clientes.getCodigoCliente()){
                 System.out.println("El codigo del cliente no existe");
@@ -518,14 +520,12 @@ public class ControlGaleria {
             else
                 System.out.println("Realmnete desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
             x=sc.nextInt();
-            if(x==1)
-            {
+            if(x==1){
             	confirmar=true;
             }
             else 
             	confirmar=false;
-            if(confirmar==true)
-            {
+            if(confirmar==true){
                 listaClientes.remove(cliente);
                 System.out.println("Se elimino el cliente satisfactoriamente");
             }
@@ -536,6 +536,7 @@ public class ControlGaleria {
     }	
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
     public void ListadoComprasExistentes(ArrayList <Compra> Lista){
+
         String pago;
         Compra Auxcompra;
         Calendar Auxfecha;
@@ -550,6 +551,7 @@ public class ControlGaleria {
         }
     }
     public void ListadoComprasPorFecha(ArrayList <Compra> Lista, int mes, int anio){
+
         String pago;
         Compra Auxcompra;
         Calendar auxfecha;
@@ -567,6 +569,7 @@ public class ControlGaleria {
         }
     }
     public void CompraObra(Obra obracomprar, long codigocompra, Cliente comprador){
+
         Obra Auxobra = new Obra();
         boolean encontro = false;
         for(Obra obras:listaObras){
