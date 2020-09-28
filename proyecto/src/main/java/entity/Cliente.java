@@ -1,20 +1,21 @@
 package entity;
+
 import java.util.*;
 
 public class Cliente {
-  private long codigoCliente;
-  private long cedula;
-  private String nombre;
-  private String Apellidos;
-  private String direccionEntrega;
-  private long telefono;
-  private ArrayList<Compra> compras;
-  
+
+    private long codigoCliente;
+    private long cedula;
+    private String nombre;
+    private String Apellidos;
+    private String direccionEntrega;
+    private long telefono;
+    private ArrayList<Compra> compras;
 
     public Cliente() {
     }
 
-	public Cliente(long codigoCliente, long cedula, String nombre, String Apellidos, String direccionEntrega, long telefono) {
+    public Cliente(long codigoCliente, long cedula, String nombre, String Apellidos, String direccionEntrega, long telefono) {
         this.codigoCliente = codigoCliente;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -22,15 +23,15 @@ public class Cliente {
         this.direccionEntrega = direccionEntrega;
         this.telefono = telefono;
     }
-        
-    public ArrayList<Compra> getCompras(){
+
+    public ArrayList<Compra> getCompras() {
         return compras;
     }
-    
-    public void setCompras(ArrayList<Compra> compras){
-        this.compras=compras;
+
+    public void setCompras(ArrayList<Compra> compras) {
+        this.compras = compras;
     }
-    
+
     public long getCodigoCliente() {
         return codigoCliente;
     }
@@ -83,5 +84,5 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "codigoCliente=" + codigoCliente + ", cedula=" + cedula + ", nombre=" + nombre + ", Apellidos=" + Apellidos + ", direccionEntrega=" + direccionEntrega + ", telefono=" + telefono + '}';
     }
-    
+
 }
