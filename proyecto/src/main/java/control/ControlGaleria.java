@@ -11,6 +11,9 @@ public class ControlGaleria {
     private ArrayList<Compra>compras = new ArrayList<Compra>();
 
     
+    public ControlGaleria() {
+		
+	}
     public ControlGaleria(GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
 			ArrayList<Artista> listaArtistas, ArrayList<Obra> listaObras, ArrayList<Compra> compras) {
 		super();
@@ -60,6 +63,7 @@ public class ControlGaleria {
 	public void setCompras(ArrayList<Compra> compras) {
 		this.compras = compras;
 	}
+	
 
 	public void VerObras(Obra obra){
     	
@@ -358,6 +362,16 @@ public class ControlGaleria {
             System.out.println("La cedula del cliente es: "+clientes.getCedula());
             System.out.println("El telefono del cliente es: "+clientes.getTelefono());
         }
+    }
+    public void BuscarCliente(long codigo)
+    {
+    	for(Cliente clientes:listaClientes)
+    	{
+    		if(codigo==clientes.getCodigoCliente())
+    		{
+    			System.out.println("Se ha encontrado el cliente");
+    		}
+    	}
     }
     public void InsertarCliente(Cliente cliente){
 
