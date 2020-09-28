@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+//crea e instancias las Obras y llenando la lista de obras de la clase ControlGaleria
+
 public class GestionObras {
 
     public void inListaObras(ArrayList<Obra> listaObras) {

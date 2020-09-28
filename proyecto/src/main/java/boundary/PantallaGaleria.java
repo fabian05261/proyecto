@@ -41,10 +41,10 @@ public class PantallaGaleria {
 		switch(opciones)
 		{
 		case 1:
-			controller.VerObras();
+			controller.VerObras(obra);
 			break;
 		case 2:
-			controller.BuscarObra();
+			controller.BuscarObra(obra);
 			break;
 		case 3:
 			controller.InsertarObra(obra);
@@ -64,10 +64,10 @@ public class PantallaGaleria {
 			controller.ModificarObra();
 			break;
 		case 5:
-			controller.EliminarObra();
+			controller.EliminarObra(obra);
 			break;
 		case 6:
-			controller.VerClientes();
+			controller.VerClientes(cliente);
 			break;
 		case 7:
 			System.out.println("Ingrese el codigo del cliente que desea buscar");
@@ -86,33 +86,23 @@ public class PantallaGaleria {
 			controller.InsertarCliente(codigo4,nombre1,apellido1,direccion,telefono);
 			break;
 		case 9:
-			System.out.println("Ingrese el codigo para modificar los datos del cliente");
-			long codigo3=sc.nextLong();
-			controller.ModificarDatos(codigo3);
+			controller.ModificarDatos(cliente);
 			break;
 		case 10:
-			controller.EliminarCliente();
+			controller.EliminarCliente(cliente);
 			break;
 		case 11:
-			System.out.println("Ingrese el titulo, el codigo de compra y el codigo de la obra, en ese orden");
-			String titulo=sc.next();
-			long codigocompra=sc.nextLong();
-			long codigo1=sc.nextLong();
-			controller.CompraObra(titulo, codigocompra,codigo1);
+
+			controller.CompraObra(obracomprar, codigocompra, comprador);
 			break;
 		case 12:
-			System.out.println("Ingrese el codigo de la compra a eliminar");
-			long codigo2=sc.nextLong();
-			controller.EliminarComprar(codigo2);
+			controller.EliminarComprar(aborrar);
 			break;
 		case 13:
-			controller.ListadoComprasExistentes();
+			controller.ListadoComprasExistentes(Lista);
 			break;
 		case 14:
-			System.out.println("Ingrese el mes y el año de la compra");
-			int mes=sc.nextInt();
-			int anio=sc.nextInt();
-			controller.ListadoComprasPorFecha(mes, anio);
+			controller.ListadoComprasPorFecha(Lista, mes, anio);
 			break;
 		case 15:
 			controller.ArtistaMasVendido();
