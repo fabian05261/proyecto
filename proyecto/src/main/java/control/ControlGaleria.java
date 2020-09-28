@@ -642,7 +642,15 @@ public class ControlGaleria {
             }
             for(int i=0; i <aborrar.getCompraCliente().getCompras().size(); i++){
                 if(aborrar.getCodigoCompra()==aborrar.getCompraCliente().getCompras().get(i).getCodigoCompra()){
-                    
+                    aborrar.getCompraCliente().getCompras().remove(i);
+                    break;
+                }
+            }
+            for(int i=0; i<compras.size(); i++){
+                if(aborrar.getCodigoCompra() == compras.get(i).getCodigoCompra()){
+                    compras.remove(i);
+                    System.out.println("Se ha eliminado la compra correctamente");
+                    break;
                 }
             }
         }
