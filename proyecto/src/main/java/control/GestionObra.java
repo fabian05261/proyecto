@@ -1,50 +1,32 @@
 package control;
-import java.util.ArrayList;
 import entity.Obra;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class GestionObras {
-	
-	public void inListaObras(ArrayList<Obra> listaObras){
-		
-		 Obra monaLisa = new Obra(123390, "MonaLisa", 10 02 2020, 120000, "20x50");
-		 listaObras.add(monaLisa);
-		 
-		 Obra ultimaCena = new Obra(123391, "UltimaCena", 15 11 2019, 200000, "25x50");
-		 listaObras.add(ultimaCena);
-		 
-		 Obra lasMeninas = new Obra(123392, "LasMeninas", 18 06 2020, 19000, "15x50");
-		 listaObras.add(lasMeninas);
-		 
-		 Obra nocheEstrellada = new Obra(123393, "LaNocheEstrellada", 27 09 2020, 250000, "35x50");
-		 listaObras.add(nocheEstrellada);
-		 
-		 Obra grito = new Obra(123394, "ElGrito", 23 01 2020, 20000, "15x50");
-		 listaObras.add(grito);
-		 
-		 Obra capilla = new Obra(123395, "LaCapillaSixtina", 20 09 2020, 290000, "50x50");
-		 listaObras.add(capilla);
-		 
-		 Obra nenufares = new Obra(123396, "Nenurfares", 30 06 2020, 25000, "25x50");
-		 listaObras.add(nenufares);
-		 
-		 Obra persistencia = new Obra(123397, "LaPersistenciaDeLaMemoria", 12 07 2019, 30000, "45x50");
-		 listaObras.add(persistencia);
-		 
-		 Obra rueda = new Obra(123398, "LaRuedaDeBicicleta", 10 01 2018, 15000, "25x50");
-		 listaObras.add(rueda);
-		 
-		 Obra guernica = new Obra(123399, "Guernica", 10 10 2010, 10000, "25x50");
-		 listaObras.add(guernica);
-		 
-		 System.out.println("\n Se ingresaron las siguientes obras:");
-		 int cont = 0;
-		 for(Obra aux : listaObras){
-	            cont++;
-	            System.out.println(aux.toString());
-	     }
-	     System.out.println("Se anadieron a la lista de obras" + cont + "nuevas obras");
-		 
-	}
-
+    public static void main(String[] args) {
+        Obra obra5= new Obra(1234567,"Harry Potter",new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44),2000,"3x3");
+        System.out.println(obra5.getFecha().getTime());
+    }
+    public void inListaObras(ArrayList<Obra> listaObras){
+ 
+        Obra obra1= new Obra(1233907,"MonaLisa",new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44),2000,"3x3");
+        listaObras.add(obra1);
+        Obra obra2= new Obra(1254567,"Ultima Cena",new GregorianCalendar(2012, Calendar.AUGUST, 10, 10, 23, 44),2500,"3x3");
+        listaObras.add(obra2);
+        Obra obra3= new Obra(4563545,"Las Meninas",new GregorianCalendar(2013, Calendar.NOVEMBER, 5, 2, 14, 44),3000,"3x3");
+        listaObras.add(obra3);
+        Obra obra4= new Obra(2978671,"La Noche Estrellada",new GregorianCalendar(2014, Calendar.JANUARY, 13, 1, 13, 44),4500,"3x3");
+        listaObras.add(obra4);
+        Obra obra5= new Obra(2938471,"El grito",new GregorianCalendar(2020, Calendar.MARCH, 13, 5, 13, 44),4500,"3x3");
+        listaObras.add(obra5);
+        Obra obra6= new Obra(1973671,"Guernica",new GregorianCalendar(1998, Calendar.JUNE, 23, 6, 12, 44),8500,"3x3");
+        listaObras.add(obra6);
+        Obra obra7= new Obra(1973671,"La Rueda De Bicicleta",new GregorianCalendar(1995, Calendar.FEBRUARY, 20, 8, 14, 44),8500,"3x3");
+        listaObras.add(obra7);
+        Obra obra8= new Obra(1273371,"El Jardin De Las Delicias",new GregorianCalendar(1993, Calendar.APRIL, 15, 21, 12, 44),8500,"3x3");
+        listaObras.add(obra8);
+        
+    }
 }
