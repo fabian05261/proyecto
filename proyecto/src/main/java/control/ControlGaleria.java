@@ -549,13 +549,13 @@ public class ControlGaleria {
         }
     }	
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
-    public void ListadoComprasExistentes(ArrayList <Compra> Lista){
+    public void ListadoComprasExistentes(){
 
         String pago;
         Compra Auxcompra;
         Calendar Auxfecha;
-        for(int i =0; i < Lista.size(); i++){
-            Auxcompra=Lista.get(i);
+        for(int i =0; i < compras.size(); i++){
+            Auxcompra=compras.get(i);
             Auxfecha=Auxcompra.getFecha();//Comodidad para imprimir
             if(Auxcompra.getPagado())
                 pago="Pago";
@@ -564,13 +564,13 @@ public class ControlGaleria {
             System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n",Auxcompra.getCodigoCompra(),Auxfecha.get(Auxfecha.DATE),Auxfecha.get(Auxfecha.MONTH)+1,Auxfecha.get(Auxfecha.YEAR),pago);
         }
     }
-    public void ListadoComprasPorFecha(ArrayList <Compra> Lista, int mes, int anio){
+    public void ListadoComprasPorFecha(int mes, int anio){
 
         String pago;
         Compra Auxcompra;
         Calendar auxfecha;
-        for(int i =0; i < Lista.size(); i++){
-            Auxcompra=Lista.get(i);
+        for(int i =0; i < compras.size(); i++){
+            Auxcompra=compras.get(i);
             auxfecha = Auxcompra.getFecha();
             if(mes-1 == auxfecha.get(auxfecha.MONTH))
                 if(anio == auxfecha.get(auxfecha.YEAR)){
@@ -642,7 +642,7 @@ public class ControlGaleria {
         else
             System.out.println("Esta compra ya se realizo, por favor verifique");
     }
-    
+    //codigo de compra a borrar
     public void EliminarComprar(long codigo){
         boolean encontro= false;
         Compra aborrar= new Compra();
