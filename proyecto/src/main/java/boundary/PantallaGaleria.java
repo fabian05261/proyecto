@@ -40,10 +40,10 @@ public class PantallaGaleria {
 		switch(opciones)
 		{
 		case 1:
-			controller.VerObras(obra);
+			controller.VerObras();
 			break;
 		case 2:
-			controller.BuscarObra(obra);
+			controller.BuscarObra();
 			break;
 		case 3:
 			controller.InsertarObra(obra);
