@@ -13,6 +13,8 @@ public class PantallaGaleria {
 	}
     public static void main(String[] args) {
     	int opciones;
+        controller.getCliente().inListaClientes(controller.getListaClientes());
+        controller.getObras().inListaObras(controller.getListaObras());
     	long codigo;
     	PantallaGaleria pan=new PantallaGaleria();
     	Obra obra=new Obra();

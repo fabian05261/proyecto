@@ -5,15 +5,20 @@ import entity.*;
 
 public class ControlGaleria {
 
-    private GestionObras gestionObras;
+    
     private GestionClientes gestionCliente;
+    private GestionObras gestionObras;
     private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
     
 
-    public ControlGaleria(GestionObras gestioObras,GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
+    public ControlGaleria() {
+
+    }
+
+    public ControlGaleria(GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
             ArrayList<Artista> listaArtistas, ArrayList<Obra> listaObras, ArrayList<Compra> compras) {
         super();
         this.gestionCliente = gestionCliente;
@@ -29,6 +34,14 @@ public class ControlGaleria {
 
     public void setCliente(GestionClientes gestionCliente) {
         this.gestionCliente = gestionCliente;
+    }
+    
+    public GestionObras getObras() {
+        return gestionObras;
+    }
+
+    public void setObras(GestionObras gestionObras) {
+        this.gestionObras = gestionObras;
     }
 
     public ArrayList<Cliente> getListaClientes() {

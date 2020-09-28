@@ -9,8 +9,6 @@ import java.util.GregorianCalendar;
 
 public class GestionObras {
     
-    public GestionObras(){
-    }
 
     public void inListaObras(ArrayList<Obra> listaObras) {
 

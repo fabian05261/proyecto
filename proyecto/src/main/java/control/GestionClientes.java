@@ -44,6 +44,7 @@ public class GestionClientes{
             System.out.println(aux.toString());
         }
         System.out.println("Se anadieron a la lista de clientes" + clie + "nuevos clientes");
+        
     }
 }
 
