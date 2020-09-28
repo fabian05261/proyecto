@@ -5,6 +5,7 @@ import java.util.Scanner;
 import control.*;
 import entity.*;
 public class PantallaGaleria {
+    
 	
 	private static ControlGaleria controller = new ControlGaleria();
 	public PantallaGaleria()
