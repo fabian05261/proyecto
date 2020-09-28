@@ -406,6 +406,7 @@ public class ControlGaleria {
         VerClientes(cliente);
         System.out.println("Seleccione el dato que desea modificar");
 
+<<<<<<< HEAD
         do
         {
             System.out.println("Presione 1 para cambiar el nombre");
@@ -418,17 +419,59 @@ public class ControlGaleria {
             opciones=sc.nextInt();
 
             switch(opciones){
+=======
+                System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre() + clientes.getApellidos());
+                System.out.println("La cedula del cliente es: " + clientes.getCedula());
+                System.out.println("El telefono del cliente es: " + clientes.getTelefono());
+                System.out.println("Seleccione el dato que desea modificar");
+
+                do {
+                    System.out.println("Presione 1 para cambiar el nombre");
+                    System.out.println("Presione 2 para cambiar el apellido");
+                    System.out.println("Presione 3 para cambiar la cedula");
+                    System.out.println("Presione 4 para cambiar el telefono");
+                    System.out.println("Presione 5 para cambiar la direccion");
+                    System.out.println("Presion 6 para cambiar el numero de identificacion");
+                    System.out.println("Presione 9 para salir");
+                    opciones = sc.nextInt();
+
+                    switch (opciones) {
+
+                        case 1://cambiar nombre 
+
+                            System.out.println("Ingrese el nuevo nombre que desea cambiar");
+                            nuevoNombre = sc.next();
+
+                            for (Cliente clientes : listaClientes) {
+                                cont++;
+                                if (cliente.getNombre() == clientes.getNombre()) {
+                                    listaClientes.get(cont).setNombre(nuevoNombre);
+                                    System.out.println("Se cambio el nombre");
+                                }
+                            }
+                            cont = 0;
+                            break;
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
 
                 case 1://cambiar nombre 
 
                     System.out.println("Ingrese el nuevo nombre que desea cambiar");
                     nuevoNombre=sc.next();
 
+<<<<<<< HEAD
                     for(Cliente clientes:listaClientes){	
                             cont++;
                             if(cliente.getNombre()==clientes.getNombre()){
                                 listaClientes.get(cont).setNombre(nuevoNombre);
                                 System.out.println("Se cambio el nombre");
+=======
+                            for (Cliente clientes : listaClientes) {
+                                cont++;
+                                if (cliente.getApellidos() == clientes.getApellidos()) {
+                                    listaClientes.get(cont).setApellidos(nuevoApellido);
+                                    System.out.println("Se ha cambiado el apellido");
+                                }
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
                             }
                     }
                     cont=0;
@@ -439,6 +482,7 @@ public class ControlGaleria {
                     System.out.println("Ingrese el nuevo apellido que desea cambiar");
                     nuevoApellido=sc.next();
 
+<<<<<<< HEAD
                     for(Cliente clientes:listaClientes){
                         cont++;
                         if(cliente.getApellidos()==clientes.getApellidos()){
@@ -448,12 +492,24 @@ public class ControlGaleria {
                     }
                     cont=0;
                 break;
+=======
+                            for (Cliente clientes : listaClientes) {
+                                cont++;
+                                if (cliente.getCedula() == clientes.getCedula()) {
+                                    listaClientes.get(cont).setCedula(nuevaCedula);
+                                    System.out.println("La cedula se ha cambiado");
+                                }
+                            }
+                            cont = 0;
+                            break;
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
 
                 case 3://cambiar cedula
 
                     System.out.println("Ingrese la nueva cedula que desea cambiar");
                     nuevaCedula=sc.nextLong();
 
+<<<<<<< HEAD
                     for(Cliente clientes:listaClientes){
                         cont++;
                         if(cliente.getCedula()==clientes.getCedula()){
@@ -475,6 +531,50 @@ public class ControlGaleria {
                             listaClientes.get(cont).setTelefono(nuevoTelefono);
                             System.out.println("Se cambio el telefono");
                         }
+=======
+                            for (Cliente clientes : listaClientes) {
+                                cont++;
+                                if (cliente.getTelefono() == clientes.getTelefono()) {
+                                    listaClientes.get(cont).setTelefono(nuevoTelefono);
+                                    System.out.println("Se cambio el telefono");
+                                }
+                            }
+                            cont = 0;
+                            break;
+
+                        case 5://cambiar direccion entrega
+
+                            System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
+                            nuevaDireccion = sc.next();
+                            for (Cliente clientes : listaClientes) {
+                                cont++;
+                                if (cliente.getDireccionEntrega() == clientes.getDireccionEntrega()) {
+                                    listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
+                                    System.out.println("Se cambio la direccion de entrega");
+                                }
+                            }
+                            cont = 0;
+                            break;
+
+                        case 6: //cambiar codigo fuente
+
+                            System.out.println("Ingrese el nuevo codigo que desea cambiar");
+                            nuevoCodigo = sc.nextLong();
+
+                            for (Cliente clientes : listaClientes) {
+                                cont++;
+                                if (clientes.getCodigoCliente() == nuevoCodigo) {
+                                    System.out.println("El codigo ya existe, elija uno nuevo");
+                                    return;
+                                }
+                                if ((clientes.getCodigoCliente() != nuevoCodigo && cliente.getCodigoCliente() != nuevoCodigo)) {
+                                    listaClientes.get(cont).setCodigoCliente(nuevoCodigo);
+                                    System.out.println("Se ha cambiado el codigo del cliente");
+                                }
+                            }
+                            cont = 0;
+                            break;
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
                     }
                     cont=0;
                 break;
