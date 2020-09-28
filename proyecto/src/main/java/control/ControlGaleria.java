@@ -5,17 +5,15 @@ import entity.*;
 
 public class ControlGaleria {
 
+    private GestionObras gestionObras;
     private GestionClientes gestionCliente;
     private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
+    
 
-    public ControlGaleria() {
-
-    }
-
-    public ControlGaleria(GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
+    public ControlGaleria(GestionObras gestioObras,GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
             ArrayList<Artista> listaArtistas, ArrayList<Obra> listaObras, ArrayList<Compra> compras) {
         super();
         this.gestionCliente = gestionCliente;
