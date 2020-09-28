@@ -18,9 +18,10 @@ public class ControlGaleria {
 
     }
 
-    public ControlGaleria(GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
+    public ControlGaleria(GestionObras gestionobras,GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
             ArrayList<Artista> listaArtistas, ArrayList<Obra> listaObras, ArrayList<Compra> compras) {
         super();
+        this.gestionObras = gestionobras;
         this.gestionCliente = gestionCliente;
         this.listaClientes = listaClientes;
         this.listaArtistas = listaArtistas;
