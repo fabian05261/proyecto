@@ -411,9 +411,9 @@ public class ControlGaleria {
                             System.out.println("Ingrese el nuevo nombre que desea cambiar");
                             nuevoNombre = sc.next();
 
-                            for (Cliente clientes : listaClientes) {
+                            for (Cliente clientes1 : listaClientes) {
                                 cont++;
-                                if (cliente.getNombre() == clientes.getNombre()) {
+                                if (clientes.getNombre() == clientes1.getNombre()) {
                                     listaClientes.get(cont).setNombre(nuevoNombre);
                                     System.out.println("Se cambio el nombre");
                                 }
@@ -426,9 +426,9 @@ public class ControlGaleria {
                             System.out.println("Ingrese el nuevo apellido que desea cambiar");
                             nuevoApellido = sc.next();
 
-                            for (Cliente clientes : listaClientes) {
+                            for (Cliente clientes1 : listaClientes) {
                                 cont++;
-                                if (cliente.getApellidos() == clientes.getApellidos()) {
+                                if (clientes.getApellidos() == clientes1.getApellidos()) {
                                     listaClientes.get(cont).setApellidos(nuevoApellido);
                                     System.out.println("Se ha cambiado el apellido");
                                 }
@@ -441,9 +441,9 @@ public class ControlGaleria {
                             System.out.println("Ingrese la nueva cedula que desea cambiar");
                             nuevaCedula = sc.nextLong();
 
-                            for (Cliente clientes : listaClientes) {
+                            for (Cliente clientes1 : listaClientes) {
                                 cont++;
-                                if (cliente.getCedula() == clientes.getCedula()) {
+                                if (clientes.getCedula() == clientes1.getCedula()) {
                                     listaClientes.get(cont).setCedula(nuevaCedula);
                                     System.out.println("La cedula se ha cambiado");
                                 }
@@ -456,9 +456,9 @@ public class ControlGaleria {
                             System.out.println("Ingrese el telefono nuevo que desea cambiar");
                             nuevoTelefono = sc.nextLong();
 
-                            for (Cliente clientes : listaClientes) {
+                            for (Cliente clientes1 : listaClientes) {
                                 cont++;
-                                if (cliente.getTelefono() == clientes.getTelefono()) {
+                                if (clientes.getTelefono() == clientes1.getTelefono()) {
                                     listaClientes.get(cont).setTelefono(nuevoTelefono);
                                     System.out.println("Se cambio el telefono");
                                 }
@@ -470,9 +470,9 @@ public class ControlGaleria {
 
                             System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
                             nuevaDireccion = sc.next();
-                            for (Cliente clientes : listaClientes) {
+                            for (Cliente clientes1 : listaClientes) {
                                 cont++;
-                                if (cliente.getDireccionEntrega() == clientes.getDireccionEntrega()) {
+                                if (clientes.getDireccionEntrega() == clientes1.getDireccionEntrega()) {
                                     listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
                                     System.out.println("Se cambio la direccion de entrega");
                                 }
@@ -485,13 +485,13 @@ public class ControlGaleria {
                             System.out.println("Ingrese el nuevo codigo que desea cambiar");
                             nuevoCodigo = sc.nextLong();
 
-                            for (Cliente clientes : listaClientes) {
+                            for (Cliente clientes1 : listaClientes) {
                                 cont++;
-                                if (clientes.getCodigoCliente() == nuevoCodigo) {
+                                if (clientes1.getCodigoCliente() == nuevoCodigo) {
                                     System.out.println("El codigo ya existe, elija uno nuevo");
                                     return;
                                 }
-                                if ((clientes.getCodigoCliente() != nuevoCodigo && cliente.getCodigoCliente() != nuevoCodigo)) {
+                                if ((clientes1.getCodigoCliente() != nuevoCodigo && clientes.getCodigoCliente() != nuevoCodigo)) {
                                     listaClientes.get(cont).setCodigoCliente(nuevoCodigo);
                                     System.out.println("Se ha cambiado el codigo del cliente");
                                 }
