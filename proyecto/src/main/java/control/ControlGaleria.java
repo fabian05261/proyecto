@@ -460,12 +460,15 @@ public class ControlGaleria {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     for(Cliente clientes:listaClientes){	
                             cont++;
                             if(cliente.getNombre()==clientes.getNombre()){
                                 listaClientes.get(cont).setNombre(nuevoNombre);
                                 System.out.println("Se cambio el nombre");
 =======
+=======
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
 =======
 >>>>>>> parent of bbad6f2... Update ControlGaleria.java
                             for (Cliente clientes : listaClientes) {
@@ -487,6 +490,7 @@ public class ControlGaleria {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     for(Cliente clientes:listaClientes){
                         cont++;
                         if(cliente.getApellidos()==clientes.getApellidos()){
@@ -497,6 +501,8 @@ public class ControlGaleria {
                     cont=0;
                 break;
 =======
+=======
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
 =======
 >>>>>>> parent of bbad6f2... Update ControlGaleria.java
                             for (Cliente clientes : listaClientes) {
@@ -532,6 +538,7 @@ public class ControlGaleria {
                     nuevoTelefono=sc.nextLong();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     for(Cliente clientes:listaClientes){
                         cont++;
                         if(cliente.getTelefono()==clientes.getTelefono()){
@@ -539,6 +546,8 @@ public class ControlGaleria {
                             System.out.println("Se cambio el telefono");
                         }
 =======
+=======
+>>>>>>> parent of bbad6f2... Update ControlGaleria.java
 =======
 >>>>>>> parent of bbad6f2... Update ControlGaleria.java
                             for (Cliente clientes : listaClientes) {
