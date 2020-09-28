@@ -10,8 +10,8 @@ public class Obra {
     private Calendar fecha;
     private float precioRef;
     private String dimensiones;
-    private ArrayList<Artista> artista = new ArrayList<Artista>();
     private Compra compra;
+    private ArrayList<Artista> artista = new ArrayList<Artista>();
 
     public Obra() {
     }
