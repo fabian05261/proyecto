@@ -13,11 +13,11 @@ public class PantallaGaleria {
 		
 	}
     public static void main(String[] args) {
-        PantallaGaleria pantalla = new PantallaGaleria();
     	int opciones;
-        pantalla.controller.getCliente().inListaClientes(pantalla.controller.getListaClientes());
-        pantalla.controller.getObras().inListaObras(pantalla.controller.getListaObras());
+       // controller.getCliente().inListaClientes(controller.getListaClientes());
+        //controller.getObras().inListaObras(controller.getListaObras());
     	long codigo;
+    	PantallaGaleria pan=new PantallaGaleria();
     	Obra obra=new Obra();
     	Artista artista=new Artista();
     	Compra compra=new Compra();
@@ -45,13 +45,13 @@ public class PantallaGaleria {
 		switch(opciones)
 		{
 		case 1:
-			pantalla.controller.VerObras();
+			controller.VerObras();
 			break;
 		case 2:
-			pantalla.controller.BuscarObra();
+			controller.BuscarObra();
 			break;
 		case 3:
-			pantalla.controller.InsertarObra(obra);
+			controller.InsertarObra(obra);
 			break;
 		case 4:
 			System.out.println("Ingrese los datos de obra codigo obra, titulo, fecha como dia mes y ano, precio de referencia, dimensiones ");
@@ -65,18 +65,18 @@ public class PantallaGaleria {
 			float precioRef=sc.nextFloat();
 			String dimensiones=sc.next();
 			Obra obra1=new Obra(codigoobra,titulo1,fecha1,precioRef,dimensiones);
-			pantalla.controller.ModificarObra(obra1);
+			controller.ModificarObra(obra1);
 			break;
 		case 5:
-			pantalla.controller.EliminarObra();
+			controller.EliminarObra();
 			break;
 		case 6:
-			pantalla.controller.VerClientes();
+			controller.VerClientes();
 			break;
 		case 7:
 			System.out.println("Ingrese el codigo del cliente que desea buscar");
 			codigo=sc.nextLong();
-			pantalla.controller.BuscarCliente(codigo);
+			controller.BuscarCliente(codigo);
 			break;
 		case 8:
 			System.out.println("Ingrese el codigo,cedula, nombre, apelllido, direccion de entrega y telefono del cliente, en ese orden");
@@ -87,39 +87,39 @@ public class PantallaGaleria {
 			String direccion=sc.next();
 			long telefono=sc.nextLong();
 			Cliente cliente1=new Cliente(codigo4,cedula1,nombre1,apellido1,direccion,telefono);
-			pantalla.controller.InsertarCliente(cliente1);
+			controller.InsertarCliente(cliente1);
 			break;
 		case 9:
 			System.out.println("Ingrese el codigo del cliente que desea modificar");
 			long codigo1=sc.nextLong();
-			pantalla.controller.ModificarDatos(codigo1);
+			controller.ModificarDatos(codigo1);
 			break;
 		case 10:
-			pantalla.controller.EliminarCliente();
+			controller.EliminarCliente();
 			break;
 		case 11:
 			System.out.println("Ingrese el titulo de la obra, el codigo de la compra y el codigo del cliente");
 			String titulo2=sc.next();
 			long codigoCompra=sc.nextLong();
 			long codigoCliente=sc.nextLong();
-			pantalla.controller.CompraObra(titulo2, codigoCompra, codigoCliente);
+			controller.CompraObra(titulo2, codigoCompra, codigoCliente);
 			break;
 		case 12:
 			System.out.println("Inserte el codigo de la compra que desea eliminar");
 			long codigo2=sc.nextLong();
-			pantalla.controller.EliminarComprar(codigo2);
+			controller.EliminarComprar(codigo2);
 			break;
 		case 13:
-			pantalla.controller.ListadoComprasExistentes();
+			controller.ListadoComprasExistentes();
 			break;
 		case 14:
 			System.out.println("Ingrese el mes y el año");
 			int mes1=sc.nextInt();
 			int anio2=sc.nextInt();
-			pantalla.controller.ListadoComprasPorFecha(mes1, anio2);
+			controller.ListadoComprasPorFecha(mes1, anio2);
 			break;
 		case 15:
-			pantalla.controller.ArtistaMasVendido();
+			controller.ArtistaMasVendido();
 			break;
 		}
     	}while(opciones!=16);
