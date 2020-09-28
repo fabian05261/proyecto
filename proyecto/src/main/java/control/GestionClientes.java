@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class GestionClientes{
     
-    public GestionClientes(){}
    
     public void inListaClientes(ArrayList<Cliente> listaClientes){
         int clie = 0;

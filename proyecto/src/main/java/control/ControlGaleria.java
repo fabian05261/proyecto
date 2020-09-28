@@ -6,8 +6,8 @@ import entity.*;
 public class ControlGaleria {
 
     
-    private GestionClientes gestionCliente = new GestionCliente();
-    private GestionObras gestionObras = new GestionObras();
+    private GestionClientes gestionCliente;
+    private GestionObras gestionObras;
     private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
