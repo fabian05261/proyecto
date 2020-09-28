@@ -7,6 +7,8 @@ import java.util.Scanner;
 //crea e instancias los Clientes y llenando la lista de clientes de la clase ControlGaleria
 
 public class GestionClientes{
+    
+    public GestionClientes(){}
    
     public void inListaClientes(ArrayList<Cliente> listaClientes){
         int clie = 0;
