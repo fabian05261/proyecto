@@ -11,7 +11,7 @@ public class Artista {
 	private Calendar fechaNacimiento;
 	private long telefono;
 	private ArrayList <Obra>obras=new ArrayList<Obra>();
-        private ArrayList <Compra>ventas=new ArrayList<Compra>();
+    private ArrayList <Compra>ventas=new ArrayList<Compra>();
 	
 	public ArrayList<Obra> getObras() {
 		return obras;

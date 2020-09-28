@@ -72,11 +72,16 @@ public class PantallaGaleria {
 			controller.EliminarCliente(cliente);
 			break;
 		case 11:
-
-			controller.CompraObra(obracomprar, codigocompra, comprador);
+			System.out.println("Ingrese el titulo, el codigo de compra y el codigo de la obra, en ese orden");
+			String titulo=sc.next();
+			long codigocompra=sc.nextLong();
+			long codigo1=sc.nextLong();
+			controller.CompraObra(titulo, codigocompra,codigo1);
 			break;
 		case 12:
-			controller.EliminarComprar(aborrar);
+			System.out.println("Ingrese el codigo de la compra a eliminar");
+			long codigoEliminar=sc.nextLong();
+			controller.EliminarComprar(codigo);
 			break;
 		case 13:
 			controller.ListadoComprasExistentes(Lista);
