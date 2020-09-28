@@ -695,7 +695,7 @@ public class ControlGaleria {
         return cont;
     }
 
-    public void ArtistaMasVendido(Artista artista) {
+    public void ArtistaMasVendido() {
         int tam = listaArtistas.size();
         int aux, cont = 0;
         String aux1;
