@@ -61,4 +61,9 @@ public class Compra {
         return this.pagado;
     }
 
+    @Override
+    public String toString() {
+        return "Compra{" + "codigoCompra=" + codigoCompra + ", fecha=" + fecha + ", pagado=" + pagado + ", compraCliente=" + compraCliente + ", compraObra=" + compraObra + '}';
+    }
+
 }
