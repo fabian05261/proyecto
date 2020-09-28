@@ -647,16 +647,54 @@ public class ControlGaleria {
             }
         }
     }
-    
+    private int comprasArtista(long cedula)
+    {
+    	int cont=0;
+    	for(Compra compras:compras)
+    	{															//verifica las compras que estan relacionadas con la lista artistas
+    		for(Artista artistas:compras.getCompraObra().getArtista())//se cuenta la cantidad de veces que se realiza la compra
+    		{
+    			if(cedula==artistas.getCedula())
+    			{
+    				cont++;
+    			}
+    		}
+    	}
+    	
+    	return cont;
+    }
     public void ArtistaMasVendido(Artista artista)
-
     {
     	int tam=listaArtistas.size();
+    	int aux,cont=0;
+    	String aux1;
     	int [] obrasVendidas=new int [tam];
     	String[] artistas=new String [tam];
+    	for(int i=0;i<tam;i++)//ambos arreglos tienen el mismo tamaño, ya que poseen informacion que va de la mano
+    	{
+    		obrasVendidas[i] = comprasArtista(listaArtistas.get(i).getCedula());//llena el arreglo, llamando al metodo con la cantidad de compras
+    		artistas[i]=listaArtistas.get(i).toString();//guarda la informacion del artista
+    	}
     	for(int i=0;i<tam;i++)
     	{
-    	//	obrasVendidas[i] = comprads(listArtistas.get(i).getCedula());
+    		for(int j=i+1;j<tam;j++)
+    		{
+    			if(obrasVendidas[i]<obrasVendidas[j])
+    			{
+    				aux=obrasVendidas[i];//se ordenan las obras vendidas de mayor a menor
+    				obrasVendidas[i]=obrasVendidas[j];
+    				obrasVendidas[j]=aux;
+    				
+    				aux1=artistas[i];//se ordenan los artistas simultanemante 
+    				artistas[i]=artistas[j];
+    				artistas[i]=aux1;
+    			}
+    		}
+    	}
+    	for(int i=0;i<tam;i++)
+    	{
+    		cont++;
+    		System.out.println(cont+"\nLas obras vendidas fueron: "+obrasVendidas[i]+"\nLa cantidad artistas con mas ventas : "+artistas[i]);
     	}
     }
 }

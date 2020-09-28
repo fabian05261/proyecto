@@ -74,6 +74,10 @@ public class Artista {
 		this.fechaNacimiento = fechaNacimiento;
 		this.telefono = telefono;
 	}
-	
+	 @Override
+	 public String toString()
+	 {
+		 return "Nombre: "+nombre+"\nApellido :"+apellido+"\nCedula:"+cedula;
+	 }
 	
 }
