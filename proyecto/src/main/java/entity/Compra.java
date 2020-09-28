@@ -1,7 +1,6 @@
 package entity;
 
 import java.util.Calendar;
-import java.util.ArrayList;
 
 public class Compra {
 
