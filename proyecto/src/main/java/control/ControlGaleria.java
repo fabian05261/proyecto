@@ -505,12 +505,14 @@ public class ControlGaleria {
     }
     
     public void EliminarCliente(Cliente cliente){
-   	 Scanner sc = new Scanner(System.in);
-   	 long codigo;
-   	 int x;
-   	 boolean confirmar;
-   	 System.out.println("Ingrese el codigo del cliente que desea eliminar");
-   	 codigo=sc.nextLong();
+
+        Scanner sc = new Scanner(System.in);
+        long codigo;
+        int x;
+        boolean confirmar;
+        System.out.println("Ingrese el codigo del cliente que desea eliminar");
+        codigo=sc.nextLong();
+
         for(Cliente clientes:listaClientes){
             if(codigo!=clientes.getCodigoCliente()){
                 System.out.println("El codigo del cliente no existe");
@@ -518,14 +520,12 @@ public class ControlGaleria {
             else
                 System.out.println("Realmnete desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
             x=sc.nextInt();
-            if(x==1)
-            {
+            if(x==1){
             	confirmar=true;
             }
             else 
             	confirmar=false;
-            if(confirmar==true)
-            {
+            if(confirmar==true){
                 listaClientes.remove(cliente);
                 System.out.println("Se elimino el cliente satisfactoriamente");
             }
@@ -536,6 +536,7 @@ public class ControlGaleria {
     }	
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
     public void ListadoComprasExistentes(ArrayList <Compra> Lista){
+
         String pago;
         Compra Auxcompra;
         Calendar Auxfecha;
@@ -550,6 +551,7 @@ public class ControlGaleria {
         }
     }
     public void ListadoComprasPorFecha(ArrayList <Compra> Lista, int mes, int anio){
+
         String pago;
         Compra Auxcompra;
         Calendar auxfecha;
@@ -567,6 +569,7 @@ public class ControlGaleria {
         }
     }
     public void CompraObra(Obra obracomprar, long codigocompra, Cliente comprador){
+
         Obra Auxobra = new Obra();
         boolean encontro = false;
         for(Obra obras:listaObras){
@@ -608,18 +611,52 @@ public class ControlGaleria {
             for(int i =0; i<Auxobra.getArtista().size(); i++)
                 Auxobra.getArtista().get(i).getVentas().add(Auxcompra);
             comprador.getCompras().add(Auxcompra);
+            compras.add(Auxcompra);
+            System.out.println("Se ha anadido su compra con exito");
         }
         else
             System.out.println("Esta compra ya se realizo, por favor verifique");
     }
-    public void ArtistaMasVendido()
+    
+    public void EliminarComprar(Compra aborrar){
+        boolean encontro= false;
+        int j = 0;
+        for(Compra auxcompras: compras){
+            if(aborrar.getCodigoCompra()== auxcompras.getCodigoCompra()){
+                encontro=true;
+                break;
+            }
+        }
+        if(!encontro){
+            System.out.println("La compra que desea eliminar no existe");
+            return;
+        }
+        else{
+            for(int i=0; i< aborrar.getCompraObra().getArtista().size(); i++){
+                for(j = 0;j < aborrar.getCompraObra().getArtista().get(i).getVentas().size();j++){
+                    if(aborrar.getCodigoCompra() == aborrar.getCompraObra().getArtista().get(i).getVentas().get(j).getCodigoCompra()){
+                        aborrar.getCompraObra().getArtista().get(i).getVentas().remove(j);
+                        break;
+                    }
+                }
+            }
+            for(int i=0; i <aborrar.getCompraCliente().getCompras().size(); i++){
+                if(aborrar.getCodigoCompra()==aborrar.getCompraCliente().getCompras().get(i).getCodigoCompra()){
+                    
+                }
+            }
+        }
+    }
+    
+    public void ArtistaMasVendido(Artista artista)
+
     {
     	int tam=listaArtistas.size();
     	int [] obrasVendidas=new int [tam];
     	String[] artistas=new String [tam];
     	for(int i=0;i<tam;i++)
     	{
-    		obrasVendidas[i] = comprads(listArtistas.get(i).getCedula());
+    	//	obrasVendidas[i] = comprads(listArtistas.get(i).getCedula());
     	}
     }
 }
