@@ -65,7 +65,7 @@ public class ControlGaleria {
 	}
 	
 
-	public void VerObras(Obra obra){
+	public void VerObras(){
     	
         for(Obra obras:listaObras){
             System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
@@ -76,14 +76,13 @@ public class ControlGaleria {
         }
     }
 
-    public void criterio(Obra obra){
+    public void criterio(){
 
         Scanner sc = new Scanner(System.in);
         int criterios;
-        String titulo,artista;
+        String titulo;
+        long artista;
         int ano;
-        Calendar auxfecha;
-        auxfecha=obra.getFecha();
         System.out.println("Ingrese el criterio que desea aplicar para su busqueda, 1 para el titulo, 2 para el artista, 3 para el anho");
         criterios=sc.nextInt();
 
@@ -95,22 +94,30 @@ public class ControlGaleria {
                 titulo=sc.next();
 
                 for(Obra obras:listaObras){
-                    if(titulo==obras.getTitulo()){
-                            VerObras(obra);
+                    if(titulo.equals(obras.getTitulo())){
+                            System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
+                            System.out.println("2.La fecha de creacion de la obra es:"+obras.getFecha());
+                            System.out.println("3.El precio referencia de la obra es:"+obras.getPrecioRef());
+            //System.out.println("4.La foto de la obra es:");
+                            System.out.println("5.Las dimensiones de la obra son:"+obras.getDimensiones());
                     }
                 }
             break;
 
             case 2:
 
-                System.out.println("Escriba el artista el cual desea buscar su obra");
-                artista=sc.next();
+                System.out.println("Escriba el codigo del artista el cual desea buscar su obra");
+                artista=sc.nextLong();
                
                 for(Artista artistas:listaArtistas){
-                    if(artista==artistas.getNombre()){
-                    	for(Obra obras:listaObras)
+                    if(artista==artistas.getCodigoArtista()){
+                    	for(Obra obras:artistas.getObras())
                     	{
-                    		VerObras(obra);
+                            System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
+                            System.out.println("2.La fecha de creacion de la obra es:"+obras.getFecha());
+                            System.out.println("3.El precio referencia de la obra es:"+obras.getPrecioRef());
+            //System.out.println("4.La foto de la obra es:");
+                            System.out.println("5.Las dimensiones de la obra son:"+obras.getDimensiones());
                     	}
 
                     }
@@ -122,9 +129,13 @@ public class ControlGaleria {
                 ano=sc.nextInt();
 
                 for(Obra obras:listaObras){
-                    if(ano==auxfecha.get(auxfecha.YEAR))
+                    if(ano==obras.getFecha().get(obras.getFecha().YEAR))
                     {
-                            VerObras(obra);
+                        System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
+                        System.out.println("2.La fecha de creacion de la obra es:"+obras.getFecha());
+                        System.out.println("3.El precio referencia de la obra es:"+obras.getPrecioRef());
+            //System.out.println("4.La foto de la obra es:");
+                        System.out.println("5.Las dimensiones de la obra son:"+obras.getDimensiones());
                     }
                 }
             break;
@@ -132,9 +143,8 @@ public class ControlGaleria {
         sc.close();
     }
 
-    public void BuscarObra(Obra obra){
-
-            criterio(obra);
+    public void BuscarObra(){
+            criterio();
     }
     public boolean BuscarArtista(Artista artista)
     {
@@ -188,6 +198,7 @@ public class ControlGaleria {
     {
         Scanner sc = new Scanner(System.in);
         int opciones,cont=0;
+        boolean encontro = false;
         String nuevoTitulo,nuevasDimensiones;
         Calendar nuevaFecha=Calendar.getInstance();
         int ano,mes,dia;
@@ -197,12 +208,18 @@ public class ControlGaleria {
     	{
     		if(obras.getCodigoObra()!=obra.getCodigoObra())
     		{
-    			System.out.println("La obra no existe");
-    			return;
+                    encontro = false;
     		}
-    		else
-    			VerObras(obra);
+                else{
+                    encontro = true;
+                    System.out.println("1.El titulo de la obra es:"+obras.getTitulo());
+                    System.out.println("2.La fecha de creacion de la obra es:"+obras.getFecha());
+                    System.out.println("3.El precio referencia de la obra es:"+obras.getPrecioRef());
+            //System.out.println("4.La foto de la obra es:");
+                    System.out.println("5.Las dimensiones de la obra son:"+obras.getDimensiones());
+                }
     	}
+        if(encontro){
     	System.out.println("Que valor quiere cambiar de las obras");
 
     	do
@@ -318,6 +335,7 @@ public class ControlGaleria {
         	}
     	}while(opciones!=0);
     	sc.close();
+        }
     }
     public void EliminarObra(Obra obra)
     {
