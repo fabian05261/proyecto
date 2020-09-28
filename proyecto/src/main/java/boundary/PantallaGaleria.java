@@ -41,10 +41,10 @@ public class PantallaGaleria {
 		switch(opciones)
 		{
 		case 1:
-			controller.VerObras(obra);
+			controller.VerObras();
 			break;
 		case 2:
-			controller.BuscarObra(obra);
+			controller.BuscarObra();
 			break;
 		case 3:
 			controller.InsertarObra(obra);
@@ -60,14 +60,14 @@ public class PantallaGaleria {
 			fecha1.set(anio, mes, dia);
 			float precioRef=sc.nextFloat();
 			String dimensiones=sc.next();
-			Obra obra1=new Obra(codigoobra,titulo1,precioRef,dimensiones);
-			controller.ModificarObra();
+			Obra obra1=new Obra(codigoobra,titulo1,fecha1,precioRef,dimensiones);
+			controller.ModificarObra(obra1);
 			break;
 		case 5:
-			controller.EliminarObra(obra);
+			controller.EliminarObra();
 			break;
 		case 6:
-			controller.VerClientes(cliente);
+			controller.VerClientes();
 			break;
 		case 7:
 			System.out.println("Ingrese el codigo del cliente que desea buscar");
@@ -83,26 +83,36 @@ public class PantallaGaleria {
 			String direccion=sc.next();
 			long telefono=sc.nextLong();
 			Cliente cliente1=new Cliente(codigo4,cedula1,nombre1,apellido1,direccion,telefono);
-			controller.InsertarCliente(codigo4,nombre1,apellido1,direccion,telefono);
+			controller.InsertarCliente(cliente1);
 			break;
 		case 9:
-			controller.ModificarDatos(cliente);
+			System.out.println("Ingrese el codigo del cliente que desea modificar");
+			long codigo1=sc.nextLong();
+			controller.ModificarDatos(codigo1);
 			break;
 		case 10:
-			controller.EliminarCliente(cliente);
+			controller.EliminarCliente();
 			break;
 		case 11:
-
-			controller.CompraObra(obracomprar, codigocompra, comprador);
+			System.out.println("Ingrese el titulo de la obra, el codigo de la compra y el codigo del cliente");
+			String titulo2=sc.next();
+			long codigoCompra=sc.nextLong();
+			long codigoCliente=sc.nextLong();
+			controller.CompraObra(titulo2, codigoCompra, codigoCliente);
 			break;
 		case 12:
-			controller.EliminarComprar(aborrar);
+			System.out.println("Inserte el codigo de la compra que desea eliminar");
+			long codigo2=sc.nextLong();
+			controller.EliminarComprar(codigo2);
 			break;
 		case 13:
-			controller.ListadoComprasExistentes(Lista);
+			controller.ListadoComprasExistentes();
 			break;
 		case 14:
-			controller.ListadoComprasPorFecha(Lista, mes, anio);
+			System.out.println("Ingrese el mes y el año");
+			int mes1=sc.nextInt();
+			int anio2=sc.nextInt();
+			controller.ListadoComprasPorFecha(mes1, anio2);
 			break;
 		case 15:
 			controller.ArtistaMasVendido();
