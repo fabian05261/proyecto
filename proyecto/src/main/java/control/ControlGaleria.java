@@ -612,11 +612,14 @@ public class ControlGaleria {
         else
             System.out.println("Esta compra ya se realizo, por favor verifique");
     }
-    public void ArtistaMasVendido(Artista artista)
+    public void ArtistaMasVendido()
     {
-    	for(Artista artistas:listaArtistas)
+    	int tam=listaArtistas.size();
+    	int [] obrasVendidas=new int [tam];
+    	String[] artistas=new String [tam];
+    	for(int i=0;i<tam;i++)
     	{
-    		
+    		obrasVendidas[i] = comprads(listArtistas.get(i).getCedula());
     	}
     }
 }
