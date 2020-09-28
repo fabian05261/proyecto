@@ -52,10 +52,10 @@ public class PantallaGaleria {
 			controller.ModificarObra(obra);
 			break;
 		case 5:
-			controller.EliminarObra(obra);
+			controller.EliminarObra();
 			break;
 		case 6:
-			controller.VerClientes(cliente);
+			controller.VerClientes();
 			break;
 		case 7:
 			System.out.println("Ingrese el codigo del cliente que desea buscar");
@@ -66,10 +66,12 @@ public class PantallaGaleria {
 			controller.InsertarCliente(cliente);
 			break;
 		case 9:
-			controller.ModificarDatos(cliente);
+			System.out.println("Ingrese el codigo para modificar los datos del cliente");
+			long codigo3=sc.nextLong();
+			controller.ModificarDatos(codigo3);
 			break;
 		case 10:
-			controller.EliminarCliente(cliente);
+			controller.EliminarCliente();
 			break;
 		case 11:
 			System.out.println("Ingrese el titulo, el codigo de compra y el codigo de la obra, en ese orden");
