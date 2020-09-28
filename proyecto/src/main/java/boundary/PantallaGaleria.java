@@ -6,7 +6,7 @@ import control.*;
 import entity.*;
 public class PantallaGaleria {
 	
-	private static ControlGaleria controller=new ControlGaleria();
+	private static ControlGaleria controller = new ControlGaleria();
 	public PantallaGaleria()
 	{
 		
@@ -19,7 +19,7 @@ public class PantallaGaleria {
     	Artista artista=new Artista();
     	Compra compra=new Compra();
     	Cliente cliente=new Cliente();
-    	Scanner sc = new Scanner(System.in);
+    	//Scanner sc = new Scanner(System.in);
     	do {
 		System.out.println("1. ver listado de obras disponibles");
 		System.out.println("2. Buscar obra por titulo, artista o año");
@@ -37,6 +37,7 @@ public class PantallaGaleria {
 		System.out.println("14.Ver listado de compras para un mes y año especifico");
 		System.out.println("15.Ver listado de artistas mas vendidos");
 		System.out.println("16.Salir");
+                Scanner sc = new Scanner(System.in);
 		opciones=sc.nextInt();
 		switch(opciones)
 		{
