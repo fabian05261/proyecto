@@ -80,14 +80,17 @@ public class PantallaGaleria {
 			break;
 		case 12:
 			System.out.println("Ingrese el codigo de la compra a eliminar");
-			long codigoEliminar=sc.nextLong();
-			controller.EliminarComprar(codigo);
+			long codigo2=sc.nextLong();
+			controller.EliminarComprar(codigo2);
 			break;
 		case 13:
-			controller.ListadoComprasExistentes(Lista);
+			controller.ListadoComprasExistentes();
 			break;
 		case 14:
-			controller.ListadoComprasPorFecha(Lista, mes, anio);
+			System.out.println("Ingrese el mes y el año de la compra");
+			int mes=sc.nextInt();
+			int anio=sc.nextInt();
+			controller.ListadoComprasPorFecha(mes, anio);
 			break;
 		case 15:
 			controller.ArtistaMasVendido(artista);
