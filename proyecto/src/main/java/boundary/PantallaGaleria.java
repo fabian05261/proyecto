@@ -1,4 +1,5 @@
 package boundary;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import control.*;
@@ -49,7 +50,18 @@ public class PantallaGaleria {
 			controller.InsertarObra(obra);
 			break;
 		case 4:
-			controller.ModificarObra(obra);
+			System.out.println("Ingrese los datos de obra codigo obra, titulo, fecha como dia mes y ano, precio de referencia, dimensiones ");
+			long codigoobra=sc.nextLong();
+			String titulo1=sc.next();
+			int dia=sc.nextInt();
+			int mes=sc.nextInt();
+			int anio=sc.nextInt();
+			Calendar fecha1=Calendar.getInstance();
+			fecha1.set(anio, mes, dia);
+			float precioRef=sc.nextFloat();
+			String dimensiones=sc.next();
+			Obra obra1=new Obra(codigoobra,titulo1,precioRef,dimensiones);
+			controller.ModificarObra();
 			break;
 		case 5:
 			controller.EliminarObra();
@@ -63,7 +75,15 @@ public class PantallaGaleria {
 			controller.BuscarCliente(codigo);
 			break;
 		case 8:
-			controller.InsertarCliente(cliente);
+			System.out.println("Ingrese el codigo,cedula, nombre, apelllido, direccion de entrega y telefono del cliente, en ese orden");
+			long codigo4=sc.nextLong();
+			long cedula1=sc.nextLong();
+			String nombre1=sc.next();
+			String apellido1=sc.next();
+			String direccion=sc.next();
+			long telefono=sc.nextLong();
+			Cliente cliente1=new Cliente(codigo4,cedula1,nombre1,apellido1,direccion,telefono);
+			controller.InsertarCliente(codigo4,nombre1,apellido1,direccion,telefono);
 			break;
 		case 9:
 			System.out.println("Ingrese el codigo para modificar los datos del cliente");
@@ -95,7 +115,7 @@ public class PantallaGaleria {
 			controller.ListadoComprasPorFecha(mes, anio);
 			break;
 		case 15:
-			controller.ArtistaMasVendido(artista);
+			controller.ArtistaMasVendido();
 			break;
 		}
     	}while(opciones!=16);
