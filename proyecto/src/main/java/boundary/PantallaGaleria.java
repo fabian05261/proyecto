@@ -85,7 +85,7 @@ public class PantallaGaleria {
 			controller.ListadoComprasPorFecha(Lista, mes, anio);
 			break;
 		case 15:
-			controller.ArtistaMasVendido(artista);
+			controller.ArtistaMasVendido();
 			break;
 		}
     	}while(opciones!=16);
