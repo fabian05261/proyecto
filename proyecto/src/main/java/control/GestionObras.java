@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-//crea e instancias las Obras y llenando la lista de obras de la clase ControlGaleria
-
 public class GestionObras {
-    
-    
+ 
 
     public void inListaObras(ArrayList<Obra> listaObras) {
 
@@ -29,6 +26,13 @@ public class GestionObras {
         listaObras.add(obra7);
         Obra obra8 = new Obra(1273371, "El Jardin De Las Delicias", new GregorianCalendar(1993, Calendar.APRIL, 15, 21, 12, 44), 8500, "3x3");
         listaObras.add(obra8);
-
     }
+    /*
+    public ArrayList<Obra>inListaObras()
+    {
+    	ArrayList<Obra>instObra=new ArrayList <Obra>();
+    	
+
+    }*/
+    
 }

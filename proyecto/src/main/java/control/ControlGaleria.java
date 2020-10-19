@@ -76,8 +76,18 @@ public class ControlGaleria {
     public void setCompras(ArrayList<Compra> compras) {
         this.compras = compras;
     }
-
+ /* private ArrayList<Obra>auxListaObra(){
+	  ArrayList<Obra>listaObra=new ArrayList<Obra>();
+	  ArrayList<Obra>instObra=gestionObras.inListaObras();
+	  for(Obra obras:instObra)
+	  {
+		  listaObra.add(obras);
+	  }
+	  return listaObra;
+  }*/
     public void VerObras() {
+
+    	//System.out.println("Hola");
 
         for (Obra obras : listaObras) {
             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());

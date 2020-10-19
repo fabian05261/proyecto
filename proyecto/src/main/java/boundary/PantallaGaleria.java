@@ -6,22 +6,12 @@ import control.*;
 import entity.*;
 public class PantallaGaleria {
 	
-	private static ControlGaleria controller;
-	public PantallaGaleria()
-	{
-		this.controller = new ControlGaleria();
-	}
-        
+	private static ControlGaleria controller=new ControlGaleria();
+	
     public static void main(String[] args) {
         PantallaGaleria pantalla = new PantallaGaleria();
     	int opciones;
-        pantalla.controller.getCliente().inListaClientes(pantalla.controller.getListaClientes());
-        pantalla.controller.getObras().inListaObras(pantalla.controller.getListaObras());
     	long codigo;
-    	Obra obra=new Obra();
-    	Artista artista=new Artista();
-    	Compra compra=new Compra();
-    	Cliente cliente=new Cliente();
     	Scanner sc = new Scanner(System.in);
     	do {
 		System.out.println("1. ver listado de obras disponibles");
@@ -51,7 +41,7 @@ public class PantallaGaleria {
 			pantalla.controller.BuscarObra();
 			break;
 		case 3:
-			pantalla.controller.InsertarObra(obra);
+			//pantalla.controller.InsertarObra(obra);
 			break;
 		case 4:
 			System.out.println("Ingrese los datos de obra codigo obra, titulo, fecha como dia mes y ano, precio de referencia, dimensiones ");
