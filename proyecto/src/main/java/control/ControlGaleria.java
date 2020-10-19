@@ -15,7 +15,8 @@ public class ControlGaleria {
     
 
     public ControlGaleria() {
-
+        this.listaClientes.addAll(this.gestionCliente.inListaClientes());
+        this.listaObras.addAll(this.gestionObras.inListaObras());
     }
 
     public ControlGaleria(ArrayList<Artista> listaArtistas, ArrayList<Compra> compras) {
@@ -83,17 +84,15 @@ public class ControlGaleria {
   }*/
     public void VerObras() {
 
-    	System.out.println("Hola");
-        System.out.println(listaObras.get(0).getTitulo());
         for (Obra obras : listaObras) {
-            System.out.println("entra al for");
+            System.out.println("-------------------------------------------------------------");
             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
-            System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha());
+            System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
             System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
             //System.out.println("4.La foto de la obra es:");
             System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
+            System.out.println("-------------------------------------------------------------");
         }
-        System.out.println("Sale del for");
     }
 
     public void criterio() {
@@ -116,7 +115,7 @@ public class ControlGaleria {
                 for (Obra obras : listaObras) {
                     if (titulo.equals(obras.getTitulo())) {
                         System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
-                        System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha());
+                        System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
                         System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                         //System.out.println("4.La foto de la obra es:");
                         System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
@@ -133,7 +132,7 @@ public class ControlGaleria {
                     if (artista == artistas.getCodigoArtista()) {
                         for (Obra obras : artistas.getObras()) {
                             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
-                            System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha());
+                            System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
                             System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                             //System.out.println("4.La foto de la obra es:");
                             System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
