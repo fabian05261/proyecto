@@ -6,8 +6,8 @@ import entity.*;
 public class ControlGaleria {
 
     
-    private GestionClientes gestionCliente;
-    private GestionObras gestionObras;
+    private GestionClientes gestionCliente= new GestionClientes();
+    private GestionObras gestionObras = new GestionObras();
     private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
@@ -18,15 +18,11 @@ public class ControlGaleria {
 
     }
 
-    public ControlGaleria(GestionObras gestionobras,GestionClientes gestionCliente, ArrayList<Cliente> listaClientes,
-            ArrayList<Artista> listaArtistas, ArrayList<Obra> listaObras, ArrayList<Compra> compras) {
-        super();
-        this.gestionObras = gestionobras;
-        this.gestionCliente = gestionCliente;
-        this.listaClientes = listaClientes;
+    public ControlGaleria(ArrayList<Artista> listaArtistas, ArrayList<Compra> compras) {
         this.listaArtistas = listaArtistas;
-        this.listaObras = listaObras;
         this.compras = compras;
+        this.listaClientes.addAll(this.gestionCliente.inListaClientes());
+        this.listaObras.addAll(this.gestionObras.inListaObras());
     }
 
     public GestionClientes getCliente() {
@@ -87,15 +83,17 @@ public class ControlGaleria {
   }*/
     public void VerObras() {
 
-    	//System.out.println("Hola");
-
+    	System.out.println("Hola");
+        System.out.println(listaObras.get(0).getTitulo());
         for (Obra obras : listaObras) {
+            System.out.println("entra al for");
             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
             System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha());
             System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
             //System.out.println("4.La foto de la obra es:");
             System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
         }
+        System.out.println("Sale del for");
     }
 
     public void criterio() {

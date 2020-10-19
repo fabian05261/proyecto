@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
 public class GestionObras {
  
 
-    public void inListaObras(ArrayList<Obra> listaObras) {
-
+    public ArrayList<Obra> inListaObras() {
+        ArrayList<Obra> listaObras = new ArrayList<Obra>();
         Obra obra1 = new Obra(1233907, "MonaLisa", new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44), 2000, "3x3");
         listaObras.add(obra1);
         Obra obra2 = new Obra(1254567, "Ultima Cena", new GregorianCalendar(2012, Calendar.AUGUST, 10, 10, 23, 44), 2500, "3x3");
@@ -26,13 +26,6 @@ public class GestionObras {
         listaObras.add(obra7);
         Obra obra8 = new Obra(1273371, "El Jardin De Las Delicias", new GregorianCalendar(1993, Calendar.APRIL, 15, 21, 12, 44), 8500, "3x3");
         listaObras.add(obra8);
-    }
-    /*
-    public ArrayList<Obra>inListaObras()
-    {
-    	ArrayList<Obra>instObra=new ArrayList <Obra>();
-    	
-
-    }*/
-    
+        return listaObras;
+    }    
 }

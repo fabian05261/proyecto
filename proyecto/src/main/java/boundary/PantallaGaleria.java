@@ -17,12 +17,12 @@ public class PantallaGaleria {
 		System.out.println("1. ver listado de obras disponibles");
 		System.out.println("2. Buscar obra por titulo, artista o año");
 		System.out.println("3. Insertar una obra");
-		System.out.println("4.Modificar una obra");
-		System.out.println("5.Elimina una obra");
-		System.out.println("6.Ver listado de clientes");
-		System.out.println("7.Buscar de clentes registrados en el sistema");
-		System.out.println("8.Insertar cliente");
-		System.out.println("9.Modificar datos de cliente");
+		System.out.println("4. Modificar una obra");
+		System.out.println("5. Elimina una obra");
+		System.out.println("6. Ver listado de clientes");
+		System.out.println("7. Buscar de clentes registrados en el sistema");
+		System.out.println("8. Insertar cliente");
+		System.out.println("9. Modificar datos de cliente");
 		System.out.println("10.Eliminar un cliente");
 		System.out.println("11.Realizar la compra de una obra");
 		System.out.println("12.Eliminar compra de una obra ");

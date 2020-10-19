@@ -2,14 +2,14 @@ package control;
 
 import java.util.ArrayList;
 import entity.Cliente;
-import java.util.Scanner;
 
 //crea e instancias los Clientes y llenando la lista de clientes de la clase ControlGaleria
 
 public class GestionClientes{
     
    
-    public void inListaClientes(ArrayList<Cliente> listaClientes){
+    public ArrayList<Cliente> inListaClientes(){
+        ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
         int clie = 0;
 
         Cliente julian = new Cliente(12345,4052,"Julian","Rojas","Crr 6 N4",31243512);
@@ -37,14 +37,6 @@ public class GestionClientes{
         Cliente liliana = new Cliente(12356,4063,"Liliana","Álvarez","Diag 6 N5",30052990);
         listaClientes.add(liliana);
 
-        System.out.println("\n Se ingresaron los siguientes clientes:");
-        //Reviso si la lista realmente se lleno
-
-        for(Cliente aux : listaClientes){
-            clie++;
-            System.out.println(aux.toString());
-        }
-        System.out.println("Se anadieron a la lista de clientes" + clie + "nuevos clientes");
-        
+        return listaClientes;
     }
 }
