@@ -12,7 +12,7 @@ public class PantallaGaleria {
         PantallaGaleria pantalla = new PantallaGaleria();
     	int opciones;
     	long codigo;
-    	Scanner sc = new Scanner(System.in);
+    	Scanner sc1 = new Scanner(System.in);
     	do {
 		System.out.println("1. ver listado de obras disponibles");
 		System.out.println("2. Buscar obra por titulo, artista o año");
@@ -30,8 +30,8 @@ public class PantallaGaleria {
 		System.out.println("14.Ver listado de compras para un mes y año especifico");
 		System.out.println("15.Ver listado de artistas mas vendidos");
 		System.out.println("16.Salir");
-                //Scanner sc = new Scanner(System.in);
-		opciones=sc.nextInt();
+                //Scanner sc1 = new Scanner(System.in);
+		opciones=sc1.nextInt();
 		switch(opciones)
 		{
 		case 1:
@@ -45,15 +45,15 @@ public class PantallaGaleria {
 			break;
 		case 4:
 			System.out.println("Ingrese los datos de obra codigo obra, titulo, fecha como dia mes y ano, precio de referencia, dimensiones ");
-			long codigoobra=sc.nextLong();
-			String titulo1=sc.next();
-			int dia=sc.nextInt();
-			int mes=sc.nextInt();
-			int anio=sc.nextInt();
+			long codigoobra=sc1.nextLong();
+			String titulo1=sc1.next();
+			int dia=sc1.nextInt();
+			int mes=sc1.nextInt();
+			int anio=sc1.nextInt();
 			Calendar fecha1=Calendar.getInstance();
 			fecha1.set(anio, mes, dia);
-			float precioRef=sc.nextFloat();
-			String dimensiones=sc.next();
+			float precioRef=sc1.nextFloat();
+			String dimensiones=sc1.next();
 			Obra obra1=new Obra(codigoobra,titulo1,fecha1,precioRef,dimensiones);
 			pantalla.controller.ModificarObra(obra1);
 			break;
@@ -65,23 +65,23 @@ public class PantallaGaleria {
 			break;
 		case 7:
 			System.out.println("Ingrese el codigo del cliente que desea buscar");
-			codigo=sc.nextLong();
+			codigo=sc1.nextLong();
 			pantalla.controller.BuscarCliente(codigo);
 			break;
 		case 8:
 			System.out.println("Ingrese el codigo,cedula, nombre, apelllido, direccion de entrega y telefono del cliente, en ese orden");
-			long codigo4=sc.nextLong();
-			long cedula1=sc.nextLong();
-			String nombre1=sc.next();
-			String apellido1=sc.next();
-			String direccion=sc.next();
-			long telefono=sc.nextLong();
+			long codigo4=sc1.nextLong();
+			long cedula1=sc1.nextLong();
+			String nombre1=sc1.next();
+			String apellido1=sc1.next();
+			String direccion=sc1.next();
+			long telefono=sc1.nextLong();
 			Cliente cliente1=new Cliente(codigo4,cedula1,nombre1,apellido1,direccion,telefono);
 			pantalla.controller.InsertarCliente(cliente1);
 			break;
 		case 9:
 			System.out.println("Ingrese el codigo del cliente que desea modificar");
-			long codigo1=sc.nextLong();
+			long codigo1=sc1.nextLong();
 			pantalla.controller.ModificarDatos(codigo1);
 			break;
 		case 10:
@@ -89,14 +89,14 @@ public class PantallaGaleria {
 			break;
 		case 11:
 			System.out.println("Ingrese el titulo de la obra, el codigo de la compra y el codigo del cliente");
-			String titulo2=sc.next();
-			long codigoCompra=sc.nextLong();
-			long codigoCliente=sc.nextLong();
+			String titulo2=sc1.next();
+			long codigoCompra=sc1.nextLong();
+			long codigoCliente=sc1.nextLong();
 			pantalla.controller.CompraObra(titulo2, codigoCompra, codigoCliente);
 			break;
 		case 12:
 			System.out.println("Inserte el codigo de la compra que desea eliminar");
-			long codigo2=sc.nextLong();
+			long codigo2=sc1.nextLong();
 			pantalla.controller.EliminarComprar(codigo2);
 			break;
 		case 13:
@@ -104,8 +104,8 @@ public class PantallaGaleria {
 			break;
 		case 14:
 			System.out.println("Ingrese el mes y el año");
-			int mes1=sc.nextInt();
-			int anio2=sc.nextInt();
+			int mes1=sc1.nextInt();
+			int anio2=sc1.nextInt();
 			pantalla.controller.ListadoComprasPorFecha(mes1, anio2);
 			break;
 		case 15:

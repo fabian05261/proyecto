@@ -157,7 +157,7 @@ public class ControlGaleria {
                 }
                 break;
         }
-        sc.close();
+        //sc.close();
     }
 
     public void BuscarObra() {
