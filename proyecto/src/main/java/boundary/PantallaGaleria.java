@@ -41,7 +41,7 @@ public class PantallaGaleria {
 			pantalla.controller.BuscarObra();
 			break;
 		case 3:
-			//pantalla.controller.InsertarObra(obra);
+			pantalla.controller.InsertarObra();
 			break;
 		case 4:
 			System.out.println("Ingrese los datos de obra codigo obra, titulo, fecha como dia mes y ano, precio de referencia, dimensiones ");

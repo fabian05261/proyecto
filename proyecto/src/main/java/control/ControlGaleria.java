@@ -114,11 +114,13 @@ public class ControlGaleria {
 
                 for (Obra obras : listaObras) {
                     if (titulo.equals(obras.getTitulo())) {
+                        System.out.println("-------------------------------------------------------------");
                         System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
                         System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
                         System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                         //System.out.println("4.La foto de la obra es:");
                         System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
+                        System.out.println("-------------------------------------------------------------");
                     }
                 }
                 break;
@@ -173,8 +175,27 @@ public class ControlGaleria {
         return false;
     }
 
-    public void InsertarObra(Obra obra) {
-
+    public void InsertarObra() {
+        Scanner sc = new Scanner(System.in);
+        String tit,dims = new String();
+        Calendar fechados = Calendar.getInstance();
+        long codiguito;
+        float preciox;
+        int dia,mes,anio;
+        System.out.println("Ingrese titulo de la Obra");
+        tit=sc.next();
+        System.out.println("Ingrese Fecha de la Obra(dia,mes,año en espacios diferentes)");
+        dia=sc.nextInt();
+        mes=sc.nextInt();
+        anio=sc.nextInt();
+        fechados.set(anio, mes, dia);
+        System.out.println("Ingrese codigo de obra de la Obra");
+        codiguito=sc.nextLong();
+        System.out.println("Ingrese precio de referencia de la Obra");
+        preciox = sc.nextFloat();
+        System.out.println("Ingrese dimenciones de la Obra(ejemplo 3X3)");
+        dims= sc.next();
+        Obra obra= new Obra(codiguito,tit,fechados,preciox,dims);
         long aux;
         int cont = 0;
         aux = obra.getCodigoObra();
