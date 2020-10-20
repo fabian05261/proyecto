@@ -32,21 +32,21 @@ public class GestionObras {
 
     public ArrayList<Artista> inListaArtistas() {
         ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
-        Artista artista1 = new Artista(4155,8536974, "Leonardo","Da Vinci", new GregorianCalendar(1452, Calendar.APRIL, 15, 23, 11, 44), 3105248963);
+        Artista artista1 = new Artista(4155,8536974, "Leonardo","Da Vinci", new GregorianCalendar(1452, Calendar.APRIL, 15, 23, 11, 44), 310524896);
         listaArtistas.add(artista1);
-        Artista artista2 = new Artista(4233,2365896, "Miguel","Angel", new GregorianCalendar(1475, Calendar.MARCH, 6, 10, 23, 44), 3506987531);
+        Artista artista2 = new Artista(4233,2365896, "Miguel","Angel", new GregorianCalendar(1475, Calendar.MARCH, 6, 10, 23, 44), 350698753);
         listaArtistas.add(artista2);
-        Artista artista3 = new Artista(4488,8524789, "Vincent","Van Gogh", new GregorianCalendar(1853, Calendar.MARCH, 30, 2, 14, 44), 3206987563);
+        Artista artista3 = new Artista(4488,8524789, "Vincent","Van Gogh", new GregorianCalendar(1853, Calendar.MARCH, 30, 2, 14, 44), 320697563);
         listaArtistas.add(artista3);
-        Artista artista4 = new Artista(4499,1589635, "Claude","Monet", new GregorianCalendar(1840, Calendar.NOVEMBER, 14, 1, 13, 44), 3215896874);
+        Artista artista4 = new Artista(4499,1589635, "Claude","Monet", new GregorianCalendar(1840, Calendar.NOVEMBER, 14, 1, 13, 44), 321589874);
         listaArtistas.add(artista4);
-        Artista artista5 = new Artista(4135,8536975, "Pablo","Picasso", new GregorianCalendar(1881, Calendar.OCTOBER, 25, 5, 13, 44), 3149635987);
+        Artista artista5 = new Artista(4135,8536975, "Pablo","Picasso", new GregorianCalendar(1881, Calendar.OCTOBER, 25, 5, 13, 44), 314963987);
         listaArtistas.add(artista5);
-        Artista artista6 = new Artista(4185,8593468, "Salvador","Dalí", new GregorianCalendar(1904, Calendar.MAY, 11, 6, 12, 44), 3125896478);
+        Artista artista6 = new Artista(4185,8593468, "Salvador","Dalí", new GregorianCalendar(1904, Calendar.MAY, 11, 6, 12, 44), 312589647);
         listaArtistas.add(artista6);
-        Artista artista7 = new Artista(4752,5263947, "Donatello"," ", new GregorianCalendar(1386, Calendar.OCTOBER, 19, 8, 14, 44), 3136985236);
+        Artista artista7 = new Artista(4752,5263947, "Donatello"," ", new GregorianCalendar(1386, Calendar.OCTOBER, 19, 8, 14, 44), 313698236);
         listaArtistas.add(artista7);
-        Artista artista8 = new Artista(4960,1239874, "Rafael","Sanzio", new GregorianCalendar(1483, Calendar.APRIL, 6, 21, 12, 44), 3058963458);
+        Artista artista8 = new Artista(4960,1239874, "Rafael","Sanzio", new GregorianCalendar(1483, Calendar.APRIL, 6, 21, 12, 44), 305893458);
         listaArtistas.add(artista8);
         return listaArtistas;
     } 

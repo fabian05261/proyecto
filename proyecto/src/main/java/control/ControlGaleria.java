@@ -199,8 +199,8 @@ public class ControlGaleria {
         long aux;
         int cont = 0;
         aux = obra.getCodigoObra();
-        while (aux > 0) {
-            aux = obra.getCodigoObra() / 10;
+        while (aux > 1) {
+            aux = aux / 10;
             cont++;
         }
         if (7 == cont) {
