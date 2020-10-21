@@ -200,7 +200,7 @@ public class ControlGaleria {
         long aux;
         int cont = 0;
         aux = obra.getCodigoObra();
-        while (aux > 1) {
+        while (aux >= 1) {
             aux = aux / 10;
             cont++;
         }
@@ -227,10 +227,10 @@ public class ControlGaleria {
                 System.out.println("Si este no aparece por favor digite 0");
                 System.out.println("Si ya termino ingrese -1 por favor");
                 des=sc.nextInt();
-                if(des!=0){
+                if(des>0){
                     obra.getArtista().add(listaArtistas.get(des-1));
                 }
-                else{
+                else if(des==0){
                     System.out.println("Ingrese el nombre del artista");
                     String nombreaux = sc.next();
                     System.out.println("Ingrese el Apellido del artista");
@@ -249,7 +249,6 @@ public class ControlGaleria {
                     Artista artistaux= new Artista(codiguito,cedulax,nombreaux,apellidox,fechados,telefonox);
                     obra.getArtista().add(artistaux);
                     artistaux.getObras().add(obra);
-                    listaObras.add(obra);
                     listaArtistas.add(artistaux);
                     System.out.println("Desea agregar otro artista");
                     System.out.println("1.Si");
@@ -257,10 +256,10 @@ public class ControlGaleria {
                     des=sc.nextInt()-1;
                 }
             }
+              listaObras.add(obra);
         } else {
             System.out.println("El codigo no es valido");
         }
-
     }
 
     public void ModificarObra() {
@@ -640,9 +639,9 @@ public class ControlGaleria {
 
     public void CompraObra(String Titulo, long codigocompra, long codigo) {
 
-        Obra Auxobra = new Cuadro();
+        Obra Auxobra = new Obra();
         Cliente comprador = new Cliente();
-        boolean encontro = false, encontro1=false;
+        boolean encontro = false, encontro1=false, encontro2=false;
         for (Obra obras : listaObras) {
             if (Titulo.equals(obras.getTitulo())) {
                 Auxobra = obras;
@@ -655,13 +654,11 @@ public class ControlGaleria {
         if(encontro1){
         for (Cliente clientes : listaClientes) {
             if (codigo == clientes.getCodigoCliente()) {
+                encontro2=true;
                 comprador = clientes;
-                break;
-            } else {
-                System.out.println("El cliente de codigo " + codigo + " no existe");
-                return;
             }
         }
+        if(encontro2){
         Calendar hoy = Calendar.getInstance();
         boolean pago;
         Scanner sc = new Scanner(System.in);
@@ -675,35 +672,38 @@ public class ControlGaleria {
         Compra Auxcompra = new Compra(codigocompra, hoy, pago);
         Auxcompra.setCompraCliente(comprador);
         Auxcompra.setCompraObra(Auxobra);
+        System.out.println("hola");
         for (Compra comprar : compras) {
             if (comprar.getCompraObra().getTitulo().equals(Titulo)) {
                 if (comprar.getCompraCliente().getCodigoCliente() == comprador.getCodigoCliente()) {
                     encontro = true;
-                    break;
-                } else {
-                    encontro = false;
-                }
-            } else {
-                encontro = false;
+                } 
             }
         }
+        System.out.println("hola2");
         if (!encontro) {
+            System.out.println("hola3");
             Auxobra.setCompra(Auxcompra);
             for (int i = 0; i < Auxobra.getArtista().size(); i++) {
                 Auxobra.getArtista().get(i).getVentas().add(Auxcompra);
             }
+            System.out.println("hola4");
             comprador.getCompras().add(Auxcompra);
+            System.out.println("hola5");
             compras.add(Auxcompra);
+            System.out.println("hola6");
             System.out.println("Se ha anadido su compra con exito");
         } else {
             System.out.println("Esta compra ya se realizo, por favor verifique");
+        }
         }
         }
         else{
             System.out.println("La obra "+Titulo+" no existe");
         }
         
-    }
+    
+    }     
 
     //codigo de compra a borrar
     public void EliminarComprar(long codigo) {
