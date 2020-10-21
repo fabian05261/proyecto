@@ -640,7 +640,7 @@ public class ControlGaleria {
 
     public void CompraObra(String Titulo, long codigocompra, long codigo) {
 
-        Obra Auxobra = new Obra();
+        Obra Auxobra = new Cuadro();
         Cliente comprador = new Cliente();
         boolean encontro = false, encontro1=false;
         for (Obra obras : listaObras) {

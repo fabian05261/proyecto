@@ -3,15 +3,15 @@ package entity;
 import java.util.Calendar;
 import java.util.*;
 
-public class Obra {
+public abstract class Obra {
 
-    private long codigoObra;
-    private String titulo;
-    private Calendar fecha;
-    private float precioRef;
-    private String dimensiones;
-    private Compra compra;
-    private ArrayList<Artista> artista = new ArrayList<Artista>();
+    protected long codigoObra;
+    protected String titulo;
+    protected Calendar fecha;
+    protected float precioRef;
+    protected String dimensiones;
+    protected Compra compra;
+    protected ArrayList<Artista> artista = new ArrayList<Artista>();
 
     public Obra() {
     }
@@ -79,7 +79,10 @@ public class Obra {
     public void setDimensiones(String dimensiones) {
         this.dimensiones = dimensiones;
     }
-
+    public abstract double CalcularPrecio();
+    {
+    	
+    }
     @Override
     public String toString() {
         return "Obra{" + "codigoObra=" + codigoObra + ", titulo=" + titulo + ", fecha=" + fecha + ", precioRef=" + precioRef + ", dimensiones=" + dimensiones + ", compra=" + compra + '}';
