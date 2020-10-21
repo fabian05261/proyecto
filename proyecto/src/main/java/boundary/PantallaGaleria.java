@@ -20,7 +20,7 @@ public class PantallaGaleria {
 		System.out.println("4. Modificar una obra");
 		System.out.println("5. Elimina una obra");
 		System.out.println("6. Ver listado de clientes");
-		System.out.println("7. Buscar de clentes registrados en el sistema");
+		System.out.println("7. Buscar clientes registrados en el sistema");
 		System.out.println("8. Insertar cliente");
 		System.out.println("9. Modificar datos de cliente");
 		System.out.println("10.Eliminar un cliente");
@@ -44,18 +44,7 @@ public class PantallaGaleria {
 			pantalla.controller.InsertarObra();
 			break;
 		case 4:
-			System.out.println("Ingrese los datos de obra codigo obra, titulo, fecha como dia mes y ano, precio de referencia, dimensiones ");
-			long codigoobra=sc1.nextLong();
-			String titulo1=sc1.next();
-			int dia=sc1.nextInt();
-			int mes=sc1.nextInt();
-			int anio=sc1.nextInt();
-			Calendar fecha1=Calendar.getInstance();
-			fecha1.set(anio, mes, dia);
-			float precioRef=sc1.nextFloat();
-			String dimensiones=sc1.next();
-			Obra obra1=new Obra(codigoobra,titulo1,fecha1,precioRef,dimensiones);
-			pantalla.controller.ModificarObra(obra1);
+			pantalla.controller.ModificarObra();
 			break;
 		case 5:
 			pantalla.controller.EliminarObra();

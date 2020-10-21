@@ -178,7 +178,7 @@ public class ControlGaleria {
 
     public void InsertarObra() {
         Scanner sc = new Scanner(System.in);
-        String tit,dims = new String();
+        String tit,dims;
         Calendar fechados = Calendar.getInstance();
         long codiguito;
         float preciox;
@@ -222,9 +222,10 @@ public class ControlGaleria {
                         counter+=1;
                 }
             int des=1;
-            while(des!=0){
+            while(des!=-1){
                 System.out.println("ingrese el numero del artista de la lista que esta relacionado con la obra");
                 System.out.println("Si este no aparece por favor digite 0");
+                System.out.println("Si ya termino ingrese -1 por favor");
                 des=sc.nextInt();
                 if(des!=0){
                     obra.getArtista().add(listaArtistas.get(des-1));
@@ -250,8 +251,10 @@ public class ControlGaleria {
                     artistaux.getObras().add(obra);
                     listaObras.add(obra);
                     listaArtistas.add(artistaux);
-                    System.out.printf("Desea agregar otro artista\n1.Si\n0.No");
-                    des=sc.nextInt();
+                    System.out.println("Desea agregar otro artista");
+                    System.out.println("1.Si");
+                    System.out.println("0.No");
+                    des=sc.nextInt()-1;
                 }
             }
         } else {
@@ -260,8 +263,10 @@ public class ControlGaleria {
 
     }
 
-    public void ModificarObra(Obra obra) {
+    public void ModificarObra() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el codigo de la obra a buscar");
+        long codiguito= sc.nextLong();
         int opciones, cont = 0;
         boolean encontro = false;
         String nuevoTitulo, nuevasDimensiones;
@@ -269,11 +274,13 @@ public class ControlGaleria {
         int ano, mes, dia;
         float nuevoPrecio;
         long nuevoCodigo;
+        Obra obra= new Obra();
         for (Obra obras : listaObras) {
-            if (obras.getCodigoObra() != obra.getCodigoObra()) {
+            if (obras.getCodigoObra() != codiguito) {
                 encontro = false;
             } else {
                 encontro = true;
+                obra=obras;
                 System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
                 System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha());
                 System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
@@ -304,7 +311,7 @@ public class ControlGaleria {
                         }
                         for (Obra obras : listaObras) {
                             cont++;
-                            if (obra.getCodigoObra() == obras.getCodigoObra()) {
+                            if (codiguito == obras.getCodigoObra()) {
                                 listaObras.get(cont).setCodigoObra(nuevoCodigo);
                                 System.out.println("Se cambio el codigo");
                             }
@@ -316,14 +323,14 @@ public class ControlGaleria {
                         System.out.println("Ingrese el nuevo titulo de la obra");
                         nuevoTitulo = sc.next();
                         for (Obra obras : listaObras) {
-                            if (nuevoTitulo == obras.getTitulo()) {
+                            if (nuevoTitulo.equals(obras.getTitulo())) {
                                 System.out.println("El titulo ya existe, escoja otro");
                                 return;
                             }
                         }
                         for (Obra obras : listaObras) {
                             cont++;
-                            if (obra.getTitulo() == obras.getTitulo()) {
+                            if (obra.getTitulo().equals(obras.getTitulo())) {
                                 listaObras.get(cont).setTitulo(nuevoTitulo);
                                 System.out.println("Se cambio el titulo");
                             }
@@ -338,13 +345,15 @@ public class ControlGaleria {
                         nuevaFecha.set(ano, mes, dia);
                         for (Obra obras : listaObras) {
                             cont++;
-                            if ((nuevaFecha == obra.getFecha() && obra.getFecha() != obras.getFecha()))// no estoy seguro
+                            if ((nuevaFecha.equals(obra.getFecha()) && obra.getFecha().equals(obras.getFecha())))
                             {
                                 System.out.println("La fecha de la obra ya existe");
-                                return;
-                            } else {
-                                listaObras.get(cont).setFecha(nuevaFecha);
+                                encontro=true;
+                                return;   
                             }
+                        }
+                        if(!encontro){
+                            obra.setFecha(nuevaFecha);
                             System.out.println("Se inserto la nueva fecha");
                         }
                         cont = 0;
