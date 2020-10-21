@@ -17,6 +17,7 @@ public class ControlGaleria {
     public ControlGaleria() {
         this.listaClientes.addAll(this.gestionCliente.inListaClientes());
         this.listaObras.addAll(this.gestionObras.inListaObras());
+        this.listaArtistas.addAll(this.gestionObras.inListaArtistas());
     }
 
     public ControlGaleria(ArrayList<Artista> listaArtistas, ArrayList<Compra> compras) {
@@ -188,7 +189,7 @@ public class ControlGaleria {
         dia=sc.nextInt();
         mes=sc.nextInt();
         anio=sc.nextInt();
-        fechados.set(anio, mes, dia);
+        fechados.set(anio, mes-1, dia);
         System.out.println("Ingrese codigo de obra de la Obra");
         codiguito=sc.nextLong();
         System.out.println("Ingrese precio de referencia de la Obra");
@@ -209,19 +210,52 @@ public class ControlGaleria {
                     System.out.println("La obra esta repetida");
                     return;
                 }
-                System.out.println("Se inserto la obra");
             }
-            listaObras.add(obra);
-
-            for (Artista artistas : obra.getArtista()) {
-                if (!BuscarArtista(artistas)) {
-                    listaArtistas.add(artistas);
+            int counter = 0;
+            for (Artista artistas : listaArtistas) {
+                        System.out.println("-------------------------------------------");
+                        System.out.println(counter+1);
+                        System.out.println("Nombre:" + artistas.getNombre());
+                        System.out.println("Apellido:" + artistas.getApellido());
+                        System.out.println("Cedula:" + artistas.getCedula());
+                        System.out.println("-------------------------------------------");
+                        counter+=1;
                 }
-                artistas.getObras().add(obra);
+            int des=1;
+            while(des!=0){
+                System.out.println("ingrese el numero del artista de la lista que esta relacionado con la obra");
+                System.out.println("Si este no aparece por favor digite 0");
+                des=sc.nextInt();
+                if(des!=0){
+                    obra.getArtista().add(listaArtistas.get(des-1));
+                }
+                else{
+                    System.out.println("Ingrese el nombre del artista");
+                    String nombreaux = sc.next();
+                    System.out.println("Ingrese el Apellido del artista");
+                    String apellidox = sc.next();
+                    System.out.println("Ingrese la cedula del artista");
+                    long cedulax=sc.nextLong();
+                    System.out.println("Ingrese el codigo del artista");
+                    codiguito=sc.nextLong();
+                    System.out.println("Ingrese la fecha de nacimiento del artista (dia,mes,año)");
+                    dia=sc.nextInt();
+                    mes=sc.nextInt();
+                    anio=sc.nextInt();
+                    fechados.set(anio, mes-1, dia);
+                    System.out.println("Ingrese el telefono del artista");
+                    long telefonox=sc.nextLong();
+                    Artista artistaux= new Artista(codiguito,cedulax,nombreaux,apellidox,fechados,telefonox);
+                    obra.getArtista().add(artistaux);
+                    artistaux.getObras().add(obra);
+                    listaObras.add(obra);
+                    listaArtistas.add(artistaux);
+                    System.out.printf("Desea agregar otro artista\n1.Si\n0.No");
+                    des=sc.nextInt();
+                }
             }
         } else {
             System.out.println("El codigo no es valido");
-            return;
         }
 
     }
