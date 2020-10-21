@@ -10,7 +10,6 @@ public class GestionClientes{
    
     public ArrayList<Cliente> inListaClientes(){
         ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
-        int clie = 0;
 
         Cliente julian = new Cliente(12345,4052,"Julian","Rojas","Crr 6 N4",31243512);
         listaClientes.add(julian);

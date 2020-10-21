@@ -267,8 +267,8 @@ public class ControlGaleria {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el codigo de la obra a buscar");
         long codiguito= sc.nextLong();
-        int opciones, cont = 0;
-        boolean encontro = false;
+        int opciones;
+        boolean encontro=false ,encontro1 = false;
         String nuevoTitulo, nuevasDimensiones;
         Calendar nuevaFecha = Calendar.getInstance();
         int ano, mes, dia;
@@ -282,7 +282,7 @@ public class ControlGaleria {
                 encontro = true;
                 obra=obras;
                 System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
-                System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha());
+                System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
                 System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                 //System.out.println("4.La foto de la obra es:");
                 System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
@@ -303,39 +303,35 @@ public class ControlGaleria {
                     case 1:
                         System.out.println("Ingrese el nuevo codigo");
                         nuevoCodigo = sc.nextLong();
-                        for (Obra obras : listaObras) {
+                        for(Obra obras: listaObras){
                             if (nuevoCodigo == obras.getCodigoObra()) {
+                                encontro1=true;
                                 System.out.println("El codigo ya existe, escoja otro");
-                                return;
                             }
                         }
-                        for (Obra obras : listaObras) {
-                            cont++;
-                            if (codiguito == obras.getCodigoObra()) {
-                                listaObras.get(cont).setCodigoObra(nuevoCodigo);
-                                System.out.println("Se cambio el codigo");
+                            if(!encontro1){
+                                obra.setCodigoObra(nuevoCodigo);
+                                System.out.println("Se ha cambiado el codigo correctamente");
+                                System.out.println(obra.getCodigoObra());
                             }
-                        }
-
-                        cont = 0;
+                            else
+                                encontro1=false;
                         break;
                     case 2:
                         System.out.println("Ingrese el nuevo titulo de la obra");
                         nuevoTitulo = sc.next();
                         for (Obra obras : listaObras) {
                             if (nuevoTitulo.equals(obras.getTitulo())) {
+                                encontro1=true;
                                 System.out.println("El titulo ya existe, escoja otro");
-                                return;
                             }
                         }
-                        for (Obra obras : listaObras) {
-                            cont++;
-                            if (obra.getTitulo().equals(obras.getTitulo())) {
-                                listaObras.get(cont).setTitulo(nuevoTitulo);
-                                System.out.println("Se cambio el titulo");
-                            }
-                        }
-                        cont = 0;
+                           if (!encontro1) {
+                               obra.setTitulo(nuevoTitulo);
+                               System.out.println("Se cambio el titulo");
+                           }
+                           else
+                               encontro1=false;
                         break;
                     case 3:
                         System.out.println("Ingrese la nueva fecha, dia, mes y ano, en ese orden");
@@ -343,71 +339,47 @@ public class ControlGaleria {
                         mes = sc.nextInt();
                         ano = sc.nextInt();
                         nuevaFecha.set(ano, mes, dia);
-                        for (Obra obras : listaObras) {
-                            cont++;
-                            if ((nuevaFecha.equals(obra.getFecha()) && obra.getFecha().equals(obras.getFecha())))
-                            {
-                                System.out.println("La fecha de la obra ya existe");
-                                encontro=true;
-                                return;   
-                            }
-                        }
-                        if(!encontro){
-                            obra.setFecha(nuevaFecha);
-                            System.out.println("Se inserto la nueva fecha");
-                        }
-                        cont = 0;
+                        obra.setFecha(nuevaFecha);
+                        System.out.println("Se inserto la nueva fecha");
                         break;
                     case 4:
                         System.out.println("Ingrese el nuevo precio referencia de la obra");
                         nuevoPrecio = sc.nextFloat();
-                        for (Obra obras : listaObras) {
-                            cont++;
-                            if ((nuevoPrecio == obra.getPrecioRef() && obra.getPrecioRef() != obras.getPrecioRef()))//no estoy seguro
-                            {
-                                System.out.println("El precio para esa obra ya existe");
-                                return;
-                            } else {
-                                listaObras.get(cont).setPrecioRef(nuevoPrecio);
-                            }
-                            System.out.println("Se cambio el precio de la obra");
-                        }
-                        cont = 0;
+                        obra.setPrecioRef(nuevoPrecio);
+                        System.out.println("Se cambio el precio de referencia de la obra");
                         break;
                     case 5:
                         System.out.println("Ingrese las nuevas dimensiones de la obra");
                         nuevasDimensiones = sc.next();
-                        for (Obra obras : listaObras) {
-                            cont++;
-                            if ((nuevasDimensiones == obra.getDimensiones() && obra.getDimensiones() != obras.getDimensiones()))//no estoy seguro
-                            {
-                                System.out.println("Las dimensiones ya existen para la obra");
-                                return;
-                            } else {
-                                listaObras.get(cont).setDimensiones(nuevasDimensiones);
-                            }
-                            System.out.println("Se cambiaron las dimensiones de la obra");
-                        }
-                        cont = 0;
+                        obra.setDimensiones(nuevasDimensiones);
+                        System.out.println("Se cambiaron las dimensiones de la obra");
                         break;
                 }
-            } while (opciones != 0);
-            sc.close();
+            } while (opciones != 9);
         }
+        else
+            System.out.println("No se encontro la obra con ese codigo");
     }
 
     public void EliminarObra() {
         Scanner sc = new Scanner(System.in);
         long codigo;
         int x;
+        boolean encontro=false;
         boolean confirmar = false;
         System.out.println("Ingrese el codigo de la obra que desea eliminar");
         codigo = sc.nextLong();
+        Obra obra = new Obra();
         for (Obra obras : listaObras) {
             if (obras.getCodigoObra() != codigo) {
-
-            } else {
-
+                   encontro=false;
+            }
+            else{
+                encontro=true;
+                obra=obras;
+            }
+        }
+            if(encontro) {
                 System.out.println("Realmente desea eliminar la obra? presione 1 para confirmar 0 para cancelar");
                 x = sc.nextInt();
                 if (x == 1) {
@@ -417,30 +389,36 @@ public class ControlGaleria {
                 }
                 if (confirmar == true) {
                     System.out.println("La obra existe y se elimino satisfactoriamente");
-                    listaObras.remove(obras);
+                    listaObras.remove(obra);
                 } else {
                     System.out.println("Se ha cancelado");
                 }
-                break;
             }
-            sc.close();
-        }
+            else
+                System.out.println("Su obra no existe por favor verifique su codigo");
     }
 
     //metodos clientes
     public void VerClientes() {
 
         for (Cliente clientes : listaClientes) {
-            System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre() + clientes.getApellidos());
+            System.out.println("---------------------------------------------------------------");
+            System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
             System.out.println("La cedula del cliente es: " + clientes.getCedula());
             System.out.println("El telefono del cliente es: " + clientes.getTelefono());
+            System.out.println("---------------------------------------------------------------");
         }
     }
 
     public void BuscarCliente(long codigo) {
         for (Cliente clientes : listaClientes) {
-            if (codigo == clientes.getCodigoCliente()) {
+            if (codigo == clientes.getCedula()) {
                 System.out.println("Se ha encontrado el cliente");
+                System.out.println("---------------------------------------------------------------");
+                 System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
+                System.out.println("La cedula del cliente es: " + clientes.getCedula());
+                System.out.println("El telefono del cliente es: " + clientes.getTelefono());
+                System.out.println("---------------------------------------------------------------");
             }
         }
     }

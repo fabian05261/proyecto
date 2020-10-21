@@ -53,7 +53,7 @@ public class PantallaGaleria {
 			pantalla.controller.VerClientes();
 			break;
 		case 7:
-			System.out.println("Ingrese el codigo del cliente que desea buscar");
+			System.out.println("Ingrese la cedula del cliente que desea buscar");
 			codigo=sc1.nextLong();
 			pantalla.controller.BuscarCliente(codigo);
 			break;
