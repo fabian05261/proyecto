@@ -424,16 +424,18 @@ public class ControlGaleria {
     }
 
     public void InsertarCliente(Cliente cliente) {
-
+        boolean encontro=false;
         for (Cliente clientes : listaClientes) {
 
             if (cliente.getCodigoCliente() == clientes.getCodigoCliente()) {
                 System.out.println("El cliente esta repetido");
-                return;
+                encontro=true;
             }
+        }
+           if(!encontro){
             System.out.println("Se inserto el cliente");
             listaClientes.add(cliente);
-        }
+           }
     }
 
     public void ModificarDatos(long codigo) {
@@ -441,20 +443,27 @@ public class ControlGaleria {
         Scanner sc = new Scanner(System.in);
         int opciones;
         int cont = 0;
-        boolean encontro = false;
+        boolean encontro = false, encontro1=false;
         String nuevoNombre, nuevoApellido, nuevaDireccion;
         long nuevoCodigo;
         long nuevaCedula, nuevoTelefono;
+        Cliente cliente= new Cliente();
 
         for (Cliente clientes : listaClientes) {
-            if (codigo == clientes.getCodigoCliente()) {
+            if (codigo == clientes.getCedula()) {
                 encontro = true;
-
-                System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre() + clientes.getApellidos());
+                cliente=clientes;
+                System.out.println("---------------------------------------------------------------");
+                System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
                 System.out.println("La cedula del cliente es: " + clientes.getCedula());
                 System.out.println("El telefono del cliente es: " + clientes.getTelefono());
-                System.out.println("Seleccione el dato que desea modificar");
-
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+            else{encontro = false;}
+        }
+        if (encontro){
+             System.out.println("Seleccione el dato que desea modificar");
                 do {
                     System.out.println("Presione 1 para cambiar el nombre");
                     System.out.println("Presione 2 para cambiar el apellido");
@@ -469,32 +478,18 @@ public class ControlGaleria {
 
                         case 1://cambiar nombre 
 
-                            System.out.println("Ingrese el nuevo nombre que desea cambiar");
+                            System.out.println("Ingrese el nuevo Nombre que desea cambiar");
                             nuevoNombre = sc.next();
-
-                            for (Cliente clientes1 : listaClientes) {
-                                cont++;
-                                if (clientes.getNombre() == clientes1.getNombre()) {
-                                    listaClientes.get(cont).setNombre(nuevoNombre);
-                                    System.out.println("Se cambio el nombre");
-                                }
-                            }
-                            cont = 0;
+                            cliente.setNombre(nuevoNombre);
+                            System.out.println("Se realizo el cambio de Nombre al Cliente");
                             break;
 
                         case 2: //cambiar apellido
 
-                            System.out.println("Ingrese el nuevo apellido que desea cambiar");
+                            System.out.println("Ingrese el nuevo Apellido que desea cambiar");
                             nuevoApellido = sc.next();
-
-                            for (Cliente clientes1 : listaClientes) {
-                                cont++;
-                                if (clientes.getApellidos() == clientes1.getApellidos()) {
-                                    listaClientes.get(cont).setApellidos(nuevoApellido);
-                                    System.out.println("Se ha cambiado el apellido");
-                                }
-                            }
-                            cont = 0;
+                            cliente.setApellidos(nuevoApellido);
+                            System.out.println("Se realizo el cambio de Apellido al Cliente");
                             break;
 
                         case 3://cambiar cedula
@@ -503,70 +498,59 @@ public class ControlGaleria {
                             nuevaCedula = sc.nextLong();
 
                             for (Cliente clientes1 : listaClientes) {
-                                cont++;
-                                if (clientes.getCedula() == clientes1.getCedula()) {
-                                    listaClientes.get(cont).setCedula(nuevaCedula);
-                                    System.out.println("La cedula se ha cambiado");
+                                if (cliente.getCedula() == clientes1.getCedula()) {
+                                    encontro1=true;
                                 }
                             }
-                            cont = 0;
+                            if(encontro1){
+                                System.out.println("La nueva cedula ya existe, verifique nuevamente");
+                                encontro1=false;
+                            }
+                            else{
+                                cliente.setCedula(nuevaCedula);
+                                System.out.println("Se actualizo la cedula del cliente");
+                            }
                             break;
 
                         case 4://cambiar telefono
 
                             System.out.println("Ingrese el telefono nuevo que desea cambiar");
                             nuevoTelefono = sc.nextLong();
-
-                            for (Cliente clientes1 : listaClientes) {
-                                cont++;
-                                if (clientes.getTelefono() == clientes1.getTelefono()) {
-                                    listaClientes.get(cont).setTelefono(nuevoTelefono);
-                                    System.out.println("Se cambio el telefono");
-                                }
-                            }
-                            cont = 0;
+                            cliente.setTelefono(nuevoTelefono);
+                            System.out.println("Se actualizo el telefono del cliente");
                             break;
 
                         case 5://cambiar direccion entrega
 
                             System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
                             nuevaDireccion = sc.next();
-                            for (Cliente clientes1 : listaClientes) {
-                                cont++;
-                                if (clientes.getDireccionEntrega() == clientes1.getDireccionEntrega()) {
-                                    listaClientes.get(cont).setDireccionEntrega(nuevaDireccion);
-                                    System.out.println("Se cambio la direccion de entrega");
-                                }
-                            }
-                            cont = 0;
+                            cliente.setDireccionEntrega(nuevaDireccion);
+                            System.out.println("Se actualizo la direccion del cliente");
                             break;
 
                         case 6: //cambiar codigo fuente
 
                             System.out.println("Ingrese el nuevo codigo que desea cambiar");
                             nuevoCodigo = sc.nextLong();
-
-                            for (Cliente clientes1 : listaClientes) {
-                                cont++;
-                                if (clientes1.getCodigoCliente() == nuevoCodigo) {
-                                    System.out.println("El codigo ya existe, elija uno nuevo");
-                                    return;
-                                }
-                                if ((clientes1.getCodigoCliente() != nuevoCodigo && clientes.getCodigoCliente() != nuevoCodigo)) {
-                                    listaClientes.get(cont).setCodigoCliente(nuevoCodigo);
-                                    System.out.println("Se ha cambiado el codigo del cliente");
+                            for(Cliente clientes:listaClientes){
+                                if(clientes.getCodigoCliente()==nuevoCodigo){
+                                    encontro1=true;
+                                    System.out.println("El codigo nuevo ya existe, por favor verifique nuevamente");
                                 }
                             }
-                            cont = 0;
+                            if(encontro1){
+                                encontro1=false;
+                            }
+                            else{
+                                cliente.setCodigoCliente(nuevoCodigo);
+                                System.out.println("Se ha cambiado el codigo del Cliente");
+                            }
                             break;
                     }
 
                 } while (opciones != 9);
-                sc.close();
-                break;
-            }
         }
-        if (!encontro) {
+        else {
             System.out.println("El cliente no existe");
         }
     }
@@ -576,31 +560,43 @@ public class ControlGaleria {
         Scanner sc = new Scanner(System.in);
         long codigo;
         int x;
-        boolean confirmar;
-        System.out.println("Ingrese el codigo del cliente que desea eliminar");
+        boolean encontro=false;
+        boolean confirmar=false;
+        System.out.println("Ingrese la cedula del cliente que desea eliminar");
         codigo = sc.nextLong();
-
+        Cliente cliente=new Cliente();
         for (Cliente clientes : listaClientes) {
-            if (codigo != clientes.getCodigoCliente()) {
-                System.out.println("El codigo del cliente no existe");
-            } else {
-                System.out.println("Realmnete desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
-            
-            x = sc.nextInt();
-            if (x == 1) {
-                confirmar = true;
-            } else {
-                confirmar = false;
+            if (codigo == clientes.getCedula()) {
+                encontro=true;
+                cliente=clientes;
+                break;
             }
+            else{
+                encontro=false;
+            }
+        }    
+            if(encontro) {
+                System.out.println("Realmente desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
+                x = sc.nextInt();
+                if (x == 1) {
+                    confirmar = true;
+                } else {
+                    confirmar = false;
+                }
             if (confirmar == true) {
-                listaClientes.remove(clientes);
+                if(null==cliente.getCompras()){
+                listaClientes.remove(cliente);
                 System.out.println("Se elimino el cliente satisfactoriamente");
+                }
+                else{
+                    System.out.println("No se puede eliminar el cliente dado que tiene al menos una compra relacionada");
+                }
             } else {
                 System.out.println("Se ha cancelado");
             }
-            break;
-            }
         }
+            else
+                System.out.println("Este cliente no existe");
     }
 
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
@@ -646,16 +642,17 @@ public class ControlGaleria {
 
         Obra Auxobra = new Obra();
         Cliente comprador = new Cliente();
-        boolean encontro = false;
+        boolean encontro = false, encontro1=false;
         for (Obra obras : listaObras) {
             if (Titulo.equals(obras.getTitulo())) {
                 Auxobra = obras;
+                encontro1=true;
                 break;
             } else {
-                System.out.println("La obra " + Titulo + " no existe");
-                return;
+                encontro1=false;
             }
         }
+        if(encontro1){
         for (Cliente clientes : listaClientes) {
             if (codigo == clientes.getCodigoCliente()) {
                 comprador = clientes;
@@ -701,6 +698,11 @@ public class ControlGaleria {
         } else {
             System.out.println("Esta compra ya se realizo, por favor verifique");
         }
+        }
+        else{
+            System.out.println("La obra "+Titulo+" no existe");
+        }
+        
     }
 
     //codigo de compra a borrar

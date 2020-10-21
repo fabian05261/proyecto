@@ -69,7 +69,7 @@ public class PantallaGaleria {
 			pantalla.controller.InsertarCliente(cliente1);
 			break;
 		case 9:
-			System.out.println("Ingrese el codigo del cliente que desea modificar");
+			System.out.println("Ingrese la cedula del cliente que desea modificar");
 			long codigo1=sc1.nextLong();
 			pantalla.controller.ModificarDatos(codigo1);
 			break;
