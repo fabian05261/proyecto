@@ -37,12 +37,9 @@ public class Material {
 	public void setEscultura(Escultura escultura) {
 		this.escultura = escultura;
 	}
-	public Material(long codigo, String nombre, String descripcion, Instalacion instalacion, Escultura escultura) {
-		super();
+	public Material(long codigo, String nombre) {
+		
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.instalacion = instalacion;
-		this.escultura = escultura;
 	}	
 }

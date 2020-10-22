@@ -26,11 +26,15 @@ public class Escultura extends Obra {
 		this.material1 = material1;
 	}
 	public Escultura(long codigoObra, String titulo, Calendar fecha, float precioRef, String dimensiones,
-			String material,double peso)
+			Material material,double peso)
 	{
 		super(codigoObra,titulo,fecha,precioRef,dimensiones);
-		this.material=material;
+		if(material!=null)
+		{
+			this.material=material.getNombre();
+		}
 		this.peso=peso;
+		this.material1=material;
 	}
 	public double CalcularPrecio()
 	{
