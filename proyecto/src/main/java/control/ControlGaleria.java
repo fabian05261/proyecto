@@ -74,15 +74,7 @@ public class ControlGaleria {
     public void setCompras(ArrayList<Compra> compras) {
         this.compras = compras;
     }
- /* private ArrayList<Obra>auxListaObra(){
-	  ArrayList<Obra>listaObra=new ArrayList<Obra>();
-	  ArrayList<Obra>instObra=gestionObras.inListaObras();
-	  for(Obra obras:instObra)
-	  {
-		  listaObra.add(obras);
-	  }
-	  return listaObra;
-  }*/
+    
     public void VerObras() {
 
         for (Obra obras : listaObras) {
@@ -168,7 +160,7 @@ public class ControlGaleria {
     }
 
     public boolean BuscarArtista(Artista artista) {
-        for (Artista artistas : listaArtistas) {
+        for (Artista artistas : listaArtistas.values()) {
             if (artista.getCodigoArtista() == artistas.getCodigoArtista()) {
                 return true;
             }
@@ -196,6 +188,11 @@ public class ControlGaleria {
         preciox = sc.nextFloat();
         System.out.println("Ingrese dimenciones de la Obra(ejemplo 3X3)");
         dims= sc.next();
+        System.out.printf("Seleccione que tipo de obra es:\n1.Escultura\n2.Cuadro\n3.Instalacion");
+        int tipoobra=sc.nextInt();
+        switch(tipoobra){
+            case 1:
+        }
         Obra obra= new Obra(codiguito,tit,fechados,preciox,dims);
         long aux;
         int cont = 0;
@@ -410,8 +407,10 @@ public class ControlGaleria {
     }
 
     public void BuscarCliente(long codigo) {
+        boolean encontro=false;
         for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
+                encontro=true;
                 System.out.println("Se ha encontrado el cliente");
                 System.out.println("---------------------------------------------------------------");
                  System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
@@ -420,6 +419,8 @@ public class ControlGaleria {
                 System.out.println("---------------------------------------------------------------");
             }
         }
+        if(!encontro)
+            System.out.println("No existe el cliente en la base de datos");
     }
 
     public void InsertarCliente(Cliente cliente) {
@@ -469,7 +470,7 @@ public class ControlGaleria {
                     System.out.println("Presione 3 para cambiar la cedula");
                     System.out.println("Presione 4 para cambiar el telefono");
                     System.out.println("Presione 5 para cambiar la direccion");
-                    System.out.println("Presion 6 para cambiar el numero de identificacion");
+                    System.out.println("Presion 6 para cambiar codigo");
                     System.out.println("Presione 9 para salir");
                     opciones = sc.nextInt();
 
@@ -497,7 +498,7 @@ public class ControlGaleria {
                             nuevaCedula = sc.nextLong();
 
                             for (Cliente clientes1 : listaClientes.values()) {
-                                if (cliente.getCedula() == clientes1.getCedula()) {
+                                if (nuevaCedula == clientes1.getCedula()) {
                                     encontro1=true;
                                 }
                             }
