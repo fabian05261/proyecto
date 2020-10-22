@@ -17,7 +17,7 @@ public class ControlGaleria {
 
     public ControlGaleria() {
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
-        this.listaObras.addAll(this.gestionObras.inListaObras());
+        this.listaObras.addAll(this.gestionObras.inListaObras(this.gestionObras.inListMateriales()));
         this.listaArtistas.putAll(this.gestionObras.inListaArtistasMap());
     }
 
@@ -25,7 +25,7 @@ public class ControlGaleria {
         this.listaArtistas = listaArtistas;
         this.compras = compras;
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
-        this.listaObras.addAll(this.gestionObras.inListaObras());
+        this.listaObras.addAll(this.gestionObras.inListaObras(this.gestionObras.inListMateriales()));
     }
 
     public GestionClientes getCliente() {
