@@ -876,7 +876,9 @@ public class ControlGaleria {
         }
         for (int i = 0; i < 5; i++) {
             cont++;
+            System.out.println("------------------------------------------------------");
             System.out.println(cont + "\nLas obras vendidas fueron: " + obrasVendidas[i] + "\nLa cantidad artistas con mas ventas : " + artistas[i]);
+            System.out.println("------------------------------------------------------");
         }
     }
 }
