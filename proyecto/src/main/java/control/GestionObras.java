@@ -8,14 +8,14 @@ import java.util.*;
 import entity.*;
 public class GestionObras {
  
-	Material material1=new Material(3812,"Lapiz");
-	Material material2=new Material(2781,"Papel");
-	Material material3=new Material(7832,"Carton");
-	Material material4=new Material(2091,"Tierra");
-	Material material5=new Material(9841,"Ladrillo");
-	Material material6=new Material(4341,"Plata");
-	Material material7=new Material(1234,"Oro");
-	Material material8=new Material(8123,"Barro");
+	public Material material1=new Material(3812,"Lapiz");
+	public Material material2=new Material(2781,"Papel");
+	public Material material3=new Material(7832,"Carton");
+	public Material material4=new Material(2091,"Tierra");
+	public Material material5=new Material(9841,"Ladrillo");
+	public Material material6=new Material(4341,"Plata");
+	public Material material7=new Material(1234,"Oro");
+	public Material material8=new Material(8123,"Barro");
 	
     public ArrayList<Obra> inListaObras() {
         ArrayList<Obra> listaObras = new ArrayList<Obra>();

@@ -2,6 +2,7 @@ package control;
 
 import java.util.*;
 import entity.*;
+import enumeration.Clasificacion;
 
 public class ControlGaleria {
 
@@ -190,25 +191,103 @@ public class ControlGaleria {
         dims= sc.next();
         System.out.printf("Seleccione que tipo de obra es:\n1.Escultura\n2.Cuadro\n3.Instalacion");
         int tipoobra=sc.nextInt();
-        switch(tipoobra){
-            case 1:
+        if(tipoobra==1){
                 System.out.println("Ingrese el peso de la Obra");
                 double peso=sc.nextDouble();
-                System.out.println("Ingrese el nombre del material de la Obra");
-                String mats=sc.next();
                 System.out.println("Ingrese el codigo del material");
+                long cods = sc.nextLong();
+                Material mats = new Material();
+                if(gestionObras.material1.getCodigo() == cods)
+                    mats=gestionObras.material1;
+                else if(gestionObras.material2.getCodigo() == cods)
+                    mats=gestionObras.material2;
+                else if(gestionObras.material3.getCodigo() == cods)
+                    mats=gestionObras.material3;
+                else if(gestionObras.material4.getCodigo() == cods)
+                    mats=gestionObras.material4;
+                else if(gestionObras.material5.getCodigo() == cods)
+                    mats=gestionObras.material5;
+                else if(gestionObras.material6.getCodigo() == cods)
+                    mats=gestionObras.material6;
+                else if(gestionObras.material7.getCodigo() == cods)
+                    mats=gestionObras.material7;
+                else if(gestionObras.material8.getCodigo() == cods)
+                    mats=gestionObras.material8;
+                else
+                    System.out.println("El codigo de su material no se encuentra, verifique");
+                Obra obra= new Escultura(codiguito,tit,fechados,preciox,dims,mats,peso);
         }
-        Obra obra= new Obra(codiguito,tit,fechados,preciox,dims);
+        else if(tipoobra==2){
+                System.out.println("Ingrese el tema de la Obra");
+                String tema=sc.next();
+                System.out.println("Ingrese la tecnica del material");
+                String tecn = sc.next();
+                System.out.printf("Seleccione la clasificacion de la Obra\n1.Obra Maestra\n2.Obra Representativa");
+                int clas = sc.nextInt();
+                if(clas == 1){
+                    Obra obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
+                }
+                else{
+                    Obra obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
+                }
+        }
+        else{
+            System.out.println("Ingrese la descripcion de su instalacion");
+            String des = sc.nextLine();
+            Material mats = new Material();
+            ArrayList <Material> materialesx = new ArrayList<Material>();
+            long cods=0;
+            do{
+                System.out.println("Ingrese el codigo del material, si ya no desea añadir otro digite 0");
+                cods = sc.nextLong();
+                if(gestionObras.material1.getCodigo() == cods){
+                    mats=gestionObras.material1;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material2.getCodigo() == cods){
+                    mats=gestionObras.material2;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material3.getCodigo() == cods){
+                    mats=gestionObras.material3;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material4.getCodigo() == cods){
+                    mats=gestionObras.material4;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material5.getCodigo() == cods){
+                    mats=gestionObras.material5;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material6.getCodigo() == cods){
+                    mats=gestionObras.material6;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material7.getCodigo() == cods){
+                    mats=gestionObras.material7;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material8.getCodigo() == cods){
+                    mats=gestionObras.material8;
+                    materialesx.add(mats);
+                }
+                else
+                    System.out.println("El codigo de su material no se encuentra, verifique");
+            }while(cods != 0);
+            
+            Obra obra = new Instalacion(codiguito,tit,fechados,preciox,dims, des,materialesx);
+        }
         long aux;
         int cont = 0;
-        aux = obra.getCodigoObra();
+        aux = obra.getCodigo();
         while (aux >= 1) {
             aux = aux / 10;
             cont++;
         }
         if (7 == cont) {
             for (Obra obras : listaObras) {
-                if (obra.getCodigoObra() == obras.getCodigoObra()) {
+                if (codiguito == obras.getCodigoObra()) {
                     System.out.println("La obra esta repetida");
                     return;
                 }
