@@ -21,19 +21,8 @@ public class GestionObras {
 	public Material material6=new Material(4341,"Plata");
 	public Material material7=new Material(1234,"Oro");
 	public Material material8=new Material(8123,"Barro");
-	
-	 public ArrayList<Material>inListMateriales(){
-			
-			ArrayList<Material>materiales=new ArrayList<Material>() ;
-			Material mat1=new Material(1928,"Plomo");
-			materiales.add(mat1);
-			Material mat2=new Material(9281,"Ladrillo");
-			materiales.add(mat2);
-			Material mat3=new Material(1239,"Lodo");
-			materiales.add(mat3);
-			return materiales;
-		}
-    public ArrayList<Obra> inListaObras(ArrayList<Material>inListMateriales) {
+        
+    public ArrayList<Obra> inListaObras(ArrayList<Obra>inListMateriales) {
         ArrayList<Obra> listaObras = new ArrayList<Obra>();
         Obra obra1 = new Cuadro(1233907, "MonaLisa", new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44), 2000, "3x3",Clasificacion.OBRA_REPRESENTATIVA,
         		"Paz","Puntillizmo");
@@ -84,26 +73,14 @@ public class GestionObras {
         		material8,54);
         listaObras.add(obra16);
         Obra obra17 = new Instalacion(9839192, "Tentacion de San Antonio", new GregorianCalendar(132, Calendar.APRIL, 15, 21, 12, 44), 12000, "400x400",
-        		"");
+        		"",null);
         listaObras.add(obra17);
         Obra obra18 = new Instalacion(2748291, "Gran Esfinge de Guinza", new GregorianCalendar(132, Calendar.APRIL, 15, 21, 12, 44), 12000, "400x400",
-        		"");
+        		"",null);
         listaObras.add(obra18);
         Obra obra19 = new Instalacion(1204928, "Gran Esfinge de Guinza", new GregorianCalendar(132, Calendar.APRIL, 15, 21, 12, 44), 12000, "400x400",
-        		"");
+        		"",null);
         listaObras.add(obra19);
-        if(obra17 instanceof Instalacion)
-        {
-        	((Instalacion)obra17).setMateriales(inListMateriales);
-        }
-        if(obra18 instanceof Instalacion)
-        {
-        	((Instalacion)obra17).setMateriales(inListMateriales);
-        }
-        if(obra19 instanceof Instalacion)
-        {
-        	((Instalacion)obra17).setMateriales(inListMateriales);
-        }
         return listaObras;
     }
 

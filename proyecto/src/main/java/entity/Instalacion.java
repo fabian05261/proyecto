@@ -33,10 +33,11 @@ public class Instalacion extends Obra {
 	}
 	
 	public Instalacion(long codigoObra, String titulo, Calendar fecha, float precioRef, String dimensiones,
-			String descripcion) {
+			String descripcion,ArrayList<Material>materiales) {
 		
 		super(codigoObra,titulo,fecha,precioRef,dimensiones);
 		this.descripcion = descripcion;
+                this.materiales = materiales;
 	}
 	public double CalcularPrecio()
 	{
