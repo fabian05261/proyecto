@@ -860,7 +860,7 @@ public class ControlGaleria {
             artistas[i] = listaArtistas.get(i).toString();//guarda la informacion del artista
         }
         for (int i = 0; i < tam; i++) {
-            for (int j = i + 1; j < tam; j++) {
+            for (int j = i+1; j < tam; j++) {
                 if (obrasVendidas[i] < obrasVendidas[j]) {
                     aux = obrasVendidas[i];//se ordenan las obras vendidas de mayor a menor
                     obrasVendidas[i] = obrasVendidas[j];
@@ -868,7 +868,7 @@ public class ControlGaleria {
 
                     aux1 = artistas[i];//se ordenan los artistas simultanemante 
                     artistas[i] = artistas[j];
-                    artistas[i] = aux1;
+                    artistas[j] = aux1;
                 }
             }
         }
