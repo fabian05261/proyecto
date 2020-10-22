@@ -10,7 +10,7 @@ public class Cliente {
     private String Apellidos;
     private String direccionEntrega;
     private long telefono;
-    private ArrayList<Compra> compras;
+    private ArrayList<Compra> compras = new ArrayList<Compra>();
 
     public Cliente() {
     }

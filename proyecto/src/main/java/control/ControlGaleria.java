@@ -8,14 +8,14 @@ public class ControlGaleria {
     
     private GestionClientes gestionCliente= new GestionClientes();
     private GestionObras gestionObras = new GestionObras();
-    private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+    private HashMap<Integer,Cliente> listaClientes = new HashMap<Integer,Cliente>();
     private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
     
 
     public ControlGaleria() {
-        this.listaClientes.addAll(this.gestionCliente.inListaClientes());
+        this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
         this.listaArtistas.addAll(this.gestionObras.inListaArtistas());
     }
@@ -23,7 +23,7 @@ public class ControlGaleria {
     public ControlGaleria(ArrayList<Artista> listaArtistas, ArrayList<Compra> compras) {
         this.listaArtistas = listaArtistas;
         this.compras = compras;
-        this.listaClientes.addAll(this.gestionCliente.inListaClientes());
+        this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
     }
 
@@ -43,11 +43,11 @@ public class ControlGaleria {
         this.gestionObras = gestionObras;
     }
 
-    public ArrayList<Cliente> getListaClientes() {
+    public HashMap<Integer,Cliente> getListaClientes() {
         return listaClientes;
     }
 
-    public void setListaClientes(ArrayList<Cliente> listaClientes) {
+    public void setListaClientes(HashMap<Integer,Cliente>listaClientes) {
         this.listaClientes = listaClientes;
     }
 
@@ -400,7 +400,7 @@ public class ControlGaleria {
     //metodos clientes
     public void VerClientes() {
 
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             System.out.println("---------------------------------------------------------------");
             System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
             System.out.println("La cedula del cliente es: " + clientes.getCedula());
@@ -410,7 +410,7 @@ public class ControlGaleria {
     }
 
     public void BuscarCliente(long codigo) {
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
                 System.out.println("Se ha encontrado el cliente");
                 System.out.println("---------------------------------------------------------------");
@@ -424,7 +424,7 @@ public class ControlGaleria {
 
     public void InsertarCliente(Cliente cliente) {
         boolean encontro=false;
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
 
             if (cliente.getCodigoCliente() == clientes.getCodigoCliente()) {
                 System.out.println("El cliente esta repetido");
@@ -433,7 +433,7 @@ public class ControlGaleria {
         }
            if(!encontro){
             System.out.println("Se inserto el cliente");
-            listaClientes.add(cliente);
+            listaClientes.put(listaClientes.size(),cliente);
            }
     }
 
@@ -448,7 +448,7 @@ public class ControlGaleria {
         long nuevaCedula, nuevoTelefono;
         Cliente cliente= new Cliente();
 
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
                 encontro = true;
                 cliente=clientes;
@@ -496,7 +496,7 @@ public class ControlGaleria {
                             System.out.println("Ingrese la nueva cedula que desea cambiar");
                             nuevaCedula = sc.nextLong();
 
-                            for (Cliente clientes1 : listaClientes) {
+                            for (Cliente clientes1 : listaClientes.values()) {
                                 if (cliente.getCedula() == clientes1.getCedula()) {
                                     encontro1=true;
                                 }
@@ -531,7 +531,7 @@ public class ControlGaleria {
 
                             System.out.println("Ingrese el nuevo codigo que desea cambiar");
                             nuevoCodigo = sc.nextLong();
-                            for(Cliente clientes:listaClientes){
+                            for(Cliente clientes:listaClientes.values()){
                                 if(clientes.getCodigoCliente()==nuevoCodigo){
                                     encontro1=true;
                                     System.out.println("El codigo nuevo ya existe, por favor verifique nuevamente");
@@ -563,8 +563,9 @@ public class ControlGaleria {
         boolean confirmar=false;
         System.out.println("Ingrese la cedula del cliente que desea eliminar");
         codigo = sc.nextLong();
+        int cont=0;
         Cliente cliente=new Cliente();
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
                 encontro=true;
                 cliente=clientes;
@@ -573,6 +574,7 @@ public class ControlGaleria {
             else{
                 encontro=false;
             }
+            cont++;
         }    
             if(encontro) {
                 System.out.println("Realmente desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
@@ -584,7 +586,7 @@ public class ControlGaleria {
                 }
             if (confirmar == true) {
                 if(null==cliente.getCompras()){
-                listaClientes.remove(cliente);
+                listaClientes.remove(cont,cliente);
                 System.out.println("Se elimino el cliente satisfactoriamente");
                 }
                 else{
@@ -652,7 +654,7 @@ public class ControlGaleria {
             }
         }
         if(encontro1){
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCodigoCliente()) {
                 encontro2=true;
                 comprador = clientes;
@@ -680,18 +682,13 @@ public class ControlGaleria {
                 } 
             }
         }
-        System.out.println("hola2");
         if (!encontro) {
-            System.out.println("hola3");
             Auxobra.setCompra(Auxcompra);
             for (int i = 0; i < Auxobra.getArtista().size(); i++) {
                 Auxobra.getArtista().get(i).getVentas().add(Auxcompra);
             }
-            System.out.println("hola4");
             comprador.getCompras().add(Auxcompra);
-            System.out.println("hola5");
             compras.add(Auxcompra);
-            System.out.println("hola6");
             System.out.println("Se ha anadido su compra con exito");
         } else {
             System.out.println("Esta compra ya se realizo, por favor verifique");
@@ -782,7 +779,7 @@ public class ControlGaleria {
                 }
             }
         }
-        for (int i = 0; i < tam; i++) {
+        for (int i = 0; i < 5; i++) {
             cont++;
             System.out.println(cont + "\nLas obras vendidas fueron: " + obrasVendidas[i] + "\nLa cantidad artistas con mas ventas : " + artistas[i]);
         }
