@@ -92,4 +92,20 @@ public class GestionObras {
         listaArtistas.add(artista8);
         return listaArtistas;
     } 
+
+    	public HashMap<Integer, Artista> inListaArtistasMap(){
+		
+    	HashMap<Integer, Artista> listaArtistassMap = new HashMap<Integer, Artista>();
+    	listaArtistasMap.put( a, new Artista(4155,8536974, "Leonardo","Da Vinci", new GregorianCalendar(1452, Calendar.APRIL, 15, 23, 11, 44), 310524896));
+    	listaArtistasMap.put( b, new Artista(4233,2365896, "Miguel","Angel", new GregorianCalendar(1475, Calendar.MARCH, 6, 10, 23, 44), 350698753));
+    	listaArtistasMap.put( c, new Artista(4488,8524789, "Vincent","Van Gogh", new GregorianCalendar(1853, Calendar.MARCH, 30, 2, 14, 44), 320697563));
+    	listaArtistasMap.put( d, new Artista(4499,1589635, "Claude","Monet", new GregorianCalendar(1840, Calendar.NOVEMBER, 14, 1, 13, 44), 321589874));
+    	listaArtistasMap.put( e, new Artista(4135,8536975, "Pablo","Picasso", new GregorianCalendar(1881, Calendar.OCTOBER, 25, 5, 13, 44), 314963987));
+    	listaArtistasMap.put( f, new Artista(4185,8593468, "Salvador","Dalí", new GregorianCalendar(1904, Calendar.MAY, 11, 6, 12, 44), 312589647));
+    	listaArtistasMap.put( g, new Artista(4752,5263947, "Donatello"," ", new GregorianCalendar(1386, Calendar.OCTOBER, 19, 8, 14, 44), 313698236));
+    	listaArtistasMap.put( h, new Artista(4960,1239874, "Rafael","Sanzio", new GregorianCalendar(1483, Calendar.APRIL, 6, 21, 12, 44), 305893458));
+    	
+    	
+    	return listaArtistasMap;
+    }
 }
