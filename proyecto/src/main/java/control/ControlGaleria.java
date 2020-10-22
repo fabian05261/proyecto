@@ -726,7 +726,9 @@ public class ControlGaleria {
                     } else {
                         pago = "No pago";
                     }
+                    System.out.println("------------------------------------------------------");
                     System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n", Auxcompra.getCodigoCompra(), auxfecha.get(auxfecha.DATE), auxfecha.get(auxfecha.MONTH) + 1, auxfecha.get(auxfecha.YEAR), pago);
+                    System.out.println("------------------------------------------------------");
                 }
             }
         }
