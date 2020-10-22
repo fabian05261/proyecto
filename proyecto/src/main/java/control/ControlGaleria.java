@@ -2,28 +2,29 @@ package control;
 
 import java.util.*;
 import entity.*;
+import enumeration.Clasificacion;
 
 public class ControlGaleria {
 
     
     private GestionClientes gestionCliente= new GestionClientes();
     private GestionObras gestionObras = new GestionObras();
-    private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
-    private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
+    private HashMap<Integer,Cliente> listaClientes = new HashMap<Integer,Cliente>();
+    private HashMap<Integer,Artista> listaArtistas = new HashMap<Integer,Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
     
 
     public ControlGaleria() {
-        this.listaClientes.addAll(this.gestionCliente.inListaClientes());
+        this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
-        this.listaArtistas.addAll(this.gestionObras.inListaArtistas());
+        this.listaArtistas.putAll(this.gestionObras.inListaArtistasMap());
     }
 
-    public ControlGaleria(ArrayList<Artista> listaArtistas, ArrayList<Compra> compras) {
+    public ControlGaleria(HashMap<Integer,Artista> listaArtistas, ArrayList<Compra> compras) {
         this.listaArtistas = listaArtistas;
         this.compras = compras;
-        this.listaClientes.addAll(this.gestionCliente.inListaClientes());
+        this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
     }
 
@@ -43,19 +44,19 @@ public class ControlGaleria {
         this.gestionObras = gestionObras;
     }
 
-    public ArrayList<Cliente> getListaClientes() {
+    public HashMap<Integer,Cliente> getListaClientes() {
         return listaClientes;
     }
 
-    public void setListaClientes(ArrayList<Cliente> listaClientes) {
+    public void setListaClientes(HashMap<Integer,Cliente>listaClientes) {
         this.listaClientes = listaClientes;
     }
 
-    public ArrayList<Artista> getListaArtistas() {
+    public HashMap<Integer,Artista> getListaArtistas() {
         return listaArtistas;
     }
 
-    public void setListaArtistas(ArrayList<Artista> listaArtistas) {
+    public void setListaArtistas(HashMap<Integer,Artista> listaArtistas) {
         this.listaArtistas = listaArtistas;
     }
 
@@ -74,15 +75,7 @@ public class ControlGaleria {
     public void setCompras(ArrayList<Compra> compras) {
         this.compras = compras;
     }
- /* private ArrayList<Obra>auxListaObra(){
-	  ArrayList<Obra>listaObra=new ArrayList<Obra>();
-	  ArrayList<Obra>instObra=gestionObras.inListaObras();
-	  for(Obra obras:instObra)
-	  {
-		  listaObra.add(obras);
-	  }
-	  return listaObra;
-  }*/
+    
     public void VerObras() {
 
         for (Obra obras : listaObras) {
@@ -131,7 +124,7 @@ public class ControlGaleria {
                 System.out.println("Escriba el codigo del artista el cual desea buscar su obra");
                 artista = sc.nextLong();
 
-                for (Artista artistas : listaArtistas) {
+                for (Artista artistas : listaArtistas.values()) {
                     if (artista == artistas.getCodigoArtista()) {
                         for (Obra obras : artistas.getObras()) {
                             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
@@ -168,7 +161,7 @@ public class ControlGaleria {
     }
 
     public boolean BuscarArtista(Artista artista) {
-        for (Artista artistas : listaArtistas) {
+        for (Artista artistas : listaArtistas.values()) {
             if (artista.getCodigoArtista() == artistas.getCodigoArtista()) {
                 return true;
             }
@@ -196,23 +189,111 @@ public class ControlGaleria {
         preciox = sc.nextFloat();
         System.out.println("Ingrese dimenciones de la Obra(ejemplo 3X3)");
         dims= sc.next();
-        Obra obra= new Obra(codiguito,tit,fechados,preciox,dims);
+        System.out.printf("Seleccione que tipo de obra es:\n1.Escultura\n2.Cuadro\n3.Instalacion");
+        int tipoobra=sc.nextInt();
+        if(tipoobra==1){
+                System.out.println("Ingrese el peso de la Obra");
+                double peso=sc.nextDouble();
+                System.out.println("Ingrese el codigo del material");
+                long cods = sc.nextLong();
+                Material mats = new Material();
+                if(gestionObras.material1.getCodigo() == cods)
+                    mats=gestionObras.material1;
+                else if(gestionObras.material2.getCodigo() == cods)
+                    mats=gestionObras.material2;
+                else if(gestionObras.material3.getCodigo() == cods)
+                    mats=gestionObras.material3;
+                else if(gestionObras.material4.getCodigo() == cods)
+                    mats=gestionObras.material4;
+                else if(gestionObras.material5.getCodigo() == cods)
+                    mats=gestionObras.material5;
+                else if(gestionObras.material6.getCodigo() == cods)
+                    mats=gestionObras.material6;
+                else if(gestionObras.material7.getCodigo() == cods)
+                    mats=gestionObras.material7;
+                else if(gestionObras.material8.getCodigo() == cods)
+                    mats=gestionObras.material8;
+                else
+                    System.out.println("El codigo de su material no se encuentra, verifique");
+                Obra obra= new Escultura(codiguito,tit,fechados,preciox,dims,mats,peso);
+        }
+        else if(tipoobra==2){
+                System.out.println("Ingrese el tema de la Obra");
+                String tema=sc.next();
+                System.out.println("Ingrese la tecnica del material");
+                String tecn = sc.next();
+                System.out.printf("Seleccione la clasificacion de la Obra\n1.Obra Maestra\n2.Obra Representativa");
+                int clas = sc.nextInt();
+                if(clas == 1){
+                    Obra obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
+                }
+                else{
+                    Obra obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
+                }
+        }
+        else{
+            System.out.println("Ingrese la descripcion de su instalacion");
+            String des = sc.nextLine();
+            Material mats = new Material();
+            ArrayList <Material> materialesx = new ArrayList<Material>();
+            long cods=0;
+            do{
+                System.out.println("Ingrese el codigo del material, si ya no desea añadir otro digite 0");
+                cods = sc.nextLong();
+                if(gestionObras.material1.getCodigo() == cods){
+                    mats=gestionObras.material1;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material2.getCodigo() == cods){
+                    mats=gestionObras.material2;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material3.getCodigo() == cods){
+                    mats=gestionObras.material3;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material4.getCodigo() == cods){
+                    mats=gestionObras.material4;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material5.getCodigo() == cods){
+                    mats=gestionObras.material5;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material6.getCodigo() == cods){
+                    mats=gestionObras.material6;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material7.getCodigo() == cods){
+                    mats=gestionObras.material7;
+                    materialesx.add(mats);
+                }
+                else if(gestionObras.material8.getCodigo() == cods){
+                    mats=gestionObras.material8;
+                    materialesx.add(mats);
+                }
+                else
+                    System.out.println("El codigo de su material no se encuentra, verifique");
+            }while(cods != 0);
+            
+            Obra obra = new Instalacion(codiguito,tit,fechados,preciox,dims, des,materialesx);
+        }
         long aux;
         int cont = 0;
-        aux = obra.getCodigoObra();
+        aux = obra.getCodigo();
         while (aux >= 1) {
             aux = aux / 10;
             cont++;
         }
         if (7 == cont) {
             for (Obra obras : listaObras) {
-                if (obra.getCodigoObra() == obras.getCodigoObra()) {
+                if (codiguito == obras.getCodigoObra()) {
                     System.out.println("La obra esta repetida");
                     return;
                 }
             }
             int counter = 0;
-            for (Artista artistas : listaArtistas) {
+            for (Artista artistas : listaArtistas.values()) {
                         System.out.println("-------------------------------------------");
                         System.out.println(counter+1);
                         System.out.println("Nombre:" + artistas.getNombre());
@@ -249,7 +330,7 @@ public class ControlGaleria {
                     Artista artistaux= new Artista(codiguito,cedulax,nombreaux,apellidox,fechados,telefonox);
                     obra.getArtista().add(artistaux);
                     artistaux.getObras().add(obra);
-                    listaArtistas.add(artistaux);
+                    listaArtistas.put(counter+1,artistaux);
                     System.out.println("Desea agregar otro artista");
                     System.out.println("1.Si");
                     System.out.println("0.No");
@@ -400,7 +481,7 @@ public class ControlGaleria {
     //metodos clientes
     public void VerClientes() {
 
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             System.out.println("---------------------------------------------------------------");
             System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
             System.out.println("La cedula del cliente es: " + clientes.getCedula());
@@ -410,8 +491,10 @@ public class ControlGaleria {
     }
 
     public void BuscarCliente(long codigo) {
-        for (Cliente clientes : listaClientes) {
+        boolean encontro=false;
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
+                encontro=true;
                 System.out.println("Se ha encontrado el cliente");
                 System.out.println("---------------------------------------------------------------");
                  System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre()+" " + clientes.getApellidos());
@@ -420,11 +503,13 @@ public class ControlGaleria {
                 System.out.println("---------------------------------------------------------------");
             }
         }
+        if(!encontro)
+            System.out.println("No existe el cliente en la base de datos");
     }
 
     public void InsertarCliente(Cliente cliente) {
         boolean encontro=false;
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
 
             if (cliente.getCodigoCliente() == clientes.getCodigoCliente()) {
                 System.out.println("El cliente esta repetido");
@@ -433,7 +518,7 @@ public class ControlGaleria {
         }
            if(!encontro){
             System.out.println("Se inserto el cliente");
-            listaClientes.add(cliente);
+            listaClientes.put(listaClientes.size(),cliente);
            }
     }
 
@@ -448,7 +533,7 @@ public class ControlGaleria {
         long nuevaCedula, nuevoTelefono;
         Cliente cliente= new Cliente();
 
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
                 encontro = true;
                 cliente=clientes;
@@ -469,7 +554,7 @@ public class ControlGaleria {
                     System.out.println("Presione 3 para cambiar la cedula");
                     System.out.println("Presione 4 para cambiar el telefono");
                     System.out.println("Presione 5 para cambiar la direccion");
-                    System.out.println("Presion 6 para cambiar el numero de identificacion");
+                    System.out.println("Presion 6 para cambiar codigo");
                     System.out.println("Presione 9 para salir");
                     opciones = sc.nextInt();
 
@@ -496,8 +581,8 @@ public class ControlGaleria {
                             System.out.println("Ingrese la nueva cedula que desea cambiar");
                             nuevaCedula = sc.nextLong();
 
-                            for (Cliente clientes1 : listaClientes) {
-                                if (cliente.getCedula() == clientes1.getCedula()) {
+                            for (Cliente clientes1 : listaClientes.values()) {
+                                if (nuevaCedula == clientes1.getCedula()) {
                                     encontro1=true;
                                 }
                             }
@@ -531,7 +616,7 @@ public class ControlGaleria {
 
                             System.out.println("Ingrese el nuevo codigo que desea cambiar");
                             nuevoCodigo = sc.nextLong();
-                            for(Cliente clientes:listaClientes){
+                            for(Cliente clientes:listaClientes.values()){
                                 if(clientes.getCodigoCliente()==nuevoCodigo){
                                     encontro1=true;
                                     System.out.println("El codigo nuevo ya existe, por favor verifique nuevamente");
@@ -563,8 +648,9 @@ public class ControlGaleria {
         boolean confirmar=false;
         System.out.println("Ingrese la cedula del cliente que desea eliminar");
         codigo = sc.nextLong();
+        int cont=0;
         Cliente cliente=new Cliente();
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
                 encontro=true;
                 cliente=clientes;
@@ -573,6 +659,7 @@ public class ControlGaleria {
             else{
                 encontro=false;
             }
+            cont++;
         }    
             if(encontro) {
                 System.out.println("Realmente desea eliminar el cliente? presione 1 para confirmar 0 para cancelar");
@@ -584,7 +671,7 @@ public class ControlGaleria {
                 }
             if (confirmar == true) {
                 if(null==cliente.getCompras()){
-                listaClientes.remove(cliente);
+                listaClientes.remove(cont,cliente);
                 System.out.println("Se elimino el cliente satisfactoriamente");
                 }
                 else{
@@ -652,7 +739,7 @@ public class ControlGaleria {
             }
         }
         if(encontro1){
-        for (Cliente clientes : listaClientes) {
+        for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCodigoCliente()) {
                 encontro2=true;
                 comprador = clientes;
@@ -680,18 +767,13 @@ public class ControlGaleria {
                 } 
             }
         }
-        System.out.println("hola2");
         if (!encontro) {
-            System.out.println("hola3");
             Auxobra.setCompra(Auxcompra);
             for (int i = 0; i < Auxobra.getArtista().size(); i++) {
                 Auxobra.getArtista().get(i).getVentas().add(Auxcompra);
             }
-            System.out.println("hola4");
             comprador.getCompras().add(Auxcompra);
-            System.out.println("hola5");
             compras.add(Auxcompra);
-            System.out.println("hola6");
             System.out.println("Se ha anadido su compra con exito");
         } else {
             System.out.println("Esta compra ya se realizo, por favor verifique");
@@ -782,7 +864,7 @@ public class ControlGaleria {
                 }
             }
         }
-        for (int i = 0; i < tam; i++) {
+        for (int i = 0; i < 5; i++) {
             cont++;
             System.out.println(cont + "\nLas obras vendidas fueron: " + obrasVendidas[i] + "\nLa cantidad artistas con mas ventas : " + artistas[i]);
         }

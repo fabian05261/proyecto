@@ -1,21 +1,26 @@
 package control;
 
 import enumeration.Clasificacion;
+
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+
+import java.util.*;
+
 import entity.*;
 public class GestionObras {
  
-	Material material1=new Material(3812,"Lapiz");
-	Material material2=new Material(2781,"Papel");
-	Material material3=new Material(7832,"Carton");
-	Material material4=new Material(2091,"Tierra");
-	Material material5=new Material(9841,"Ladrillo");
-	Material material6=new Material(4341,"Plata");
-	Material material7=new Material(1234,"Oro");
-	Material material8=new Material(8123,"Barro");
+	public Material material1=new Material(3812,"Lapiz");
+	public Material material2=new Material(2781,"Papel");
+	public Material material3=new Material(7832,"Carton");
+	public Material material4=new Material(2091,"Tierra");
+	public Material material5=new Material(9841,"Ladrillo");
+	public Material material6=new Material(4341,"Plata");
+	public Material material7=new Material(1234,"Oro");
+	public Material material8=new Material(8123,"Barro");
 	
 	 public ArrayList<Material>inListMateriales(){
 			
@@ -123,4 +128,22 @@ public class GestionObras {
         return listaArtistas;
     } 
 
+
+
+    public HashMap<Integer, Artista> inListaArtistasMap(){
+		
+    	HashMap<Integer, Artista> listaArtistasMap = new HashMap<Integer, Artista>();
+    	listaArtistasMap.put( 0, new Artista(4155,8536974, "Leonardo","Da Vinci", new GregorianCalendar(1452, Calendar.APRIL, 15, 23, 11, 44), 310524896));
+    	listaArtistasMap.put( 1, new Artista(4233,2365896, "Miguel","Angel", new GregorianCalendar(1475, Calendar.MARCH, 6, 10, 23, 44), 350698753));
+    	listaArtistasMap.put( 2, new Artista(4488,8524789, "Vincent","Van Gogh", new GregorianCalendar(1853, Calendar.MARCH, 30, 2, 14, 44), 320697563));
+    	listaArtistasMap.put( 3, new Artista(4499,1589635, "Claude","Monet", new GregorianCalendar(1840, Calendar.NOVEMBER, 14, 1, 13, 44), 321589874));
+    	listaArtistasMap.put( 4, new Artista(4135,8536975, "Pablo","Picasso", new GregorianCalendar(1881, Calendar.OCTOBER, 25, 5, 13, 44), 314963987));
+    	listaArtistasMap.put( 5, new Artista(4185,8593468, "Salvador","Dalí", new GregorianCalendar(1904, Calendar.MAY, 11, 6, 12, 44), 312589647));
+    	listaArtistasMap.put( 6, new Artista(4752,5263947, "Donatello"," ", new GregorianCalendar(1386, Calendar.OCTOBER, 19, 8, 14, 44), 313698236));
+    	listaArtistasMap.put( 7, new Artista(4960,1239874, "Rafael","Sanzio", new GregorianCalendar(1483, Calendar.APRIL, 6, 21, 12, 44), 305893458));
+    	
+    	
+    	return listaArtistasMap;
+    }
 }
+

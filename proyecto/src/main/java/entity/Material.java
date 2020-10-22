@@ -41,5 +41,6 @@ public class Material {
 		
 		this.codigo = codigo;
 		this.nombre = nombre;
-	}	
+	}
+        public Material(){}
 }
