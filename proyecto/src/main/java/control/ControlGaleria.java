@@ -189,7 +189,7 @@ public class ControlGaleria {
         preciox = sc.nextFloat();
         System.out.println("Ingrese dimenciones de la Obra(ejemplo 3X3)");
         dims= sc.next();
-        System.out.printf("Seleccione que tipo de obra es:\n1.Escultura\n2.Cuadro\n3.Instalacion");
+        System.out.printf("Seleccione que tipo de obra es:\n1.Escultura\n2.Cuadro\n3.Instalacion\n");
         int tipoobra=sc.nextInt();
         Obra obra;
         switch(tipoobra){
@@ -225,7 +225,7 @@ public class ControlGaleria {
                 String tema=sc.next();
                 System.out.println("Ingrese la tecnica del material");
                 String tecn = sc.next();
-                System.out.printf("Seleccione la clasificacion de la Obra\n1.Obra Maestra\n2.Obra Representativa");
+                System.out.printf("Seleccione la clasificacion de la Obra\n1.Obra Maestra\n2.Obra Representativa\n");
                 int clas = sc.nextInt();
                 if(clas == 1){
                     obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
@@ -357,107 +357,21 @@ public class ControlGaleria {
         int ano, mes, dia;
         float nuevoPrecio;
         long nuevoCodigo;
-        Obra obra;
-        switch(tipoobra){
-            case 1:
-                System.out.println("Ingrese el peso de la Obra");
-                double peso=sc.nextDouble();
-                System.out.println("Ingrese el codigo del material");
-                long cods = sc.nextLong();
-                Material mats = new Material();
-                if(gestionObras.material1.getCodigo() == cods)
-                    mats=gestionObras.material1;
-                else if(gestionObras.material2.getCodigo() == cods)
-                    mats=gestionObras.material2;
-                else if(gestionObras.material3.getCodigo() == cods)
-                    mats=gestionObras.material3;
-                else if(gestionObras.material4.getCodigo() == cods)
-                    mats=gestionObras.material4;
-                else if(gestionObras.material5.getCodigo() == cods)
-                    mats=gestionObras.material5;
-                else if(gestionObras.material6.getCodigo() == cods)
-                    mats=gestionObras.material6;
-                else if(gestionObras.material7.getCodigo() == cods)
-                    mats=gestionObras.material7;
-                else if(gestionObras.material8.getCodigo() == cods)
-                    mats=gestionObras.material8;
-                else
-                    System.out.println("El codigo de su material no se encuentra, verifique");
-                obra= new Escultura(codiguito,tit,fechados,preciox,dims,mats,peso);
-                break;
-        
-        case 2:
-                System.out.println("Ingrese el tema de la Obra");
-                String tema=sc.next();
-                System.out.println("Ingrese la tecnica del material");
-                String tecn = sc.next();
-                System.out.printf("Seleccione la clasificacion de la Obra\n1.Obra Maestra\n2.Obra Representativa");
-                int clas = sc.nextInt();
-                if(clas == 1){
-                    obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
-                }
-                else{
-                    obra= new Cuadro(codiguito,tit,fechados,preciox,dims,Clasificacion.OBRA_MAESTRA,tema,tecn);
-                }
-                break;
-        default:
-            System.out.println("Ingrese la descripcion de su instalacion");
-            String des = sc.nextLine();
-            Material mats1 = new Material();
-            ArrayList <Material> materialesx = new ArrayList<Material>();
-            long cods1=0;
-            do{
-                System.out.println("Ingrese el codigo del material, si ya no desea añadir otro digite 0");
-                cods = sc.nextLong();
-                if(gestionObras.material1.getCodigo() == cods1){
-                    mats1=gestionObras.material1;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material2.getCodigo() == cods1){
-                    mats1=gestionObras.material2;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material3.getCodigo() == cods1){
-                    mats1=gestionObras.material3;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material4.getCodigo() == cods1){
-                    mats1=gestionObras.material4;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material5.getCodigo() == cods1){
-                    mats1=gestionObras.material5;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material6.getCodigo() == cods1){
-                    mats1=gestionObras.material6;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material7.getCodigo() == cods1){
-                    mats1=gestionObras.material7;
-                    materialesx.add(mats1);
-                }
-                else if(gestionObras.material8.getCodigo() == cods1){
-                    mats1=gestionObras.material8;
-                    materialesx.add(mats1);
-                }
-                else
-                    System.out.println("El codigo de su material no se encuentra, verifique");
-            }while(cods != 0);
-            
-            obra = new Instalacion(codiguito,tit,fechados,preciox,dims, des,materialesx);
-        }
+        Obra obra = null;
         for (Obra obras : listaObras) {
             if (obras.getCodigoObra() != codiguito) {
                 encontro = false;
             } else {
                 encontro = true;
                 obra=obras;
+                System.out.println("-----------------------------------------------------");
                 System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
                 System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
                 System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                 //System.out.println("4.La foto de la obra es:");
                 System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
+                System.out.println("-----------------------------------------------------");
+                break;
             }
         }
         if (encontro) {
@@ -484,7 +398,6 @@ public class ControlGaleria {
                             if(!encontro1){
                                 obra.setCodigoObra(nuevoCodigo);
                                 System.out.println("Se ha cambiado el codigo correctamente");
-                                System.out.println(obra.getCodigoObra());
                             }
                             else
                                 encontro1=false;
@@ -526,6 +439,9 @@ public class ControlGaleria {
                         obra.setDimensiones(nuevasDimensiones);
                         System.out.println("Se cambiaron las dimensiones de la obra");
                         break;
+                    case 6:
+                        
+                        break;
                 }
             } while (opciones != 9);
         }
@@ -541,7 +457,7 @@ public class ControlGaleria {
         boolean confirmar = false;
         System.out.println("Ingrese el codigo de la obra que desea eliminar");
         codigo = sc.nextLong();
-        Obra obra = new Obra();
+        Obra obra = null;
         for (Obra obras : listaObras) {
             if (obras.getCodigoObra() != codigo) {
                    encontro=false;
@@ -818,7 +734,7 @@ public class ControlGaleria {
 
     public void CompraObra(String Titulo, long codigocompra, long codigo) {
 
-        Obra Auxobra = new Obra();
+        Obra Auxobra = null;
         Cliente comprador = new Cliente();
         boolean encontro = false, encontro1=false, encontro2=false;
         for (Obra obras : listaObras) {

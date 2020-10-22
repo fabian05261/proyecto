@@ -1,12 +1,12 @@
 package boundary;
-import java.util.Calendar;
-import java.util.Scanner;
+import java.util.*;
 
 import control.*;
 import entity.*;
+import enumeration.*;
 public class PantallaGaleria {
 	
-	private static ControlGaleria controller=new ControlGaleria();
+	public static ControlGaleria controller=new ControlGaleria();
 	
     public static void main(String[] args) {
         PantallaGaleria pantalla = new PantallaGaleria();

@@ -22,7 +22,7 @@ public class GestionObras {
 	public Material material7=new Material(1234,"Oro");
 	public Material material8=new Material(8123,"Barro");
         
-    public ArrayList<Obra> inListaObras(ArrayList<Obra>inListMateriales) {
+    public ArrayList<Obra> inListaObras() {
         ArrayList<Obra> listaObras = new ArrayList<Obra>();
         Obra obra1 = new Cuadro(1233907, "MonaLisa", new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44), 2000, "3x3",Clasificacion.OBRA_REPRESENTATIVA,
         		"Paz","Puntillizmo");
