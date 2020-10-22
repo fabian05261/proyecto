@@ -40,25 +40,25 @@ public class GestionObras {
         Obra obra9 = new Escultura(1233907, "MonaLisa", new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44), 2000, "3x3",
         		"Acuarelas",55);
         listaObras.add(obra9);
-        Obra obra10 = new Escultura(1254567, "Ultima Cena", new GregorianCalendar(2012, Calendar.AUGUST, 10, 10, 23, 44), 2500, "3x3",
+        Obra obra10 = new Escultura(9043718, "El David", new GregorianCalendar(1344, Calendar.AUGUST, 10, 10, 23, 44), 5500, "40x40",
         		"Pinceles",60);
         listaObras.add(obra10);
-        Obra obra11 = new Escultura(4563545, "Las Meninas", new GregorianCalendar(2013, Calendar.NOVEMBER, 5, 2, 14, 44), 3000, "3x3",
+        Obra obra11 = new Escultura(4561728, "El Pensador", new GregorianCalendar(1666, Calendar.NOVEMBER, 5, 2, 14, 44), 5000, "30x30",
         		"Brocha",8);
         listaObras.add(obra11);
-        Obra obra12 = new Escultura(2978671, "La Noche Estrellada", new GregorianCalendar(2014, Calendar.JANUARY, 13, 1, 13, 44), 4500, "3x3",
+        Obra obra12 = new Escultura(3401923, "Estatua de la Libertad", new GregorianCalendar(1892, Calendar.JANUARY, 13, 1, 13, 44), 9500, "310x100",
         		"Lapiz",9);
         listaObras.add(obra12);
-        Obra obra13 = new Escultura(2938471, "El grito", new GregorianCalendar(2020, Calendar.MARCH, 13, 5, 13, 44), 4500, "3x3",
+        Obra obra13 = new Escultura(9821345, "El Moises", new GregorianCalendar(2020, Calendar.MARCH, 13, 5, 13, 44), 4500, "190x290",
         		"Tabla de madera",32);
         listaObras.add(obra13);
-        Obra obra14 = new Escultura(1973671, "Guernica", new GregorianCalendar(1998, Calendar.JUNE, 23, 6, 12, 44), 8500, "3x3",
+        Obra obra14 = new Escultura(2194027, "El Discobolo", new GregorianCalendar(291, Calendar.JUNE, 23, 6, 12, 44), 6200, "40x50",
         		"Papel Acuarela",7);
         listaObras.add(obra14);
-        Obra obra15 = new Escultura(1973671, "La Rueda De Bicicleta", new GregorianCalendar(1995, Calendar.FEBRUARY, 20, 8, 14, 44), 8500, "3x3",
+        Obra obra15 = new Escultura(8910284, "Venus de Milo", new GregorianCalendar(467, Calendar.FEBRUARY, 20, 8, 14, 44), 8800, "33x31",
         		"Rueda",50);
         listaObras.add(obra15);
-        Obra obra16 = new Escultura(1273371, "El Jardin De Las Delicias", new GregorianCalendar(1993, Calendar.APRIL, 15, 21, 12, 44), 8500, "3x3",
+        Obra obra16 = new Escultura(1204928, "Gran Esfinge de Guinza", new GregorianCalendar(132, Calendar.APRIL, 15, 21, 12, 44), 12000, "400x400",
         		"Pinceles",54);
         listaObras.add(obra16);
         return listaObras;
