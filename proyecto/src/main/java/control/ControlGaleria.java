@@ -192,6 +192,11 @@ public class ControlGaleria {
         int tipoobra=sc.nextInt();
         switch(tipoobra){
             case 1:
+                System.out.println("Ingrese el peso de la Obra");
+                double peso=sc.nextDouble();
+                System.out.println("Ingrese el nombre del material de la Obra");
+                String mats=sc.next();
+                System.out.println("Ingrese el codigo del material");
         }
         Obra obra= new Obra(codiguito,tit,fechados,preciox,dims);
         long aux;
