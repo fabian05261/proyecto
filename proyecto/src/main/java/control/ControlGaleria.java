@@ -17,7 +17,7 @@ public class ControlGaleria {
 
     public ControlGaleria() {
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
-        this.listaObras.addAll(this.gestionObras.inListaObras(this.gestionObras.inListMateriales()));
+        this.listaObras.addAll(this.gestionObras.inListaObras());
         this.listaArtistas.putAll(this.gestionObras.inListaArtistasMap());
     }
 
@@ -25,7 +25,7 @@ public class ControlGaleria {
         this.listaArtistas = listaArtistas;
         this.compras = compras;
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
-        this.listaObras.addAll(this.gestionObras.inListaObras(this.gestionObras.inListMateriales()));
+        this.listaObras.addAll(this.gestionObras.inListaObras());
     }
 
     public GestionClientes getCliente() {
@@ -438,9 +438,6 @@ public class ControlGaleria {
                         nuevasDimensiones = sc.next();
                         obra.setDimensiones(nuevasDimensiones);
                         System.out.println("Se cambiaron las dimensiones de la obra");
-                        break;
-                    case 6:
-                        
                         break;
                 }
             } while (opciones != 9);
@@ -880,5 +877,14 @@ public class ControlGaleria {
             System.out.println(cont + "\nLas obras vendidas fueron: " + obrasVendidas[i] + "\nLa cantidad artistas con mas ventas : " + artistas[i]);
             System.out.println("------------------------------------------------------");
         }
+    }
+    public ArrayList<Cuadro> filtrarCuadro(){
+        ArrayList<Cuadro> filtro = new ArrayList<Cuadro>();
+        for(Obra obras: listaObras){
+            if(obras instanceof Cuadro){
+                filtro.add((Cuadro)obras);
+            }
+        }
+        return filtro;
     }
 }
