@@ -9,7 +9,7 @@ public class ControlGaleria {
     private GestionClientes gestionCliente= new GestionClientes();
     private GestionObras gestionObras = new GestionObras();
     private HashMap<Integer,Cliente> listaClientes = new HashMap<Integer,Cliente>();
-    private ArrayList<Artista> listaArtistas = new ArrayList<Artista>();
+    private HashMap<Integer,Artista> listaArtistas = new HashMap<Integer,Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
     
@@ -17,10 +17,10 @@ public class ControlGaleria {
     public ControlGaleria() {
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
-        this.listaArtistas.addAll(this.gestionObras.inListaArtistas());
+        this.listaArtistas.putAll(this.gestionObras.inListaArtistasMap());
     }
 
-    public ControlGaleria(ArrayList<Artista> listaArtistas, ArrayList<Compra> compras) {
+    public ControlGaleria(HashMap<Integer,Artista> listaArtistas, ArrayList<Compra> compras) {
         this.listaArtistas = listaArtistas;
         this.compras = compras;
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
@@ -51,11 +51,11 @@ public class ControlGaleria {
         this.listaClientes = listaClientes;
     }
 
-    public ArrayList<Artista> getListaArtistas() {
+    public HashMap<Integer,Artista> getListaArtistas() {
         return listaArtistas;
     }
 
-    public void setListaArtistas(ArrayList<Artista> listaArtistas) {
+    public void setListaArtistas(HashMap<Integer,Artista> listaArtistas) {
         this.listaArtistas = listaArtistas;
     }
 
@@ -131,7 +131,7 @@ public class ControlGaleria {
                 System.out.println("Escriba el codigo del artista el cual desea buscar su obra");
                 artista = sc.nextLong();
 
-                for (Artista artistas : listaArtistas) {
+                for (Artista artistas : listaArtistas.values()) {
                     if (artista == artistas.getCodigoArtista()) {
                         for (Obra obras : artistas.getObras()) {
                             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
@@ -212,7 +212,7 @@ public class ControlGaleria {
                 }
             }
             int counter = 0;
-            for (Artista artistas : listaArtistas) {
+            for (Artista artistas : listaArtistas.values()) {
                         System.out.println("-------------------------------------------");
                         System.out.println(counter+1);
                         System.out.println("Nombre:" + artistas.getNombre());
@@ -249,7 +249,7 @@ public class ControlGaleria {
                     Artista artistaux= new Artista(codiguito,cedulax,nombreaux,apellidox,fechados,telefonox);
                     obra.getArtista().add(artistaux);
                     artistaux.getObras().add(obra);
-                    listaArtistas.add(artistaux);
+                    listaArtistas.put(counter+1,artistaux);
                     System.out.println("Desea agregar otro artista");
                     System.out.println("1.Si");
                     System.out.println("0.No");
