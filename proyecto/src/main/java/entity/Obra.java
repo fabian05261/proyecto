@@ -79,7 +79,7 @@ public abstract class Obra {
     public void setDimensiones(String dimensiones) {
         this.dimensiones = dimensiones;
     }
-    public abstract double CalcularPrecio();
+    public abstract float CalcularPrecio();
     {
     	
     }

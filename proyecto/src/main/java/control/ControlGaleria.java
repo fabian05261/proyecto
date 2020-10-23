@@ -13,6 +13,7 @@ public class ControlGaleria {
     private HashMap<Integer,Artista> listaArtistas = new HashMap<Integer,Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
+    private ArrayList<Cuadro> cuadros = new ArrayList<Cuadro>();
     
 
     public ControlGaleria() {
@@ -27,8 +28,15 @@ public class ControlGaleria {
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
     }
+    public ArrayList<Cuadro> getCuadros() {
+		return cuadros;
+	}
 
-    public GestionClientes getCliente() {
+	public void setCuadros(ArrayList<Cuadro> cuadros) {
+		this.cuadros = cuadros;
+	}
+
+	public GestionClientes getCliente() {
         return gestionCliente;
     }
 
@@ -878,6 +886,7 @@ public class ControlGaleria {
             System.out.println("------------------------------------------------------");
         }
     }
+<<<<<<< Updated upstream
     public ArrayList<Cuadro> filtrarCuadro(){
         ArrayList<Cuadro> filtro = new ArrayList<Cuadro>();
         for(Obra obras: listaObras){
@@ -908,6 +917,8 @@ public class ControlGaleria {
     		
     	}
     }
+=======
+>>>>>>> Stashed changes
     public double PrecioTotal()
     {
     	double cont=0;
@@ -928,6 +939,7 @@ public class ControlGaleria {
     	}
     	return cont;
     }
+<<<<<<< Updated upstream
     public ArrayList<Escultura> filtrarEscultura(){
         ArrayList<Escultura> filtro = new ArrayList<Escultura>();
         for(Obra obras: listaObras){
@@ -938,4 +950,6 @@ public class ControlGaleria {
         return filtro;
 
     }
+=======
+>>>>>>> Stashed changes
 }
