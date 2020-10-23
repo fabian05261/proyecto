@@ -30,6 +30,9 @@ public class PantallaGaleria {
 		System.out.println("14.Ver listado de compras para un mes y año especifico");
 		System.out.println("15.Ver listado de artistas mas vendidos");
 		System.out.println("16.Ver listado de Esculturas");
+		System.out.println("17.Ver la informacion de las esculturas");
+		System.out.println("18.Ver las compras realizadas");
+		System.out.println("19.Ver la ganancia total");
 		System.out.println("0.Salir");
                 //Scanner sc1 = new Scanner(System.in);
 		opciones=sc1.nextInt();
@@ -101,31 +104,19 @@ public class PantallaGaleria {
 		case 15:
 			pantalla.controller.ArtistaMasVendido();
 			break;
-                case 16:
+          case 16:
                         pantalla.controller.filtrarEscultura();
                         break;
+          case 17:
+        	  pantalla.controller.Esculturas();
+				break;
+          case 18:
+        	  pantalla.controller.Compras();
+				break;
+          case 19:
+        	  pantalla.controller.GanaciaTotal();
+				break;
 		}
     	}while(opciones!=0);
-		int opcion;
-		do
-		{
-			System.out.println("Elija las siguientes opciones, presione 9 para salir");
-			System.out.println("1.Ver la informacion de las esculturas");
-			System.out.println("2.Ver las compras realizadas");
-			System.out.println("3.Ver la ganancia total");
-			opcion=sc1.nextInt();
-			switch(opcion)
-			{
-			case 1:
-				pantalla.controller.Esculturas();
-				break;
-			case 2:
-				pantalla.controller.Compras();
-				break;
-			case 3:
-				pantalla.controller.GanaciaTotal();
-				break;
-			}
-		}while (opcion!=9);
 	}
 }
