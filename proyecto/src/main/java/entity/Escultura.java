@@ -36,9 +36,9 @@ public class Escultura extends Obra {
 		this.peso=peso;
 		this.material1=material;
 	}
-	public float CalcularPrecio()
+	public double CalcularPrecio()
 	{
-		float nuevoPrecio;
+		double nuevoPrecio;
 		if(peso>10)
 		{
 			nuevoPrecio=precioRef+(1/100+precioRef)*peso-10;

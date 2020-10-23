@@ -31,12 +31,12 @@ public class Cuadro extends Obra{
 		this.tema=tema;
 		this.tecnica=tecnica;
 	}
-	public float CalcularPrecio()
+	public double CalcularPrecio()
 	{
-		float nuevoPrecio1;
+		double nuevoPrecio1;
 		if(this.clasificacion==Clasificacion.OBRA_MAESTRA)
 		{
-			nuevoPrecio1=precioRef+(5/100*precioRef);
+			nuevoPrecio1= precioRef+(5/100*precioRef);
 		}
 		else
 		{
