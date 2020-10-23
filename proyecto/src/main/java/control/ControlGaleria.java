@@ -886,7 +886,7 @@ public class ControlGaleria {
             System.out.println("------------------------------------------------------");
         }
     }
-<<<<<<< Updated upstream
+
     public ArrayList<Cuadro> filtrarCuadro(){
         ArrayList<Cuadro> filtro = new ArrayList<Cuadro>();
         for(Obra obras: listaObras){
@@ -917,8 +917,7 @@ public class ControlGaleria {
     		
     	}
     }
-=======
->>>>>>> Stashed changes
+
     public double PrecioTotal()
     {
     	double cont=0;
@@ -939,7 +938,7 @@ public class ControlGaleria {
     	}
     	return cont;
     }
-<<<<<<< Updated upstream
+
     public ArrayList<Escultura> filtrarEscultura(){
         ArrayList<Escultura> filtro = new ArrayList<Escultura>();
         for(Obra obras: listaObras){
@@ -950,6 +949,5 @@ public class ControlGaleria {
         return filtro;
 
     }
-=======
->>>>>>> Stashed changes
+
 }
