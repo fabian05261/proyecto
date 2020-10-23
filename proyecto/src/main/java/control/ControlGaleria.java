@@ -898,6 +898,29 @@ public class ControlGaleria {
         }
         return filtro;
     }
+    public void Esculturas()
+    {
+    	for(Escultura esculturas:filtrarEscultura())
+    	{
+    		System.out.println("1.El titulo de la obra es:" + esculturas.getTitulo());
+            System.out.println("2.La fecha de creacion de la obra es:" + esculturas.getFecha().getTime());
+            System.out.println("3.El precio referencia de la obra es:" + esculturas.getPrecioRef());
+            //System.out.println("4.La foto de la escultura es:");
+            System.out.println("5.Las dimensiones de la obra son:" + esculturas.getDimensiones());
+            System.out.println("6.El peso de la escultura es:" + esculturas.getPeso());
+            System.out.println("7.Los materiales de la escultura son:" + esculturas.getMaterial1());
+    	}
+    }
+    public void Compras()
+    {
+    	for(Compra compras:filtrarCuadro())
+    	{
+    		System.out.println("1.El codigo de la compra es:"+compras.getCodigoCompra());
+    		System.out.println("2.La fecha de la compra es:"+compras.getFecha().getTime());
+    		System.out.println("3.El cliente es:"+compras.getCompraCliente());
+    		System.out.println("4.La obra adquirida es:"+compras.getCompraObra());
+    	}
+    }
     public void GanaciaTotal(){
         double total = 0;
         for(Obra obras: listaObras){

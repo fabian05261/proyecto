@@ -106,6 +106,26 @@ public class PantallaGaleria {
                         break;
 		}
     	}while(opciones!=0);
-		
+		int opcion;
+		do
+		{
+			System.out.println("Elija las siguientes opciones, presione 9 para salir");
+			System.out.println("1.Ver la informacion de las esculturas");
+			System.out.println("2.Ver las compras realizadas");
+			System.out.println("3.Ver la ganancia total");
+			opcion=sc1.nextInt();
+			switch(opcion)
+			{
+			case 1:
+				pantalla.controller.Esculturas();
+				break;
+			case 2:
+				pantalla.controller.Compras();
+				break;
+			case 3:
+				pantalla.controller.GanaciaTotal();
+				break;
+			}
+		}while (opcion!=9);
 	}
 }
