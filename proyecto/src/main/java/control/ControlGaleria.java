@@ -13,6 +13,7 @@ public class ControlGaleria {
     private HashMap<Integer,Artista> listaArtistas = new HashMap<Integer,Artista>();
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
     private ArrayList<Compra> compras = new ArrayList<Compra>();
+    private ArrayList<Cuadro> cuadros = new ArrayList<Cuadro>();
     
 
     public ControlGaleria() {
@@ -27,8 +28,15 @@ public class ControlGaleria {
         this.listaClientes.putAll(this.gestionCliente.inListaClientesMap());
         this.listaObras.addAll(this.gestionObras.inListaObras());
     }
+    public ArrayList<Cuadro> getCuadros() {
+		return cuadros;
+	}
 
-    public GestionClientes getCliente() {
+	public void setCuadros(ArrayList<Cuadro> cuadros) {
+		this.cuadros = cuadros;
+	}
+
+	public GestionClientes getCliente() {
         return gestionCliente;
     }
 
@@ -878,17 +886,59 @@ public class ControlGaleria {
             System.out.println("------------------------------------------------------");
         }
     }
-    public ArrayList<Compra> filtrarCuadro(){
-        ArrayList<Compra> filtro = new ArrayList<Compra>();
+
+    public ArrayList<Cuadro> filtrarCuadro(){
+        ArrayList<Cuadro> filtro = new ArrayList<Cuadro>();
         for(Obra obras: listaObras){
             if(obras instanceof Cuadro){
-                if(obras.getCompra()!=null){
-                    filtro.add(obras.getCompra());
-                }
+                filtro.add((Cuadro)obras);
             }
         }
         return filtro;
     }
+    public void MostarEsculturas()
+    {
+    	for(Escultura obras:listaObras)
+    	{
+    		if(obras instanceof Escultura)
+    		{
+    			 System.out.println("-------------------------------------------------------------");
+                 System.out.println("1.El titulo de la escultura es:" + obras.getTitulo());
+                 System.out.println("2.La fecha de creacion de la escultura es:" + obras.getFecha().getTime());
+                 System.out.println("3.El precio referencia de la escultura es:" + obras.getPrecioRef());
+                 //System.out.println("4.La foto de la escultura es:");
+                 System.out.println("5.Las dimensiones de la escultura son:" + obras.getDimensiones());
+                 System.out.println("6.El peso de la escultura es:");
+                 System.out.println("5.Los materiales de la escultura son:"+obras.toString());
+    		}
+    	}
+    	for(Obra obras:listaObras)	
+    	{
+    		
+    	}
+    }
+
+    public double PrecioTotal()
+    {
+    	double cont=0;
+    	for(Obra obras:listaObras)
+    	{
+    		if(obras instanceof Obra )
+    		{
+    			cont=cont+obras.CalcularPrecio();
+    		}
+    		if(obras instanceof Cuadro)
+    		{
+    			cont=cont+obras.CalcularPrecio();
+    		}
+    		if(obras instanceof Escultura)
+    		{
+    			cont=cont+obras.CalcularPrecio();
+    		}
+    	}
+    	return cont;
+    }
+
     public ArrayList<Escultura> filtrarEscultura(){
         ArrayList<Escultura> filtro = new ArrayList<Escultura>();
         for(Obra obras: listaObras){
@@ -897,14 +947,7 @@ public class ControlGaleria {
             }
         }
         return filtro;
+
     }
-    public void GanaciaTotal(){
-        double total = 0;
-        for(Obra obras: listaObras){
-            if(obras.getCompra()!=null){
-                total=total+obras.CalcularPrecio();
-            }
-        }
-        System.out.println("Las ganancias totales son: "+total);
-    }
+
 }

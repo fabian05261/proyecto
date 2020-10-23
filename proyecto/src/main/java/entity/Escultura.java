@@ -36,12 +36,12 @@ public class Escultura extends Obra {
 		this.peso=peso;
 		this.material1=material;
 	}
-	public double CalcularPrecio()
+	public float CalcularPrecio()
 	{
-		double nuevoPrecio;
+		float nuevoPrecio;
 		if(peso>10)
 		{
-			nuevoPrecio=precioRef+(precioRef+0.01)*peso-10;
+			nuevoPrecio=precioRef+(1/100+precioRef)*peso-10;
 		}
 		else
 		{
@@ -49,4 +49,11 @@ public class Escultura extends Obra {
 		}
 		return nuevoPrecio;
 	}
+	@Override
+	public String toString() {
+		return "Escultura [material=" + material + ", peso=" + peso + ", material1=" + material1 + ", codigoObra="
+				+ codigoObra + ", titulo=" + titulo + ", fecha=" + fecha + ", precioRef=" + precioRef + ", dimensiones="
+				+ dimensiones + ", compra=" + compra + ", artista=" + artista + "]";
+	}
+	
 }

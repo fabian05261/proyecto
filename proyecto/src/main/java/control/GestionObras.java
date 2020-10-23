@@ -35,6 +35,13 @@ public class GestionObras {
 		}
     public ArrayList<Obra> inListaObras() {
         ArrayList<Obra> listaObras = new ArrayList<Obra>();
+        ArrayList<Material>materiales=new ArrayList<Material>() ;
+		Material mat1=new Material(1928,"Plomo");
+		materiales.add(mat1);
+		Material mat2=new Material(9281,"Ladrillo");
+		materiales.add(mat2);
+		Material mat3=new Material(1239,"Lodo");
+		materiales.add(mat3);
         Obra obra1 = new Cuadro(1233907, "MonaLisa", new GregorianCalendar(2010, Calendar.FEBRUARY, 22, 23, 11, 44), 2000, "3x3",Clasificacion.OBRA_REPRESENTATIVA,
         		"Paz","Puntillizmo");
         listaObras.add(obra1);
@@ -92,6 +99,18 @@ public class GestionObras {
         Obra obra19 = new Instalacion(1204928, "Gran Esfinge de Guinza", new GregorianCalendar(132, Calendar.APRIL, 15, 21, 12, 44), 12000, "400x400",
         		"",null);
         listaObras.add(obra19);
+        if(obra17 instanceof Instalacion)
+        {
+        	((Instalacion)obra17).setMateriales(materiales);
+        }
+        if(obra18 instanceof Instalacion)
+        {
+        	((Instalacion)obra17).setMateriales(materiales);
+        }
+        if(obra19 instanceof Instalacion)
+        {
+        	((Instalacion)obra17).setMateriales(materiales);
+        }
         return listaObras;
     }
 
