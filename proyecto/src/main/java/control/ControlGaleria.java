@@ -878,11 +878,13 @@ public class ControlGaleria {
             System.out.println("------------------------------------------------------");
         }
     }
-    public ArrayList<Cuadro> filtrarCuadro(){
-        ArrayList<Cuadro> filtro = new ArrayList<Cuadro>();
+    public ArrayList<Compra> filtrarCuadro(){
+        ArrayList<Compra> filtro = new ArrayList<Compra>();
         for(Obra obras: listaObras){
             if(obras instanceof Cuadro){
-                filtro.add((Cuadro)obras);
+                if(obras.getCompra()!=null){
+                    filtro.add(obras.getCompra());
+                }
             }
         }
         return filtro;
@@ -895,5 +897,14 @@ public class ControlGaleria {
             }
         }
         return filtro;
+    }
+    public void GanaciaTotal(){
+        double total = 0;
+        for(Obra obras: listaObras){
+            if(obras.getCompra()!=null){
+                total=total+obras.CalcularPrecio();
+            }
+        }
+        System.out.println("Las ganancias totales son: "+total);
     }
 }

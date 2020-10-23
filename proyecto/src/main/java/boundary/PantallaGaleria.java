@@ -29,7 +29,8 @@ public class PantallaGaleria {
 		System.out.println("13.Ver listado de compras");
 		System.out.println("14.Ver listado de compras para un mes y año especifico");
 		System.out.println("15.Ver listado de artistas mas vendidos");
-		System.out.println("16.Salir");
+		System.out.println("16.Ver listado de Esculturas");
+		System.out.println("0.Salir");
                 //Scanner sc1 = new Scanner(System.in);
 		opciones=sc1.nextInt();
 		switch(opciones)
@@ -100,8 +101,11 @@ public class PantallaGaleria {
 		case 15:
 			pantalla.controller.ArtistaMasVendido();
 			break;
+                case 16:
+                        pantalla.controller.filtrarEscultura();
+                        break;
 		}
-    	}while(opciones!=16);
+    	}while(opciones!=0);
 		
 	}
 }
