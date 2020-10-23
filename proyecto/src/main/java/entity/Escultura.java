@@ -49,4 +49,11 @@ public class Escultura extends Obra {
 		}
 		return nuevoPrecio;
 	}
+	@Override
+	public String toString() {
+		return "Escultura [material=" + material + ", peso=" + peso + ", material1=" + material1 + ", codigoObra="
+				+ codigoObra + ", titulo=" + titulo + ", fecha=" + fecha + ", precioRef=" + precioRef + ", dimensiones="
+				+ dimensiones + ", compra=" + compra + ", artista=" + artista + "]";
+	}
+	
 }

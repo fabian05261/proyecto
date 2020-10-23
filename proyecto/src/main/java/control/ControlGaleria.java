@@ -887,4 +887,45 @@ public class ControlGaleria {
         }
         return filtro;
     }
+    public void MostarEsculturas()
+    {
+    	for(Escultura obras:listaObras)
+    	{
+    		if(obras instanceof Escultura)
+    		{
+    			 System.out.println("-------------------------------------------------------------");
+                 System.out.println("1.El titulo de la escultura es:" + obras.getTitulo());
+                 System.out.println("2.La fecha de creacion de la escultura es:" + obras.getFecha().getTime());
+                 System.out.println("3.El precio referencia de la escultura es:" + obras.getPrecioRef());
+                 //System.out.println("4.La foto de la escultura es:");
+                 System.out.println("5.Las dimensiones de la escultura son:" + obras.getDimensiones());
+                 System.out.println("6.El peso de la escultura es:");
+                 System.out.println("5.Los materiales de la escultura son:"+obras.toString());
+    		}
+    	}
+    	for(Obra obras:listaObras)	
+    	{
+    		
+    	}
+    }
+    public double PrecioTotal()
+    {
+    	double cont=0;
+    	for(Obra obras:listaObras)
+    	{
+    		if(obras instanceof Obra )
+    		{
+    			cont=cont+obras.CalcularPrecio();
+    		}
+    		if(obras instanceof Cuadro)
+    		{
+    			cont=cont+obras.CalcularPrecio();
+    		}
+    		if(obras instanceof Escultura)
+    		{
+    			cont=cont+obras.CalcularPrecio();
+    		}
+    	}
+    	return cont;
+    }
 }
