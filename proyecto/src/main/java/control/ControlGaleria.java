@@ -928,4 +928,14 @@ public class ControlGaleria {
     	}
     	return cont;
     }
+    public ArrayList<Escultura> filtrarEscultura(){
+        ArrayList<Escultura> filtro = new ArrayList<Escultura>();
+        for(Obra obras: listaObras){
+            if(obras instanceof Escultura){
+                filtro.add((Escultura)obras);
+            }
+        }
+        return filtro;
+
+    }
 }
