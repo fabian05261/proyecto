@@ -15,7 +15,7 @@ public abstract class Obra {
 
     public Obra() {
     }
-    
+
     public Obra(long codigoObra, String titulo, Calendar fecha, float precioRef, String dimensiones) {
         this.codigoObra = codigoObra;
         this.titulo = titulo;
@@ -79,10 +79,13 @@ public abstract class Obra {
     public void setDimensiones(String dimensiones) {
         this.dimensiones = dimensiones;
     }
+
     public abstract double CalcularPrecio();
+
     {
-    	
+
     }
+
     @Override
     public String toString() {
         return "Obra{" + "codigoObra=" + codigoObra + ", titulo=" + titulo + ", fecha=" + fecha + ", precioRef=" + precioRef + ", dimensiones=" + dimensiones + ", compra=" + compra + '}';

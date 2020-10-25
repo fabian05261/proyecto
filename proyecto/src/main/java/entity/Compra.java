@@ -9,10 +9,10 @@ public class Compra {
     private boolean pagado;
     private Cliente compraCliente;
     private Obra compraObra;
-    
+
     public Compra() {
     }
-    
+
     //antes de enviar fecha utilizar getInstance
     public Compra(long codigoCompra, Calendar fecha, boolean pagado) {
         this.codigoCompra = codigoCompra;
