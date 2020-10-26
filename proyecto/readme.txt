@@ -23,10 +23,16 @@ Funcionamiento:
 	13. Ver listado de Compras existentes
 	14. Ver listado de Compras para un mes y año específico insertado por el usuario
 	15. Ver listado de Artistas más vendidos
-	16. Salir
+	16. Ver listado de esculturas
+	17.Ver informacion de las esculturas
+	18.Ver compras realizadas
+	19.Ver ganancia total
+	0.Salir
 /****************************************************************************************************************************************************/
 Este aplicativo es un microservicio que sirve para gestionar la compra de obras, y categorizar a los artistas por sus ventas, para probarlo solo necesita el JDK 11
-en el que se llevo a cabo el mismo. No requiere un servidor de aplicaciones, ya que esta es unicamente local
+en el que se llevo a cabo el mismo. No requiere un servidor de aplicaciones, ya que esta es unicamente local. De igual forma tenemos a la clase obra definida como una clase abstracta 
+la cual posee tres distintas subclases nombradas como escultura, cuadro e instalacion, con el fin de 
+heredar atributos ya añadidos a la clase obras
 @version 1.0.0 
 
 
