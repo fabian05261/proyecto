@@ -339,7 +339,7 @@ public class ControlGaleria {
 
     public void ModificarObra() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese el codigo de la obra a buscar");
+        System.out.println("\nIngrese el codigo de la obra a buscar");
         long codiguito = sc.nextLong();
         int opciones,x=0;
         boolean encontro = false, encontro1 = false;
@@ -356,7 +356,7 @@ public class ControlGaleria {
             else {  
                 encontro = true;
                 obra = obras;
-                System.out.println("-----------------------------------------------------");
+                System.out.println("\n-----------------------------------------------------");
                 System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
                 System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
                 System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
@@ -378,7 +378,7 @@ public class ControlGaleria {
             }
         }
         if (encontro) {
-            System.out.println("Que valor quiere cambiar de las obras");
+            System.out.println("\nQue valor quiere cambiar de las obras");
 
             do {
                 System.out.println("Presione 1 para cambiar el codigo de la obra");
@@ -396,6 +396,7 @@ public class ControlGaleria {
                 }
                 System.out.println("Presione 0 para salir del menu");
                 opciones = sc.nextInt();
+                System.out.println("\n-----------------------------------------------------");
                 switch (opciones) {
                     case 1:
                         System.out.println("Ingrese el nuevo codigo");
@@ -403,12 +404,12 @@ public class ControlGaleria {
                         for (Obra obras : listaObras) {
                             if (nuevoCodigo == obras.getCodigoObra()) {
                                 encontro1 = true;
-                                System.out.println("El codigo ya existe, escoja otro");
+                                System.out.println("El codigo ya existe, escoja otro\n");
                             }
                         }
                         if (!encontro1) {
                             obra.setCodigoObra(nuevoCodigo);
-                            System.out.println("Se ha cambiado el codigo correctamente");
+                            System.out.println("Se ha cambiado el codigo correctamente\n");
                         } else {
                             encontro1 = false;
                         }
@@ -419,12 +420,12 @@ public class ControlGaleria {
                         for (Obra obras : listaObras) {
                             if (nuevoTitulo.equals(obras.getTitulo())) {
                                 encontro1 = true;
-                                System.out.println("El titulo ya existe, escoja otro");
+                                System.out.println("El titulo ya existe, escoja otro\n");
                             }
                         }
                         if (!encontro1) {
                             obra.setTitulo(nuevoTitulo);
-                            System.out.println("Se cambio el titulo");
+                            System.out.println("Se cambio el titulo\n");
                         } else {
                             encontro1 = false;
                         }
@@ -436,19 +437,19 @@ public class ControlGaleria {
                         ano = sc.nextInt();
                         nuevaFecha.set(ano, mes, dia);
                         obra.setFecha(nuevaFecha);
-                        System.out.println("Se inserto la nueva fecha");
+                        System.out.println("Se inserto la nueva fecha\n");
                         break;
                     case 4:
                         System.out.println("Ingrese el nuevo precio referencia de la obra");
                         nuevoPrecio = sc.nextFloat();
                         obra.setPrecioRef(nuevoPrecio);
-                        System.out.println("Se cambio el precio de referencia de la obra");
+                        System.out.println("Se cambio el precio de referencia de la obra\n");
                         break;
                     case 5:
                         System.out.println("Ingrese las nuevas dimensiones de la obra");
                         nuevasDimensiones = sc.next();
                         obra.setDimensiones(nuevasDimensiones);
-                        System.out.println("Se cambiaron las dimensiones de la obra");
+                        System.out.println("Se cambiaron las dimensiones de la obra\n");
                         break;
                     case 6:
                         if (x == 1){
@@ -456,7 +457,7 @@ public class ControlGaleria {
                         System.out.println("Ingrese el nuevo material de la escultura");
                         nuevoMaterial = sc.next();
                         ((Escultura) obra).setMaterial(nuevoMaterial);
-                        System.out.println("Se cambio el material de la escultura");
+                        System.out.println("Se cambio el material de la escultura\n");
                         }
                         else System.out.println("\n Su obra no es una escultura selecione una opcion correcta.\n");
                         break;
@@ -466,7 +467,7 @@ public class ControlGaleria {
                         System.out.println("Ingrese el nuevo peso de la escultura");
                         nuevoPeso = sc.nextDouble();
                         ((Escultura) obra).setPeso(nuevoPeso);
-                        System.out.println("Se cambio el peso de la escultura");
+                        System.out.println("Se cambio el peso de la escultura\n");
                         }
                         else System.out.println("\n Su obra no es una escultura selecione una opcion correcta.\n");
                         break;
@@ -476,7 +477,7 @@ public class ControlGaleria {
                         System.out.println("Ingrese el nuevo tema del cuadro");
                         nuevoTema = sc.next();
                         ((Cuadro) obra).setTema(nuevoTema);
-                        System.out.println("Se cambio el tema del cuadro");
+                        System.out.println("Se cambio el tema del cuadro\n");
                         }
                         else System.out.println("\n Su obra no es un cuadro selecione una opcion correcta.\n");
                         break;
@@ -486,14 +487,15 @@ public class ControlGaleria {
                         System.out.println("Ingrese la nueva tecnica del cuadro");
                         nuevoTecnica = sc.next();
                         ((Cuadro) obra).setTecnica(nuevoTecnica);
-                        System.out.println("Se cambio la tecnica del cuadro");
+                        System.out.println("Se cambio la tecnica del cuadro\n");
                         }
                         else System.out.println("\n Su obra no es un cuadro selecione una opcion correcta.\n");
                         break;
                 }
+                System.out.println("-----------------------------------------------------");
             } while (opciones != 0);
         } else {
-            System.out.println("No se encontro la obra con ese codigo");
+            System.out.println("No se encontro la obra con ese codigo.\n");
         }
     }
 
