@@ -341,7 +341,7 @@ public class ControlGaleria {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el codigo de la obra a buscar");
         long codiguito = sc.nextLong();
-        int opciones;
+        int opciones,x=0;
         boolean encontro = false, encontro1 = false;
         String nuevoTitulo, nuevasDimensiones;
         Calendar nuevaFecha = Calendar.getInstance();
@@ -352,7 +352,8 @@ public class ControlGaleria {
         for (Obra obras : listaObras) {
             if (obras.getCodigoObra() != codiguito) {
                 encontro = false;
-            } else {
+            }
+            else {  
                 encontro = true;
                 obra = obras;
                 System.out.println("-----------------------------------------------------");
@@ -361,8 +362,19 @@ public class ControlGaleria {
                 System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                 //System.out.println("4.La foto de la obra es:");
                 System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
+                if(obras instanceof Escultura){
+                    x=1;
+                    System.out.println("6.El material de la escultura es:" + ((Escultura) obras).getMaterial());
+                    System.out.println("7.El peso de la escultura es:" + ((Escultura) obras).getPeso());
+                }
+                else if(obras instanceof Cuadro){
+                    x=2;
+                    System.out.println("6.El tema del cuadro es:" + ((Cuadro) obras).getTema());
+                    System.out.println("7.La tecnica del cuadro es:" + ((Cuadro) obras).getTecnica());
+                }
                 System.out.println("-----------------------------------------------------");
                 break;
+                
             }
         }
         if (encontro) {
@@ -374,7 +386,15 @@ public class ControlGaleria {
                 System.out.println("Presione 3 para cambiar la fecha de la obra");
                 System.out.println("Presione 4 para cambiar el precio referencia de la obra");
                 System.out.println("Presione 5 para cambiar las dimensiones de la obra");
-                System.out.println("Presione 9 para salir del menu");
+                if(x == 1){
+                    System.out.println("Presione 6 para cambiar el material de la escultura");
+                    System.out.println("Presione 7 para cambiar el peso de la escultura");
+                }
+                else if(x == 2){
+                    System.out.println("Presione 8 para cambiar el tema del cuadro");
+                    System.out.println("Presione 9 para cambiar la tecnica del cuadro");
+                }
+                System.out.println("Presione 0 para salir del menu");
                 opciones = sc.nextInt();
                 switch (opciones) {
                     case 1:
@@ -430,8 +450,48 @@ public class ControlGaleria {
                         obra.setDimensiones(nuevasDimensiones);
                         System.out.println("Se cambiaron las dimensiones de la obra");
                         break;
+                    case 6:
+                        if (x == 1){
+                        String nuevoMaterial;
+                        System.out.println("Ingrese el nuevo material de la escultura");
+                        nuevoMaterial = sc.next();
+                        ((Escultura) obra).setMaterial(nuevoMaterial);
+                        System.out.println("Se cambio el material de la escultura");
+                        }
+                        else System.out.println("\n Su obra no es una escultura selecione una opcion correcta.\n");
+                        break;
+                    case 7:
+                        if (x == 1){
+                        double nuevoPeso;
+                        System.out.println("Ingrese el nuevo peso de la escultura");
+                        nuevoPeso = sc.nextDouble();
+                        ((Escultura) obra).setPeso(nuevoPeso);
+                        System.out.println("Se cambio el peso de la escultura");
+                        }
+                        else System.out.println("\n Su obra no es una escultura selecione una opcion correcta.\n");
+                        break;
+                    case 8:
+                        if (x == 2){
+                        String nuevoTema;
+                        System.out.println("Ingrese el nuevo tema del cuadro");
+                        nuevoTema = sc.next();
+                        ((Cuadro) obra).setTema(nuevoTema);
+                        System.out.println("Se cambio el tema del cuadro");
+                        }
+                        else System.out.println("\n Su obra no es un cuadro selecione una opcion correcta.\n");
+                        break;
+                    case 9:
+                        if (x == 2){
+                        String nuevoTecnica;
+                        System.out.println("Ingrese la nueva tecnica del cuadro");
+                        nuevoTecnica = sc.next();
+                        ((Cuadro) obra).setTecnica(nuevoTecnica);
+                        System.out.println("Se cambio la tecnica del cuadro");
+                        }
+                        else System.out.println("\n Su obra no es un cuadro selecione una opcion correcta.\n");
+                        break;
                 }
-            } while (opciones != 9);
+            } while (opciones != 0);
         } else {
             System.out.println("No se encontro la obra con ese codigo");
         }
