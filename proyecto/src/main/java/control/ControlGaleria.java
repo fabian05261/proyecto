@@ -950,14 +950,16 @@ public class ControlGaleria {
 
     public void Esculturas() {
         for (Escultura esculturas : filtrarEscultura()) {
+            System.out.println("---------------------------------------------------------");
             System.out.println("1.El titulo de la obra es:" + esculturas.getTitulo());
             System.out.println("2.La fecha de creacion de la obra es:" + esculturas.getFecha().getTime());
             System.out.println("3.El precio referencia de la obra es:" + esculturas.getPrecioRef());
             //System.out.println("4.La foto de la escultura es:");
             System.out.println("5.Las dimensiones de la obra son:" + esculturas.getDimensiones());
             System.out.println("6.El peso de la escultura es:" + esculturas.getPeso());
-            System.out.println("7.Los materiales de la escultura son:" + esculturas.getMaterial1());
+            System.out.println("7.El material de la escultura es:" + esculturas.getMaterial1().getNombre());
         }
+        System.out.println("---------------------------------------------------------");
     }
 
     public void Compras() {
