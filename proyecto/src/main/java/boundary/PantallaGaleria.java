@@ -105,15 +105,12 @@ public class PantallaGaleria {
                     pantalla.controller.ArtistaMasVendido();
                     break;
                 case 16:
-                    pantalla.controller.filtrarEscultura();
-                    break;
-                case 17:
                     pantalla.controller.Esculturas();
                     break;
-                case 18:
+                case 17:
                     pantalla.controller.Compras();
                     break;
-                case 19:
+                case 18:
                     pantalla.controller.GanaciaTotal();
                     break;
             }
