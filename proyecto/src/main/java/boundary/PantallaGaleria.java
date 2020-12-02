@@ -1,6 +1,7 @@
 package boundary;
 
 import java.util.*;
+import java.io.*;
 import control.*;
 
 import entity.*;
@@ -9,7 +10,7 @@ public class PantallaGaleria {
 
     public static ControlGaleria controller = new ControlGaleria();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InputMismatchException, ArrayIndexOutOfBoundsException, Exception {
         PantallaGaleria pantalla = new PantallaGaleria();
         int opciones;
         long codigo;
@@ -57,12 +58,19 @@ public class PantallaGaleria {
                     pantalla.controller.VerClientes();
                     break;
                 case 7:
-                    System.out.println("Ingrese la cedula del cliente que desea buscar");
+                    System.out.println("Ingrese el codigo del cliente que desea buscar");
+                    try {
                     codigo = sc1.nextLong();
-                    pantalla.controller.BuscarCliente(codigo);
+                    pantalla.controller.BuscarCliente(codigo);                   
                     break;
+                    }catch(InputMismatchException e)
+                    {
+                    	System.out.println("El codigo no se digito correctamente ");
+                    }
                 case 8:
-                    System.out.println("Ingrese el codigo,cedula, nombre, apelllido, direccion de entrega y telefono del cliente, en ese orden");
+                    System.out.println("Ingrese el codigo,cedula, nombre, apelllido, direccion de entrega y telefono del cliente, "
+                    		+ "en ese orden");
+                    try {
                     long codigo4 = sc1.nextLong();
                     long cedula1 = sc1.nextLong();
                     String nombre1 = sc1.next();
@@ -70,37 +78,61 @@ public class PantallaGaleria {
                     String direccion = sc1.next();
                     long telefono = sc1.nextLong();
                     Cliente cliente1 = new Cliente(codigo4, cedula1, nombre1, apellido1, direccion, telefono);
-                    pantalla.controller.InsertarCliente(cliente1);
+                    pantalla.controller.InsertarCliente(cliente1);                   
                     break;
+                    }catch(InputMismatchException e)
+                    {
+                     System.out.println("Los valores no fueron digitados correctamente");
+                    }
                 case 9:
-                    System.out.println("Ingrese la cedula del cliente que desea modificar");
+                	try {
+                    System.out.println("Ingrese el codigo del cliente que desea modificar");
                     long codigo1 = sc1.nextLong();
                     pantalla.controller.ModificarDatos(codigo1);
                     break;
+                	}catch(InputMismatchException e)
+                	{
+                		System.out.println("El codigo no se digito correctamente");
+                	}
                 case 10:
                     pantalla.controller.EliminarCliente();
                     break;
-                case 11:
+                case 11: 
+                	try {
                     System.out.println("Ingrese el titulo de la obra, el codigo de la compra y el codigo del cliente");
                     String titulo2 = sc1.next();
                     long codigoCompra = sc1.nextLong();
                     long codigoCliente = sc1.nextLong();
                     pantalla.controller.CompraObra(titulo2, codigoCompra, codigoCliente);
                     break;
+                	}catch(InputMismatchException e)
+                	{
+                		System.out.println("Se digito mal algun valor");
+                	}
                 case 12:
+                	try {
                     System.out.println("Inserte el codigo de la compra que desea eliminar");
                     long codigo2 = sc1.nextLong();
                     pantalla.controller.EliminarComprar(codigo2);
                     break;
+                	}catch(InputMismatchException e)
+                	{
+                		System.out.println("Se digito incorrectamente el codigo");
+                	}
                 case 13:
                     pantalla.controller.ListadoComprasExistentes();
                     break;
                 case 14:
+                	try {
                     System.out.println("Ingrese el mes y el año");
                     int mes1 = sc1.nextInt();
                     int anio2 = sc1.nextInt();
                     pantalla.controller.ListadoComprasPorFecha(mes1, anio2);
                     break;
+                	}catch(InputMismatchException e)
+                	{
+                		System.out.println("Se digito mal el año");
+                	}
                 case 15:
                     pantalla.controller.ArtistaMasVendido();
                     break;

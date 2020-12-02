@@ -1,6 +1,8 @@
 package control;
 
+import model.*;
 import java.util.*;
+import java.io.*;
 import enumeration.Clasificacion;
 
 import entity.*;
@@ -75,8 +77,8 @@ public class ControlGaleria {
         this.compras = compras;
     }
 
-    public void VerObras() {
-
+    public void VerObras() throws ArrayIndexOutOfBoundsException{
+    	try {
         for (Obra obras : listaObras) {
             System.out.println("-------------------------------------------------------------");
             System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
@@ -86,23 +88,33 @@ public class ControlGaleria {
             System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
             System.out.println("-------------------------------------------------------------");
         }
+    	}catch(ArrayIndexOutOfBoundsException e)
+    	{
+    		System.out.println("error:"+e.toString());
+    	}
     }
 
-    public void criterio() {
+    public void criterio() throws InputMismatchException,ArrayIndexOutOfBoundsException,Exception,CodigoArtistaNoEncontrado,AnoPintada{
 
         Scanner sc = new Scanner(System.in);
-        int criterios;
+        int criterios=0;
         String titulo;
         long artista;
         int ano;
-        System.out.println("Ingrese el criterio que desea aplicar para su busqueda, 1 para el titulo, 2 para el artista, 3 para el anho");
-        criterios = sc.nextInt();
+        try {
+			System.out.println("Ingrese el criterio que desea aplicar para su busqueda, 1 para el titulo, 2 para el artista, 3 para el anho");
+			criterios = sc.nextInt();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
         switch (criterios) {
 
             case 1:
 
                 System.out.println("Escriba el titulo de la obra que desea buscar");
+                try {
                 titulo = sc.next();
 
                 for (Obra obras : listaObras) {
@@ -114,15 +126,24 @@ public class ControlGaleria {
                         //System.out.println("4.La foto de la obra es:");
                         System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
                         System.out.println("-------------------------------------------------------------");
-                    }
+                    }else
+                    	throw new TituloObra("La obra no se encontro");
+                }
+                }catch(InputMismatchException e)
+                {
+                	System.out.println("Error"+e.toString());
+                	throw e;
+                }catch(ArrayIndexOutOfBoundsException e)
+                {
+                	System.out.println("Error"+e.getMessage());
+                	throw e;
                 }
                 break;
-
             case 2:
 
                 System.out.println("Escriba el codigo del artista el cual desea buscar su obra");
-                artista = sc.nextLong();
-
+                try {
+                    artista = sc.nextLong();
                 for (Artista artistas : listaArtistas.values()) {
                     if (artista == artistas.getCodigoArtista()) {
                         for (Obra obras : artistas.getObras()) {
@@ -133,14 +154,26 @@ public class ControlGaleria {
                             System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
                         }
 
+                    }else {
+                    	throw new CodigoArtistaNoEncontrado("El codigo de ese artista no existe");
                     }
+                    	
+                }
+               }
+               catch(InputMismatchException e) {
+            	   System.out.println("El codigo no existe");
+            	   throw e;
+               }catch(ArrayIndexOutOfBoundsException e)
+                {
+            	   System.out.println("Error:"+e.toString());
+            	   throw e;
                 }
                 break;
 
             case 3:
                 System.out.println("Escriba el anho en que fue pintada la obra ");
+                try {
                 ano = sc.nextInt();
-
                 for (Obra obras : listaObras) {
                     if (ano == obras.getFecha().get(obras.getFecha().YEAR)) {
                         System.out.println("1.El titulo de la obra es:" + obras.getTitulo());
@@ -148,19 +181,33 @@ public class ControlGaleria {
                         System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
                         //System.out.println("4.La foto de la obra es:");
                         System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
+                    }else {
+                    	throw new AnoPintada("La obra no fue pintada ese a�o");
                     }
+                }
+                }
+                catch(InputMismatchException e)
+                {
+                	System.out.println("No se encontro el año en que la obra fue pintada");
+                	throw e;
+                }catch(ArrayIndexOutOfBoundsException e)
+                {
+                	System.out.println("Error"+ e.getMessage());
                 }
                 break;
         }
         //sc.close();
     }
 
-    public void BuscarObra() {
+    public void BuscarObra() throws InputMismatchException, ArrayIndexOutOfBoundsException, Exception,CodigoArtistaNoEncontrado {
         criterio();
     }
 
-    public boolean BuscarArtista(Artista artista) {
+    public boolean BuscarArtista(Artista artista) throws Exception{
         for (Artista artistas : listaArtistas.values()) {
+            if(artista.getCodigoArtista()!=artistas.getCodigoArtista()) {
+            throw new Exception("No se encontro el artista");	
+            }
             if (artista.getCodigoArtista() == artistas.getCodigoArtista()) {
                 return true;
             }
@@ -168,7 +215,7 @@ public class ControlGaleria {
         return false;
     }
 
-    public void InsertarObra() {
+    public void InsertarObra() throws Exception{
         Scanner sc = new Scanner(System.in);
         String tit, dims;
         Calendar fechados = Calendar.getInstance();
@@ -176,6 +223,7 @@ public class ControlGaleria {
         float preciox;
         int dia, mes, anio;
         System.out.println("Ingrese titulo de la Obra");
+        try {
         tit = sc.next();
         System.out.println("Ingrese Fecha de la Obra(dia,mes,año en espacios diferentes)");
         dia = sc.nextInt();
@@ -186,7 +234,7 @@ public class ControlGaleria {
         codiguito = sc.nextLong();
         System.out.println("Ingrese precio de referencia de la Obra");
         preciox = sc.nextFloat();
-        System.out.println("Ingrese dimenciones de la Obra(ejemplo 3X3)");
+        System.out.println("Ingrese dimensiones de la Obra(ejemplo 3X3)");
         dims = sc.next();
         System.out.printf("Seleccione que tipo de obra es:\n1.Escultura\n2.Cuadro\n3.Instalacion\n");
         int tipoobra = sc.nextInt();
@@ -214,13 +262,14 @@ public class ControlGaleria {
                     mats = gestionObras.material7;
                 } else if (gestionObras.material8.getCodigo() == cods) {
                     mats = gestionObras.material8;
-                } else {
-                    System.out.println("El codigo de su material no se encuentra, verifique");
+                } else {  
+                	throw new MaterialNoEncontrado("El codigo de su material no se encuentra");
                 }
                 obra = new Escultura(codiguito, tit, fechados, preciox, dims, mats, peso);
-                break;
-
+        
+                break;                
             case 2:
+            	
                 System.out.println("Ingrese el tema de la Obra");
                 String tema = sc.next();
                 System.out.println("Ingrese la tecnica del material");
@@ -267,12 +316,12 @@ public class ControlGaleria {
                         mats1 = gestionObras.material8;
                         materialesx.add(mats1);
                     } else {
-                        System.out.println("El codigo de su material no se encuentra, verifique");
+                    	throw new MaterialNoEncontrado("El codigo de su material no se encuentra");
                     }
                 } while (cods != 0);
 
                 obra = new Instalacion(codiguito, tit, fechados, preciox, dims, des, materialesx);
-        }
+        }    
         long aux;
         int cont = 0;
         aux = obra.getCodigoObra();
@@ -285,6 +334,8 @@ public class ControlGaleria {
                 if (codiguito == obras.getCodigoObra()) {
                     System.out.println("La obra esta repetida");
                     return;
+                }else {
+                	throw new CodigoObraNoEncontrado("No se encontro el codigo de la obra");
                 }
             }
             int counter = 0;
@@ -321,6 +372,15 @@ public class ControlGaleria {
                     fechados.set(anio, mes - 1, dia);
                     System.out.println("Ingrese el telefono del artista");
                     long telefonox = sc.nextLong();
+                    for(Artista artistas:listaArtistas.values())
+                    {
+                    	if(artistas.getNombre()==nombreaux && artistas.getApellido()==apellidox
+                    			&&artistas.getCedula()==cedulax&&artistas.getCodigoArtista()==codiguito&&
+                    			artistas.getFechaNacimiento()==fechados)
+                    	{
+                    		throw new Exception("El artista esta repetido");
+                    	}
+                    }
                     Artista artistaux = new Artista(codiguito, cedulax, nombreaux, apellidox, fechados, telefonox);
                     obra.getArtista().add(artistaux);
                     artistaux.getObras().add(obra);
@@ -332,14 +392,22 @@ public class ControlGaleria {
                 }
             }
             listaObras.add(obra);
-        } else {
-            System.out.println("El codigo no es valido");
+        } else 
+        	throw new CodigoObraNoEncontrado("El codigo no es valido");
+        }catch(InputMismatchException e)
+        {
+        	System.out.println("Digito mal los alguno de los valores");
+        	throw e;
+        }catch(IndexOutOfBoundsException e)
+        {
+        	System.out.println("Error"+e.toString());
         }
     }
 
-    public void ModificarObra() {
+    public void ModificarObra()throws Exception{
         Scanner sc = new Scanner(System.in);
         System.out.println("\nIngrese el codigo de la obra a buscar");
+        try {
         long codiguito = sc.nextLong();
         int opciones,x=0;
         boolean encontro = false, encontro1 = false;
@@ -403,9 +471,10 @@ public class ControlGaleria {
                         nuevoCodigo = sc.nextLong();
                         for (Obra obras : listaObras) {
                             if (nuevoCodigo == obras.getCodigoObra()) {
-                                encontro1 = true;
-                                System.out.println("El codigo ya existe, escoja otro\n");
-                            }
+                                encontro1 = true;                             
+                            }else {
+                            	throw new Exception("El codigo ya existe, escoja otro\n");
+                            }                            	
                         }
                         if (!encontro1) {
                             obra.setCodigoObra(nuevoCodigo);
@@ -420,7 +489,8 @@ public class ControlGaleria {
                         for (Obra obras : listaObras) {
                             if (nuevoTitulo.equals(obras.getTitulo())) {
                                 encontro1 = true;
-                                System.out.println("El titulo ya existe, escoja otro\n");
+                            }else {
+                            	throw new Exception("El titulo ya existe, escoja otro\n");                           	
                             }
                         }
                         if (!encontro1) {
@@ -431,25 +501,40 @@ public class ControlGaleria {
                         }
                         break;
                     case 3:
-                        System.out.println("Ingrese la nueva fecha, dia, mes y ano, en ese orden");
+					try {
+						System.out.println("Ingrese la nueva fecha, dia, mes y ano, en ese orden");
                         dia = sc.nextInt();
                         mes = sc.nextInt();
                         ano = sc.nextInt();
                         nuevaFecha.set(ano, mes, dia);
                         obra.setFecha(nuevaFecha);
                         System.out.println("Se inserto la nueva fecha\n");
+					} catch (InputMismatchException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                         break;
                     case 4:
-                        System.out.println("Ingrese el nuevo precio referencia de la obra");
+					try {
+						System.out.println("Ingrese el nuevo precio referencia de la obra");
                         nuevoPrecio = sc.nextFloat();
                         obra.setPrecioRef(nuevoPrecio);
                         System.out.println("Se cambio el precio de referencia de la obra\n");
+					} catch (InputMismatchException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                         break;
                     case 5:
-                        System.out.println("Ingrese las nuevas dimensiones de la obra");
+					try {
+						System.out.println("Ingrese las nuevas dimensiones de la obra");
                         nuevasDimensiones = sc.next();
                         obra.setDimensiones(nuevasDimensiones);
                         System.out.println("Se cambiaron las dimensiones de la obra\n");
+					} catch (InputMismatchException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                         break;
                     case 6:
                         if (x == 1){
@@ -458,8 +543,9 @@ public class ControlGaleria {
                         nuevoMaterial = sc.next();
                         ((Escultura) obra).setMaterial(nuevoMaterial);
                         System.out.println("Se cambio el material de la escultura\n");
+                        }else {
+                        	throw new NoEsEscultura("Su obra no es escultura");
                         }
-                        else System.out.println("\n Su obra no es una escultura selecione una opcion correcta.\n");
                         break;
                     case 7:
                         if (x == 1){
@@ -468,8 +554,9 @@ public class ControlGaleria {
                         nuevoPeso = sc.nextDouble();
                         ((Escultura) obra).setPeso(nuevoPeso);
                         System.out.println("Se cambio el peso de la escultura\n");
+                        }else {
+                        	throw new NoEsEscultura("Su obra no es escultura");
                         }
-                        else System.out.println("\n Su obra no es una escultura selecione una opcion correcta.\n");
                         break;
                     case 8:
                         if (x == 2){
@@ -478,8 +565,9 @@ public class ControlGaleria {
                         nuevoTema = sc.next();
                         ((Cuadro) obra).setTema(nuevoTema);
                         System.out.println("Se cambio el tema del cuadro\n");
+                        }else {
+                        	throw new NoEsCuadro("Su obra no es un cuadro");
                         }
-                        else System.out.println("\n Su obra no es un cuadro selecione una opcion correcta.\n");
                         break;
                     case 9:
                         if (x == 2){
@@ -488,29 +576,37 @@ public class ControlGaleria {
                         nuevoTecnica = sc.next();
                         ((Cuadro) obra).setTecnica(nuevoTecnica);
                         System.out.println("Se cambio la tecnica del cuadro\n");
+                        }else {
+                        	throw new NoEsCuadro("Su obra no es un cuadro");
+
                         }
-                        else System.out.println("\n Su obra no es un cuadro selecione una opcion correcta.\n");
                         break;
                 }
                 System.out.println("-----------------------------------------------------");
             } while (opciones != 0);
         } else {
-            System.out.println("No se encontro la obra con ese codigo.\n");
+        	throw new CodigoObraNoEncontrado("No se encontro la obra con ese codigo");
+        }
+        }catch(InputMismatchException e)
+        {
+        	System.out.println("Se digito mal algun valor");
         }
     }
 
-    public void EliminarObra() {
+    public void EliminarObra()throws Exception {
         Scanner sc = new Scanner(System.in);
         long codigo;
         int x;
         boolean encontro = false;
         boolean confirmar = false;
+        try {
         System.out.println("Ingrese el codigo de la obra que desea eliminar");
         codigo = sc.nextLong();
         Obra obra = null;
         for (Obra obras : listaObras) {
             if (obras.getCodigoObra() != codigo) {
                 encontro = false;
+                throw new Exception("No se puede eliminar una obra que no existe");
             } else {
                 encontro = true;
                 obra = obras;
@@ -531,13 +627,17 @@ public class ControlGaleria {
                 System.out.println("Se ha cancelado");
             }
         } else {
-            System.out.println("Su obra no existe por favor verifique su codigo");
+        	throw new CodigoObraNoEncontrado("Su obra no existe por favor verifique su codigo");          
         }
+        }catch(InputMismatchException e)
+        {
+        	System.out.println("Digito mal el codigo");
+        }
+        
     }
-
     //metodos clientes
-    public void VerClientes() {
-
+    public void VerClientes() throws ArrayIndexOutOfBoundsException{
+    	try {
         for (Cliente clientes : listaClientes.values()) {
             System.out.println("---------------------------------------------------------------");
             System.out.println("El nombre  y apellido del cliente es: " + clientes.getNombre() + " " + clientes.getApellidos());
@@ -545,10 +645,15 @@ public class ControlGaleria {
             System.out.println("El telefono del cliente es: " + clientes.getTelefono());
             System.out.println("---------------------------------------------------------------");
         }
+    	}catch(ArrayIndexOutOfBoundsException e)
+    	{
+    		System.out.println("error"+e.getMessage());
+    	}
     }
 
-    public void BuscarCliente(long codigo) {
+    public void BuscarCliente(long codigo)throws IndexOutOfBoundsException, CodigoObraNoEncontrado {
         boolean encontro = false;
+        try {
         for (Cliente clientes : listaClientes.values()) {
             if (codigo == clientes.getCedula()) {
                 encontro = true;
@@ -560,29 +665,39 @@ public class ControlGaleria {
                 System.out.println("---------------------------------------------------------------");
             }
         }
+        }catch(IndexOutOfBoundsException e)
+        {
+        	System.out.println("Error"+e.toString());
+        }
         if (!encontro) {
-            System.out.println("No existe el cliente en la base de datos");
+        	throw new CodigoObraNoEncontrado("No existe el cliente en la base de datos");
         }
     }
 
-    public void InsertarCliente(Cliente cliente) {
+    public void InsertarCliente(Cliente cliente) throws IndexOutOfBoundsException, CodigoObraNoEncontrado{
         boolean encontro = false;
+        try {
         for (Cliente clientes : listaClientes.values()) {
 
             if (cliente.getCodigoCliente() == clientes.getCodigoCliente()) {
-                System.out.println("El cliente esta repetido");
                 encontro = true;
+                throw new CodigoObraNoEncontrado("El cliente esta repetido");
             }
         }
         if (!encontro) {
             System.out.println("Se inserto el cliente");
             listaClientes.put(listaClientes.size(), cliente);
         }
+        }catch(IndexOutOfBoundsException e)
+        {
+        	System.out.println("Error: "+e.toString());
+        }
     }
 
-    public void ModificarDatos(long codigo) {
+    public void ModificarDatos(long codigo) throws Exception{
 
         Scanner sc = new Scanner(System.in);
+        try {
         int opciones;
         int cont = 0;
         boolean encontro = false, encontro1 = false;
@@ -607,6 +722,7 @@ public class ControlGaleria {
         }
         if (encontro) {
             System.out.println("Seleccione el dato que desea modificar");
+            try {
             do {
                 System.out.println("Presione 1 para cambiar el nombre");
                 System.out.println("Presione 2 para cambiar el apellido");
@@ -616,68 +732,95 @@ public class ControlGaleria {
                 System.out.println("Presion 6 para cambiar codigo");
                 System.out.println("Presione 9 para salir");
                 opciones = sc.nextInt();
-
                 switch (opciones) {
 
                     case 1://cambiar nombre 
 
                         System.out.println("Ingrese el nuevo Nombre que desea cambiar");
+                        try {
                         nuevoNombre = sc.next();
                         cliente.setNombre(nuevoNombre);
                         System.out.println("Se realizo el cambio de Nombre al Cliente");
+                        }catch(InputMismatchException e)
+                        {
+                        	System.out.println("No se digito correctamente el nombre");
+                            throw e;
+                        }
                         break;
-
                     case 2: //cambiar apellido
 
                         System.out.println("Ingrese el nuevo Apellido que desea cambiar");
+                        try {
                         nuevoApellido = sc.next();
                         cliente.setApellidos(nuevoApellido);
                         System.out.println("Se realizo el cambio de Apellido al Cliente");
+                        }catch(InputMismatchException e)
+                        {
+                        	System.out.println("Digito mal el apellido");
+                        	throw e;
+                        }
                         break;
 
                     case 3://cambiar cedula
 
                         System.out.println("Ingrese la nueva cedula que desea cambiar");
+                        try {
                         nuevaCedula = sc.nextLong();
-
                         for (Cliente clientes1 : listaClientes.values()) {
                             if (nuevaCedula == clientes1.getCedula()) {
                                 encontro1 = true;
                             }
                         }
                         if (encontro1) {
-                            System.out.println("La nueva cedula ya existe, verifique nuevamente");
                             encontro1 = false;
+                            throw new Exception("La nueva cedula ya existe, verifique nuevamente");
                         } else {
                             cliente.setCedula(nuevaCedula);
                             System.out.println("Se actualizo la cedula del cliente");
+                        }
+                        }catch(InputMismatchException e)
+                        {
+                        	System.out.println("Digito mal la cedula");
+                        	throw e;
                         }
                         break;
 
                     case 4://cambiar telefono
 
                         System.out.println("Ingrese el telefono nuevo que desea cambiar");
+                        try {
                         nuevoTelefono = sc.nextLong();
                         cliente.setTelefono(nuevoTelefono);
                         System.out.println("Se actualizo el telefono del cliente");
+                        }catch(InputMismatchException e)
+                        {
+                        	System.out.println("No se digito bien el telefono");
+                        	throw e;
+                        }
                         break;
-
                     case 5://cambiar direccion entrega
 
                         System.out.println("Ingrese la nueva direccion entrega que desea cambiar");
+                        try {
                         nuevaDireccion = sc.next();
                         cliente.setDireccionEntrega(nuevaDireccion);
                         System.out.println("Se actualizo la direccion del cliente");
+                        }catch(InputMismatchException e)
+                        {
+                        	System.out.println("La direccion no se digito correctamente");
+                        	throw e;
+                        }
                         break;
 
                     case 6: //cambiar codigo fuente
 
                         System.out.println("Ingrese el nuevo codigo que desea cambiar");
+                        try {
                         nuevoCodigo = sc.nextLong();
                         for (Cliente clientes : listaClientes.values()) {
                             if (clientes.getCodigoCliente() == nuevoCodigo) {
                                 encontro1 = true;
-                                System.out.println("El codigo nuevo ya existe, por favor verifique nuevamente");
+                                throw new Exception("El codigo nuevo ya existe, por favor verifique nuevamente");
                             }
                         }
                         if (encontro1) {
@@ -686,16 +829,30 @@ public class ControlGaleria {
                             cliente.setCodigoCliente(nuevoCodigo);
                             System.out.println("Se ha cambiado el codigo del Cliente");
                         }
+                        }catch(InputMismatchException e)
+                        {
+                        	System.out.println("El codigo se digito incorrectamente");
+                        	throw e;
+                        }
                         break;
                 }
 
             } while (opciones != 9);
-        } else {
-            System.out.println("El cliente no existe");
+
+        }catch(InputMismatchException e)
+            {
+        		System.out.println("Error :"+e.toString());
+        		throw e;
+            }
+        }else 
+        	throw new Exception("EL cliente no existe");
+        }catch(InputMismatchException e)
+        {
+        	System.out.println("Error"+e.toString());
         }
     }
 
-    public void EliminarCliente() {
+    public void EliminarCliente() throws InputMismatchException{
 
         Scanner sc = new Scanner(System.in);
         long codigo;
@@ -703,6 +860,7 @@ public class ControlGaleria {
         boolean encontro = false;
         boolean confirmar = false;
         System.out.println("Ingrese la cedula del cliente que desea eliminar");
+        try {
         codigo = sc.nextLong();
         int cont = 0;
         Cliente cliente = new Cliente();
@@ -737,14 +895,19 @@ public class ControlGaleria {
         } else {
             System.out.println("Este cliente no existe");
         }
+        }catch(InputMismatchException e)
+        {
+        	System.out.println("Error:"+e.toString());
+        } 
     }
 
     //Toca enviar la lista de compra a revisar, Sirve para imprimir la lista
-    public void ListadoComprasExistentes() {
+    public void ListadoComprasExistentes() throws IndexOutOfBoundsException{
 
         String pago;
         Compra Auxcompra;
         Calendar Auxfecha;
+        try {
         for (int i = 0; i < compras.size(); i++) {
             Auxcompra = compras.get(i);
             Auxfecha = Auxcompra.getFecha();//Comodidad para imprimir
@@ -755,13 +918,18 @@ public class ControlGaleria {
             }
             System.out.printf("Codigo de compra:\t%s\nFecha de compra:\t%d-%d-%d\nPagado:\t%s\n", Auxcompra.getCodigoCompra(), Auxfecha.get(Auxfecha.DATE), Auxfecha.get(Auxfecha.MONTH) + 1, Auxfecha.get(Auxfecha.YEAR), pago);
         }
+        }catch(ArrayIndexOutOfBoundsException e)
+        {
+        	System.out.println("No se pudo mostrar las compras");
+        }
     }
 
-    public void ListadoComprasPorFecha(int mes, int anio) {
+    public void ListadoComprasPorFecha(int mes, int anio) throws IndexOutOfBoundsException {
 
         String pago;
         Compra Auxcompra;
         Calendar auxfecha;
+        try {
         for (int i = 0; i < compras.size(); i++) {
             Auxcompra = compras.get(i);
             auxfecha = Auxcompra.getFecha();
@@ -778,13 +946,18 @@ public class ControlGaleria {
                 }
             }
         }
+        }catch(ArrayIndexOutOfBoundsException e)
+        {
+        	System.out.println("No se recorrio correctamente el listado");
+        }
     }
 
-    public void CompraObra(String Titulo, long codigocompra, long codigo) {
+    public void CompraObra(String Titulo, long codigocompra, long codigo) throws Exception {
 
         Obra Auxobra = null;
         Cliente comprador = new Cliente();
         boolean encontro = false, encontro1 = false, encontro2 = false;
+        try {
         for (Obra obras : listaObras) {
             if (Titulo.equals(obras.getTitulo())) {
                 Auxobra = obras;
@@ -832,19 +1005,28 @@ public class ControlGaleria {
                     compras.add(Auxcompra);
                     System.out.println("Se ha anadido su compra con exito");
                 } else {
-                    System.out.println("Esta compra ya se realizo, por favor verifique");
+                	throw new Exception("Esta compra ya se realizo, por favor verifique");
                 }
             }
         } else {
             System.out.println("La obra " + Titulo + " no existe");
         }
+        }catch(ArrayIndexOutOfBoundsException e)
+        {
+        	System.out.println("No se recorrio el listado correctamente");
+        	throw e;
+        }catch(NullPointerException e)
+        {
+        	System.out.println("No se pudo acceder a la informacion");
+        }
 
     }
 
     //codigo de compra a borrar
-    public void EliminarComprar(long codigo) {
+    public void EliminarComprar(long codigo) throws ArrayIndexOutOfBoundsException {
         boolean encontro = false;
         Compra aborrar = new Compra();
+        try {
         for (Compra auxcompras : compras) {
             if (codigo == auxcompras.getCodigoCompra()) {
                 aborrar = auxcompras;
@@ -878,11 +1060,16 @@ public class ControlGaleria {
                 }
             }
         }
+        }catch(ArrayIndexOutOfBoundsException e)
+        {
+        	System.out.println("No se pudo recorrer los arreglos");
+        }
     }
 
     private int comprasArtista(long cedula) {
-        int cont = 0;
-        for (Compra compras : compras) {															//verifica las compras que estan relacionadas con la lista artistas
+       
+    	int cont = 0;        
+        for (Compra compras : compras) {	//verifica las compras que estan relacionadas con la lista artistas
             for (Artista artistas : compras.getCompraObra().getArtista())//se cuenta la cantidad de veces que se realiza la compra
             {
                 if (cedula == artistas.getCedula()) {
@@ -890,11 +1077,12 @@ public class ControlGaleria {
                 }
             }
         }
-
-        return cont;
+        return cont;  
+       
     }
 
-    public void ArtistaMasVendido() {
+    public void ArtistaMasVendido()throws IndexOutOfBoundsException {
+    	try {
         int tam = listaArtistas.size();
         int aux, cont = 0;
         String aux1;
@@ -924,21 +1112,27 @@ public class ControlGaleria {
             System.out.println(cont + "\nLas obras vendidas fueron: " + obrasVendidas[i] + "\nLa cantidad artistas con mas ventas : " + artistas[i]);
             System.out.println("------------------------------------------------------");
         }
+    	}catch(IndexOutOfBoundsException e)
+    	{
+    		System.out.println("Error"+e.toString());
+    	}
     }
 
-    public ArrayList<Compra> filtrarCuadro() {
+    public ArrayList<Compra> filtrarCuadro() throws Exception {
         ArrayList<Compra> filtro = new ArrayList<Compra>();
         for (Obra obras : listaObras) {
             if (obras instanceof Cuadro) {
                 if (obras.getCompra() != null) {
                     filtro.add(obras.getCompra());
+                }else {
+                	throw new Exception("La obra esta repetida");
                 }
             }
         }
         return filtro;
     }
 
-    public ArrayList<Escultura> filtrarEscultura() {
+    public ArrayList<Escultura> filtrarEscultura()  {
         ArrayList<Escultura> filtro = new ArrayList<Escultura>();
         for (Obra obras : listaObras) {
             if (obras instanceof Escultura) {
@@ -948,7 +1142,8 @@ public class ControlGaleria {
         return filtro;
     }
 
-    public void Esculturas() {
+    public void Esculturas() throws ArrayIndexOutOfBoundsException {
+    	try {
         for (Escultura esculturas : filtrarEscultura()) {
             System.out.println("1.El titulo de la obra es:" + esculturas.getTitulo());
             System.out.println("2.La fecha de creacion de la obra es:" + esculturas.getFecha().getTime());
@@ -958,24 +1153,44 @@ public class ControlGaleria {
             System.out.println("6.El peso de la escultura es:" + esculturas.getPeso());
             System.out.println("7.Los materiales de la escultura son:" + esculturas.getMaterial1());
         }
+    	}catch(ArrayIndexOutOfBoundsException e)
+    	{
+    		System.out.println("No se pudo recorrer la lista ");
+    	}
     }
 
-    public void Compras() {
+    public void Compras() throws Exception{
+    	try {
         for (Compra compras : filtrarCuadro()) {
             System.out.println("1.El codigo de la compra es:" + compras.getCodigoCompra());
             System.out.println("2.La fecha de la compra es:" + compras.getFecha().getTime());
             System.out.println("3.El cliente es:" + compras.getCompraCliente());
             System.out.println("4.La obra adquirida es:" + compras.getCompraObra());
         }
+    	}catch(ArrayIndexOutOfBoundsException e)
+    	{
+    		System.out.println("No se pudo recorrer la lista");
+    	}
     }
 
-    public void GanaciaTotal() {
+    public void GanaciaTotal() throws Exception{
+    	try {
         double total = 0;
         for (Obra obras : listaObras) {
             if (obras.getCompra() != null) {
                 total = total + obras.CalcularPrecio();
+            }else {
+            	throw new Exception("No fue posible calcular la ganancia total");
             }
         }
         System.out.println("Las ganancias totales son: " + total);
+    	}catch(ArrayIndexOutOfBoundsException e)
+    	{
+    		System.out.println("No se pudo recorrer la lista");
+    		throw e;
+    	}catch(NullPointerException e)
+    	{
+    		System.out.println("No se pudo acceder al total");
+    	}
     }
 }

@@ -59,7 +59,7 @@ public class GestionObras {
         Obra obra6 = new Cuadro(1973671, "Guernica", new GregorianCalendar(1998, Calendar.JUNE, 23, 6, 12, 44), 8500, "3x3",
                 Clasificacion.OBRA_MAESTRA, "Guerra", "Tinta");
         listaObras.add(obra6);
-        Obra obra7 = new Cuadro(1973671, "La Rueda De Bicicleta", new GregorianCalendar(1995, Calendar.FEBRUARY, 20, 8, 14, 44), 8500, "3x3",
+        Obra obra7 = new Cuadro(9830123, "La Rueda De Bicicleta", new GregorianCalendar(1995, Calendar.FEBRUARY, 20, 8, 14, 44), 8500, "3x3",
                 Clasificacion.OBRA_REPRESENTATIVA, "Histeria", "Objetos");
         listaObras.add(obra7);
         Obra obra8 = new Cuadro(1273371, "El Jardin De Las Delicias", new GregorianCalendar(1993, Calendar.APRIL, 15, 21, 12, 44), 8500, "3x3",
