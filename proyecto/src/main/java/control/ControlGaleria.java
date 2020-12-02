@@ -182,7 +182,7 @@ public class ControlGaleria {
                         //System.out.println("4.La foto de la obra es:");
                         System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
                     }else {
-                    	throw new AnoPintada("La obra no fue pintada ese año");
+                    	throw new AnoPintada("La obra no fue pintada ese aï¿½o");
                     }
                 }
                 }
@@ -1145,18 +1145,20 @@ public class ControlGaleria {
     public void Esculturas() throws ArrayIndexOutOfBoundsException {
     	try {
         for (Escultura esculturas : filtrarEscultura()) {
+            System.out.println("---------------------------------------------------------");
             System.out.println("1.El titulo de la obra es:" + esculturas.getTitulo());
             System.out.println("2.La fecha de creacion de la obra es:" + esculturas.getFecha().getTime());
             System.out.println("3.El precio referencia de la obra es:" + esculturas.getPrecioRef());
             //System.out.println("4.La foto de la escultura es:");
             System.out.println("5.Las dimensiones de la obra son:" + esculturas.getDimensiones());
             System.out.println("6.El peso de la escultura es:" + esculturas.getPeso());
-            System.out.println("7.Los materiales de la escultura son:" + esculturas.getMaterial1());
+            System.out.println("7.El material de la escultura es:" + esculturas.getMaterial1().getNombre());
         }
     	}catch(ArrayIndexOutOfBoundsException e)
     	{
     		System.out.println("No se pudo recorrer la lista ");
     	}
+
     }
 
     public void Compras() throws Exception{
