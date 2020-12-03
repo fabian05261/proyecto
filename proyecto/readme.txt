@@ -32,7 +32,11 @@ Funcionamiento:
 Este aplicativo es un microservicio que sirve para gestionar la compra de obras, y categorizar a los artistas por sus ventas, para probarlo solo necesita el JDK 11
 en el que se llevo a cabo el mismo. No requiere un servidor de aplicaciones, ya que esta es unicamente local. De igual forma tenemos a la clase obra definida como una clase abstracta 
 la cual posee tres distintas subclases nombradas como escultura, cuadro e instalacion, con el fin de 
-heredar atributos ya añadidos a la clase obras
+heredar atributos ya añadidos a la clase obras.
+/****************************************************************************************************************************************************/
+Se realizo el diseño de la interfaz, esta no cumple ninguna función, más que estetica; el codigo, tiene test unitarios por algunos metodos de ControlGaleria
+también cuenta con manejo de las excepciones de los metodos de ControlGaleria.
+/****************************************************************************************************************************************************/
 @version 1.0.0 
 
 
