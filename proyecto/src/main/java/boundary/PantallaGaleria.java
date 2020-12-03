@@ -147,19 +147,19 @@ public class PantallaGaleria {
                     pantalla.controller.GanaciaTotal();
                     break;
                 case 19:
-                    guardarXml(pantalla);
+                    guardarXml(controller);
                     break;
             }
         } while (opciones != 0);
     }
 
-    public static void guardarXml(PantallaGaleria p) {
+    public static void guardarXml(ControlGaleria p) {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Inserte la direccion de ruta donde este el archivo y el nombre del XML ejemplo c:\\GaleriaFinal.xml");
         String dir = sc1.next();
 
         try (FileWriter out = new FileWriter(dir)) {
-            JAXBContext context = JAXBContext.newInstance(PantallaGaleria.class);
+            JAXBContext context = JAXBContext.newInstance(ControlGaleria.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(p, out);
@@ -168,7 +168,7 @@ public class PantallaGaleria {
             System.out.println("-------------------------------------------------------------");
         } catch (IOException e) {
             System.out.println("\n-------------------------------------------------------------");
-            System.out.println(" - SU PROYECTO NO SE GUARDO EN LA DIRECCION -");
+            System.out.println(" - SU PROYECTO NO SE GUARDO EN LA DIRECCION " + dir + "-");
             System.out.println("-------------------------------------------------------------");
         } catch (JAXBException e) {
             e.printStackTrace();
