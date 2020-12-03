@@ -4,10 +4,6 @@ import org.junit.jupiter.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.*;
 import control.*;
 import entity.Obra;
@@ -63,5 +59,23 @@ class TestCalcularPrecio {
 		long codigo7=9830123;
 		long codigo8=1273371;
 		
+	}
+	@Test
+	void testCompraObra() {
+		String titulo;
+		long codigoObra;
+		long codigoCompra;
+		controlgaleria.CompraObra(titulo,codigoObra,codigoCompra);
+		assertTrue(controlgaleria.CompraObra(titulo,codigoObra,codigoCompra))
+	}
+	@Test
+	void testInsertarObra() {
+		long codigo=0;
+		boolean find;
+		try {
+		assertEquals(controlgaleria.InsertarObra(),)
+		}catch(InputMismatchException e) {
+			System.out.println(e.toString());
+		}	
 	}
 }
