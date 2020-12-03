@@ -43,7 +43,7 @@ public class PantallaGaleria {
             System.out.println(" 19. Guardar los XML");
             System.out.println(" 0. Salir");
             System.out.println(" X -------------------------------------- X ");
-            
+
             opciones = sc1.nextInt();
             switch (opciones) {
                 case 1:
@@ -67,29 +67,27 @@ public class PantallaGaleria {
                 case 7:
                     System.out.println("Ingrese el codigo del cliente que desea buscar");
                     try {
-                    codigo = sc1.nextLong();
-                    pantalla.controller.BuscarCliente(codigo);                   
-                    break;
-                    }catch(InputMismatchException e)
-                    {
-                    	System.out.println("El codigo no se digito correctamente ");
+                        codigo = sc1.nextLong();
+                        pantalla.controller.BuscarCliente(codigo);
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("El codigo no se digito correctamente ");
                     }
                 case 8:
                     System.out.println("Ingrese el codigo,cedula, nombre, apelllido, direccion de entrega y telefono del cliente, "
-                    		+ "en ese orden");
+                            + "en ese orden");
                     try {
-                    long codigo4 = sc1.nextLong();
-                    long cedula1 = sc1.nextLong();
-                    String nombre1 = sc1.next();
-                    String apellido1 = sc1.next();
-                    String direccion = sc1.next();
-                    long telefono = sc1.nextLong();
-                    Cliente cliente1 = new Cliente(codigo4, cedula1, nombre1, apellido1, direccion, telefono);
-                    pantalla.controller.InsertarCliente(cliente1);                   
-                    break;
-                    }catch(InputMismatchException e)
-                    {
-                     System.out.println("Los valores no fueron digitados correctamente");
+                        long codigo4 = sc1.nextLong();
+                        long cedula1 = sc1.nextLong();
+                        String nombre1 = sc1.next();
+                        String apellido1 = sc1.next();
+                        String direccion = sc1.next();
+                        long telefono = sc1.nextLong();
+                        Cliente cliente1 = new Cliente(codigo4, cedula1, nombre1, apellido1, direccion, telefono);
+                        pantalla.controller.InsertarCliente(cliente1);
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Los valores no fueron digitados correctamente");
                     }
                 case 9:
                 	try {
@@ -97,10 +95,9 @@ public class PantallaGaleria {
                     long codigo1 = sc1.nextLong();
                     pantalla.controller.ModificarDatos(codigo1);
                     break;
-                	}catch(InputMismatchException e)
-                	{
-                		System.out.println("El codigo no se digito correctamente");
-                	}
+                } catch (InputMismatchException e) {
+                    System.out.println("El codigo no se digito correctamente");
+                }
                 case 10:
                     pantalla.controller.EliminarCliente();
                     break;
@@ -112,20 +109,18 @@ public class PantallaGaleria {
                     long codigoCliente = sc1.nextLong();
                     pantalla.controller.CompraObra(titulo2, codigoCompra, codigoCliente);
                     break;
-                	}catch(InputMismatchException e)
-                	{
-                		System.out.println("Se digito mal algun valor");
-                	}
+                } catch (InputMismatchException e) {
+                    System.out.println("Se digito mal algun valor");
+                }
                 case 12:
                 	try {
                     System.out.println("Inserte el codigo de la compra que desea eliminar");
                     long codigo2 = sc1.nextLong();
                     pantalla.controller.EliminarComprar(codigo2);
                     break;
-                	}catch(InputMismatchException e)
-                	{
-                		System.out.println("Se digito incorrectamente el codigo");
-                	}
+                } catch (InputMismatchException e) {
+                    System.out.println("Se digito incorrectamente el codigo");
+                }
                 case 13:
                     pantalla.controller.ListadoComprasExistentes();
                     break;
@@ -136,10 +131,9 @@ public class PantallaGaleria {
                     int anio2 = sc1.nextInt();
                     pantalla.controller.ListadoComprasPorFecha(mes1, anio2);
                     break;
-                	}catch(InputMismatchException e)
-                	{
-                		System.out.println("Se digito mal el año");
-                	}
+                } catch (InputMismatchException e) {
+                    System.out.println("Se digito mal el año");
+                }
                 case 15:
                     pantalla.controller.ArtistaMasVendido();
                     break;
@@ -158,27 +152,27 @@ public class PantallaGaleria {
             }
         } while (opciones != 0);
     }
-    
-    public static void guardarXml(PantallaGaleria p){
+
+    public static void guardarXml(PantallaGaleria p) {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Inserte la direccion de ruta donde este el archivo y el nombre del XML ejemplo c:\\GaleriaFinal.xml");
         String dir = sc1.next();
-        
-        try(FileWriter out = new FileWriter(dir)){
+
+        try (FileWriter out = new FileWriter(dir)) {
             JAXBContext context = JAXBContext.newInstance(PantallaGaleria.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(p,out);
+            m.marshal(p, out);
             System.out.println("-------------------------------------------------------------");
             System.out.println(" - SU PROYECTO SE GUARDO EN LA DIRECCION " + dir + "-");
             System.out.println("-------------------------------------------------------------");
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("\n-------------------------------------------------------------");
             System.out.println(" - SU PROYECTO NO SE GUARDO EN LA DIRECCION -");
             System.out.println("-------------------------------------------------------------");
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             e.printStackTrace();
         }
     }
-    
+
 }
