@@ -16,13 +16,13 @@ public class ControlGaleria {
     private GestionClientes gestionCliente = new GestionClientes();
     @XmlElement(name = "Gestion de Obras")
     private GestionObras gestionObras = new GestionObras();
-    @XmlElement(name = "Lista de Clientes")
+    //@XmlElement(name = "Lista de Clientes")
     private HashMap<Integer, Cliente> listaClientes = new HashMap<Integer, Cliente>();
     @XmlElement(name = "Lista de Artistas")
     private HashMap<Integer, Artista> listaArtistas = new HashMap<Integer, Artista>();
-    @XmlElement(name = "Lista de Obras")
+    //@XmlElement(name = "Lista de Obras")
     private ArrayList<Obra> listaObras = new ArrayList<Obra>();
-    @XmlElement(name = "Compras")
+    //@XmlElement(name = "Compras")
     private ArrayList<Compra> compras = new ArrayList<Compra>();
 
     public ControlGaleria() {
@@ -318,7 +318,7 @@ public class ControlGaleria {
                             mats1 = gestionObras.material8;
                             materialesx.add(mats1);
                         } else {
-                            throw new MaterialNoEncontrado("El codigo de su material no se encuentra");
+                            System.out.println("El codigo de su material no se encuentra");
                         }
                     } while (cods != 0);
 
@@ -336,8 +336,6 @@ public class ControlGaleria {
                     if (codiguito == obras.getCodigoObra()) {
                         System.out.println("La obra esta repetida");
                         return;
-                    } else {
-                        throw new CodigoObraNoEncontrado("No se encontro el codigo de la obra");
                     }
                 }
                 int counter = 0;
