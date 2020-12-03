@@ -112,7 +112,7 @@ public class PantallaGaleria {
                 	try {
                     System.out.println("Inserte el codigo de la compra que desea eliminar");
                     long codigo2 = sc1.nextLong();
-                    pantalla.controller.EliminarComprar(codigo2);
+                    PantallaGaleria.controller.EliminarComprar(codigo2);
                     break;
                 	}catch(InputMismatchException e)
                 	{
