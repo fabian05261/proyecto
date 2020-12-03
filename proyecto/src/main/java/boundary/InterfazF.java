@@ -30,7 +30,7 @@ public class InterfazF extends Application {
 		try { 
 			
 			
-			URL url = new File("src/main/resources/Ventanat.fxml").toURI().toURL();
+			URL url = new File("src/main/resources/Ventana.fxml").toURI().toURL();
 			
 			Parent root = FXMLLoader.load(url);
 		    
