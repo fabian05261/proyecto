@@ -126,8 +126,7 @@ public class ControlGaleria {
                         //System.out.println("4.La foto de la obra es:");
                         System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
                         System.out.println("-------------------------------------------------------------");
-                    }else
-                    	throw new TituloObra("La obra no se encontro");
+                    }
                 }
                 }catch(InputMismatchException e)
                 {
@@ -205,8 +204,7 @@ public class ControlGaleria {
 
     public boolean BuscarArtista(Artista artista) throws Exception{
         for (Artista artistas : listaArtistas.values()) {
-            if(artista.getCodigoArtista()!=artistas.getCodigoArtista()) {
-            throw new Exception("No se encontro el artista");	
+            if(artista.getCodigoArtista()!=artistas.getCodigoArtista()) {	
             }
             if (artista.getCodigoArtista() == artistas.getCodigoArtista()) {
                 return true;
@@ -469,10 +467,9 @@ public class ControlGaleria {
                         nuevoCodigo = sc.nextLong();
                         for (Obra obras : listaObras) {
                             if (nuevoCodigo == obras.getCodigoObra()) {
-                                encontro1 = true;                             
-                            }else {
-                            	throw new Exception("El codigo ya existe, escoja otro\n");
-                            }                            	
+                                encontro1 = true;
+                            	throw new Exception("El codigo ya existe, escoja otro\n");                             
+                            }                        	
                         }
                         if (!encontro1) {
                             obra.setCodigoObra(nuevoCodigo);
@@ -487,8 +484,8 @@ public class ControlGaleria {
                         for (Obra obras : listaObras) {
                             if (nuevoTitulo.equals(obras.getTitulo())) {
                                 encontro1 = true;
-                            }else {
-                            	throw new Exception("El titulo ya existe, escoja otro\n");                           	
+                            	throw new Exception("El titulo ya existe, escoja otro\n"); 
+                            }else {                          	
                             }
                         }
                         if (!encontro1) {
@@ -1179,7 +1176,6 @@ public class ControlGaleria {
             if (obras.getCompra() != null) {
                 total = total + obras.CalcularPrecio();
             }else {
-            	throw new Exception("No fue posible calcular la ganancia total");
             }
         }
         System.out.println("Las ganancias totales son: " + total);
