@@ -1,5 +1,7 @@
 package boundary;
-
+//Profe esta interfaz UNICAMENTE muestra lo que diseñamos
+//Ningún elemento tiene funcionamiento, pero si prueba el main
+//este tiene todos los metodos de manera correcta
 import java.io.File;
 import java.net.URL;
 
@@ -30,7 +32,7 @@ public class InterfazF extends Application {
 		try { 
 			
 			
-			URL url = new File("src/main/resources/Ventanat.fxml").toURI().toURL();
+			URL url = new File("src/main/resources/Ventana.fxml").toURI().toURL();
 			
 			Parent root = FXMLLoader.load(url);
 		    
@@ -43,6 +45,7 @@ public class InterfazF extends Application {
 			
 			// set title for the stage 
 			stage.setTitle("Galeria");
+			/*
 			Button boton = new Button("Modificar");
 
 			// create a label 
@@ -62,7 +65,7 @@ public class InterfazF extends Application {
 
 			label_center.getTabs().add(tab1);
 			label_center.getTabs().add(tab2);
-			label_center.getTabs().add(tab3);
+			label_center.getTabs().add(tab3);*/
 
 			// create a BorderPane 
 			//BorderPane border_pane = new BorderPane(label_center);

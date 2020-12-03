@@ -13,6 +13,15 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+   <repositories>
+	    <repository>
+		    <id>charm-glisten</id>
+		    <name>charm-glisten Repository</name>
+		    <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+		    <layout>default</layout>
+		  </repository>
+	</repositories>
 
   <dependencies>
   <dependency>
@@ -68,6 +77,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>11</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-glisten -->
+		<dependency>
+		    <groupId>com.gluonhq</groupId>
+		    <artifactId>charm-glisten</artifactId>
+		    <version>4.4.4</version>
+		</dependency>
+        
   
     	<dependency>
         <groupId>junit</groupId>

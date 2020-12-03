@@ -85,7 +85,7 @@ public class ControlGaleria {
             System.out.println("2.La fecha de creacion de la obra es:" + obras.getFecha().getTime());
             System.out.println("3.El precio referencia de la obra es:" + obras.getPrecioRef());
             //System.out.println("4.La foto de la obra es:");
-            System.out.println("5.Las dimensiones de la obra son:" + obras.getDimensiones());
+            System.out.println("4.Las dimensiones de la obra son:" + obras.getDimensiones());
             System.out.println("-------------------------------------------------------------");
         }
     	}catch(ArrayIndexOutOfBoundsException e)
