@@ -1,9 +1,9 @@
+
 package boundary;
 
 import java.util.*;
 import java.io.*;
 import control.*;
-
 import entity.*;
 
 public class PantallaGaleria {
@@ -32,9 +32,8 @@ public class PantallaGaleria {
             System.out.println("14.Ver listado de compras para un mes y año especifico");
             System.out.println("15.Ver listado de artistas mas vendidos");
             System.out.println("16.Ver listado de Esculturas");
-            System.out.println("17.Ver la informacion de las esculturas");
-            System.out.println("18.Ver las compras realizadas");
-            System.out.println("19.Ver la ganancia total");
+            System.out.println("17.Ver las compras realizadas");
+            System.out.println("18.Ver la ganancia total");
             System.out.println("0.Salir");
             //Scanner sc1 = new Scanner(System.in);
             opciones = sc1.nextInt();

@@ -334,8 +334,6 @@ public class ControlGaleria {
                 if (codiguito == obras.getCodigoObra()) {
                     System.out.println("La obra esta repetida");
                     return;
-                }else {
-                	throw new CodigoObraNoEncontrado("No se encontro el codigo de la obra");
                 }
             }
             int counter = 0;
@@ -988,7 +986,6 @@ public class ControlGaleria {
                 Compra Auxcompra = new Compra(codigocompra, hoy, pago);
                 Auxcompra.setCompraCliente(comprador);
                 Auxcompra.setCompraObra(Auxobra);
-                System.out.println("hola");
                 for (Compra comprar : compras) {
                     if (comprar.getCompraObra().getTitulo().equals(Titulo)) {
                         if (comprar.getCompraCliente().getCodigoCliente() == comprador.getCodigoCliente()) {
