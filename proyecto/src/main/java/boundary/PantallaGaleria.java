@@ -3,6 +3,11 @@ package boundary;
 import java.util.*;
 import java.io.*;
 import control.*;
+import org.apache.commons.csv.*;
+import java.io.FileWriter;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import entity.*;
 
@@ -16,27 +21,29 @@ public class PantallaGaleria {
         long codigo;
         Scanner sc1 = new Scanner(System.in);
         do {
-            System.out.println("1. ver listado de obras disponibles");
-            System.out.println("2. Buscar obra por titulo, artista o año");
-            System.out.println("3. Insertar una obra");
-            System.out.println("4. Modificar una obra");
-            System.out.println("5. Elimina una obra");
-            System.out.println("6. Ver listado de clientes");
-            System.out.println("7. Buscar clientes registrados en el sistema");
-            System.out.println("8. Insertar cliente");
-            System.out.println("9. Modificar datos de cliente");
-            System.out.println("10.Eliminar un cliente");
-            System.out.println("11.Realizar la compra de una obra");
-            System.out.println("12.Eliminar compra de una obra ");
-            System.out.println("13.Ver listado de compras");
-            System.out.println("14.Ver listado de compras para un mes y año especifico");
-            System.out.println("15.Ver listado de artistas mas vendidos");
-            System.out.println("16.Ver listado de Esculturas");
-            System.out.println("17.Ver la informacion de las esculturas");
-            System.out.println("18.Ver las compras realizadas");
-            System.out.println("19.Ver la ganancia total");
-            System.out.println("0.Salir");
-            //Scanner sc1 = new Scanner(System.in);
+            System.out.println(" X -------------------------------------- X ");
+            System.out.println(" 1. ver listado de obras disponibles");
+            System.out.println(" 2. Buscar obra por titulo, artista o año");
+            System.out.println(" 3. Insertar una obra");
+            System.out.println(" 4. Modificar una obra");
+            System.out.println(" 5. Elimina una obra");
+            System.out.println(" 6. Ver listado de clientes");
+            System.out.println(" 7. Buscar clientes registrados en el sistema");
+            System.out.println(" 8. Insertar cliente");
+            System.out.println(" 9. Modificar datos de cliente");
+            System.out.println(" 10. Eliminar un cliente");
+            System.out.println(" 11. Realizar la compra de una obra");
+            System.out.println(" 12. Eliminar compra de una obra ");
+            System.out.println(" 13. Ver listado de compras");
+            System.out.println(" 14. Ver listado de compras para un mes y año especifico");
+            System.out.println(" 15. Ver listado de artistas mas vendidos");
+            System.out.println(" 16. Ver listado de Esculturas");
+            System.out.println(" 17. Ver las compras realizadas");
+            System.out.println(" 18. Ver la ganancia total");
+            System.out.println(" 19. Guardar los XML");
+            System.out.println(" 0. Salir");
+            System.out.println(" X -------------------------------------- X ");
+            
             opciones = sc1.nextInt();
             switch (opciones) {
                 case 1:
@@ -145,7 +152,33 @@ public class PantallaGaleria {
                 case 18:
                     pantalla.controller.GanaciaTotal();
                     break;
+                case 19:
+                    guardarXml(pantalla);
+                    break;
             }
         } while (opciones != 0);
     }
+    
+    public static void guardarXml(PantallaGaleria p){
+        Scanner sc1 = new Scanner(System.in);
+        System.out.println("Inserte la direccion de ruta donde este el archivo y el nombre del XML ejemplo c:\\GaleriaFinal.xml");
+        String dir = sc1.next();
+        
+        try(FileWriter out = new FileWriter(dir)){
+            JAXBContext context = JAXBContext.newInstance(PantallaGaleria.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(p,out);
+            System.out.println("-------------------------------------------------------------");
+            System.out.println(" - SU PROYECTO SE GUARDO EN LA DIRECCION " + dir + "-");
+            System.out.println("-------------------------------------------------------------");
+        }catch(IOException e){
+            System.out.println("\n-------------------------------------------------------------");
+            System.out.println(" - SU PROYECTO NO SE GUARDO EN LA DIRECCION -");
+            System.out.println("-------------------------------------------------------------");
+        }catch(JAXBException e){
+            e.printStackTrace();
+        }
+    }
+    
 }
